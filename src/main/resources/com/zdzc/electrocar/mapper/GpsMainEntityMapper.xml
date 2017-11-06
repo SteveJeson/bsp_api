@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zdzc.electrocar.mapper.GpsMainEntityMapper">
+  <resultMap id="BaseResultMap" type="com.zdzc.electrocar.entity.GpsMainEntity">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="device_code" jdbcType="VARCHAR" property="deviceCode" />
+    <result column="plate_no" jdbcType="VARCHAR" property="plateNo" />
+    <result column="vendor_code" jdbcType="VARCHAR" property="vendorCode" />
+    <result column="trail_seq_no" jdbcType="INTEGER" property="trailSeqNo" />
+    <result column="alarm_seq_no" jdbcType="INTEGER" property="alarmSeqNo" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from t_gps_main
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.zdzc.electrocar.entity.GpsMainEntity">
+    insert into t_gps_main (id, device_code, plate_no,
+      vendor_code, trail_seq_no, alarm_seq_no,
+      status, remark)
+    values (#{id,jdbcType=BIGINT}, #{deviceCode,jdbcType=VARCHAR}, #{plateNo,jdbcType=VARCHAR},
+      #{vendorCode,jdbcType=VARCHAR}, #{trailSeqNo,jdbcType=INTEGER}, #{alarmSeqNo,jdbcType=INTEGER},
+      #{status,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zdzc.electrocar.entity.GpsMainEntity">
+    update t_gps_main
+    set device_code = #{deviceCode,jdbcType=VARCHAR},
+      plate_no = #{plateNo,jdbcType=VARCHAR},
+      vendor_code = #{vendorCode,jdbcType=VARCHAR},
+      trail_seq_no = #{trailSeqNo,jdbcType=INTEGER},
+      alarm_seq_no = #{alarmSeqNo,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, device_code, plate_no, vendor_code, trail_seq_no, alarm_seq_no, status,
+    remark
+    from t_gps_main
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, device_code, plate_no, vendor_code, trail_seq_no, alarm_seq_no, status,
+    remark
+    from t_gps_main
+  </select>
+  <select id="selectByDeviceCode" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select id, device_code, plate_no, vendor_code, trail_seq_no, alarm_seq_no, status,
+    remark
+    from t_gps_main
+    where device_code = #{deviceCode}
+  </select>
+</mapper>
