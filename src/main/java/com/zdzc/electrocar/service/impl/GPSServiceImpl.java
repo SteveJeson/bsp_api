@@ -49,7 +49,8 @@ public class GPSServiceImpl implements GPSService {
                 //转换成高德经纬度
                 double lng = entity.getLongitude();
                 double lat = entity.getLatitude();
-                double[] gps = CommonBusiness.getGaodeGPS(lng,lat);
+//                double[] gps = CommonBusiness.getGaodeGPS(lng,lat);
+                double[] gps = GPSConvertion.gps84_to_gcj02(lng, lat);
                 dto.setOlng(lng!=0?gps[0]:lng);
                 dto.setOlat(lat!=0?gps[1]:lat);
                 dto.setTime(entity.getTime());

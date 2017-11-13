@@ -1,0 +1,344 @@
+/* here you can put your own css to customize and override the theme */
+.scroller {
+    padding: 0;
+    overflow-y: auto
+}
+
+.coop_list {
+    position: absolute;
+    z-index: 11;
+    top: 10px;
+    right: 10px;
+    width: 388px;
+    height: 600px;
+    display: none;
+}
+
+.address_list {
+    position: absolute;
+    z-index: 999;
+    top: 40px;
+    left: 10px;
+    bottom: 10px;
+    background-color: #fff;
+    width: 320px;
+    border-radius: 10px !important;
+    font-size: 12px;
+}
+
+.tree-demo {
+    padding: 0px 10px;
+}
+
+.infor_bottom {
+    position: absolute;
+    z-index: 99999;
+    bottom: 50px;
+    left: 10px;
+}
+
+.tree_btn {
+    width: 205px;
+    height: 36px;
+    border-radius: 18px !important;
+    color: #fff;
+    font-size: 14px;
+    display: block;
+    background-color: #32c5d2;
+    text-align: center;
+    line-height: 36px;
+    margin-left: 50px;
+}
+
+.tree_btn:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.veh_numall {
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.veh_numall .all_number {
+    float: left;
+    font-size: 15px;
+    color: #555;
+    margin-left: 30px;
+    width: 105px;
+    text-align: center;
+}
+
+.veh_numall .all_number h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.iw_poi_title {
+    line-height: 30px;
+}
+
+.map_detail ol {
+    list-style: none;
+    padding-left: 0px;
+    border-top: 1px solid #eee;
+    line-height: 22px;
+    font-size: 12px;
+    margin-top: 10px;
+    padding-top: 5px;
+}
+
+.map_detail ol li span {
+    margin-left: 10px;
+}
+
+.col_po {
+    color: #009dc7;
+    margin-top: 5px;
+}
+
+.col_positi {
+    margin-left: 45px;
+    color: #009dc7;
+}
+
+.address_list2 {
+    position: absolute;
+    z-index: 999;
+    top: 10px;
+    right: 10px;
+    padding-bottom: 20px;
+    font-size: 12px !important;
+    background-color: #fff;
+    width: 300px;
+    border-radius: 10px !important;
+    font-size: 12px;
+}
+
+#show_tree_pan{
+    position: absolute;
+    z-index: 1000;
+    top: 10px;
+    left: 10px;
+    font-size: 12px;
+}
+
+#show_line_pan{
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    bottom: 227px;
+    font-size: 12px;
+    right: 10px;
+}
+
+.addr_veh {
+    list-style: none;
+    padding-left: 20px;
+    margin-top: 20px;
+}
+
+.addr_veh li {
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.addr_veh li i {
+    float: left;
+    line-height: 30px;
+    font-style: normal;
+    width: 73px;
+    height: 30px;
+}
+
+.addr_veh li select {
+    width: 180px;
+    height: 30px;
+    float: left;
+    border: 1px solid #c2cad8;
+}
+
+.addr_veh li .input-group {
+    float: left;
+    width: 180px;
+}
+
+.addr_veh li .input-group input {
+    width: 135px;
+}
+
+.addr_veh li .input-group .fa.fa-calendar {
+    width: 20px;
+    height: 13px;
+}
+
+.addr_km {
+    list-style: none;
+    padding-left: 30px;
+    border-top: 1px solid #eee;
+}
+
+.addr_km li {
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.addr_km li span {
+    float: left;
+    width: 70px;
+}
+
+.address_list3 {
+    position: absolute;
+    z-index: 999;
+    bottom: 10px;
+    right: 10px;
+    background-color: #fff;
+    width: 600px;
+    font-size: 12px;
+    padding: 10px 0px 10px 10px;
+}
+
+.
+.address_list3 table {
+    position: relative;
+}
+
+.address_list3 table tr {
+    height: 28px;
+    line-height: 28px;;
+}
+
+.address_list3 table .addr_tab_th {
+    z-index: 11;
+    background-color: #fff;
+}
+
+.address_list3 table th {
+    color: #666;;
+}
+
+.address_list3 table td {
+    color: #333;
+    overflow: hidden;
+}
+
+.address_list3 table tbody tr:hover {
+    background-color: #eee;
+}
+
+#controller {
+    width: 100%;
+    border-bottom: 3px outset;
+    height: 30px;
+    filter: alpha(Opacity=100);
+    -moz-opacity: 1;
+    opacity: 1;
+    z-index: 10000;
+    background-color: lightblue;
+}
+
+#container {
+    height: 100%
+}
+
+.BMap_Marker label {
+    max-width: none !important;
+}
+
+/*2017.6.26*/
+.olPopupContent {
+    overflow: visible !important;
+    padding: 0 !important;
+}
+
+.olPopup {
+    display: inline-block;
+    z-index: 1005 !important;
+}
+
+.olwidgetPopupContent {
+    background: #fff;
+    border-radius: 1.2em 1.2em 1.2em 1.2em;
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.35);
+    overflow: auto;
+    padding: 24px 15px 20px 15px;
+    font-size: 14px;
+}
+
+.olwidgetPopupContent ul li, .olwidgetPopupContent h4, .olwidgetPopupContent p {
+    line-height: 18px;
+    margin-bottom: 5px;
+}
+
+.olwidgetPopupCloseBox {
+    position: absolute;
+    cursor: pointer;
+    width: 14px;
+    height: 14px;
+    right: 10px;
+    top: 10px;
+    text-indent: 100px;
+    background: url("../img/closed.png") no-repeat;
+    overflow: hidden;
+}
+
+.olwidgetPopupStemTL, .olwidgetPopupStemTR {
+    display: none;
+}
+
+.olwidgetPopupStemBL, .olwidgetPopupStemBR {
+    display: none;
+}
+
+.arrow-bottom{
+    position: absolute;
+    bottom: -10px;
+    left: 27px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    background: #fff;
+    z-index: 1;
+}
+
+.olAlphaImg {
+    cursor: pointer;
+}
+
+.mapop h4 {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.mapop .code {
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.playcarsdata {
+    padding: 1px 6px;
+}
+
+.addr_veh li.speed {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.addr_veh li .input-group input.confirm {
+    width: 40px;
+}
+
+@media (min-width: 992px) {
+    .page-content {
+        padding-top: 30px !important;
+    }
+}

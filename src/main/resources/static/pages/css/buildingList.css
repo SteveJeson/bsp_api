@@ -1,0 +1,54 @@
+@CHARSET "UTF-8";
+.portlet.light.bordered>.portlet-title{
+	margin: 0 10px;
+}
+hr{
+	margin:0 15px;
+}
+.topic_header {
+    color: #578ebe;
+    border-left: 3px solid #578ebe;
+    padding-left: 5px;
+    margin-left: 20px;
+    height: 18px;
+    overflow: hidden;
+    line-height: 18px;
+    font-weight: bold;
+}
+.building-title{
+	height: 30px!important;
+	min-height:30px!important;
+    line-height: 30px!important;
+    padding-left: 10px;
+    color: #999999;
+    background-color: #eef1f5;
+    font-size:14px!important;
+}
+.portlet>.portlet-title>.caption{
+	font-size:14px!important;
+}
+.next-step{
+	color:#32c5d2!important;
+	background-color:#fff!important;
+	border:1px solid #32c5d2;
+	border-color: #32c5d2!important;
+}
+ .kv-file-content img{
+ 	height:120px!important;
+ 	width:160px!important;
+ }
+ .file-preview-frame{
+ 	width:160px!important;
+ }
+ .file-drop-zone{
+ 	padding:5px!important;
+ }
+.next-step:hover{
+	background-color:#32c5d2!important;
+	border-color: #fff!important;
+	color:#fff!important;
+}
+#certification:hover{
+	text-decoration: none;
+	color:#36c6d3;
+}

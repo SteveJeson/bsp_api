@@ -7,6 +7,7 @@ import com.zdzc.electrocar.entity.GpsSnapshotEntity;
 import com.zdzc.electrocar.mapper.GpsMainEntityMapper;
 import com.zdzc.electrocar.mapper.GpsSnapshotEntityMapper;
 import com.zdzc.electrocar.service.GpsSnapshotService;
+import com.zdzc.electrocar.util.GPSConvertion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +36,8 @@ public class GpsSnapshotServiceImpl implements GpsSnapshotService {
             dto.setLng(lon);//经度
             dto.setLat(lat);//纬度
             //转换成高德经纬度
-            double[] gps = CommonBusiness.getGaodeGPS(lon, lat);
+//            double[] gps = CommonBusiness.getGaodeGPS(lon, lat);
+            double[] gps = GPSConvertion.gps84_to_gcj02(lon, lat);
             dto.setOlng(lon!=0?gps[0]:lon);
             dto.setOlat(lat!=0?gps[1]:lat);
 

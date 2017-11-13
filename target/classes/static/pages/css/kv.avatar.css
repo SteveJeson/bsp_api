@@ -1,0 +1,21 @@
+.kv-avatar .file-preview-frame,.kv-avatar .file-preview-frame:hover {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    text-align: center;
+}
+.kv-avatar .krajee-default.file-preview-frame .kv-file-content{
+    height: auto;
+}
+.kv-avatar .file-preview{
+    padding: 5px 0px;
+}
+
+.kv-avatar .file-input {
+    display: table-cell;
+}
+.kv-avatar .file-drop-zone {
+    margin: 0;
+    padding: 0;
+}

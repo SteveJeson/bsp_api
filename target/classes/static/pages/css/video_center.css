@@ -1,0 +1,126 @@
+/* here you can put your own css to customize and override the theme */
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.nav_list {
+    overflow: hidden;
+}
+
+.nav_list .nav_name {
+    padding: 5px 0px;
+    width: 70px;
+    text-align: right;
+}
+
+.nav_list ul {
+    overflow: hidden;
+    padding-left: 10px;
+    margin-left: 70px;
+}
+
+.nav_list ul li {
+    float: left;
+    list-style: none;
+}
+
+.nav_list ul li a {
+    display: block;
+    padding: 5px 10px;
+    border-radius: 5px !important;
+    color: #555;
+}
+
+.nav_list ul li a:hover {
+    background-color: #009dc7;
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav_list ul li a.cur {
+    background-color: #009dc7;
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav_list .nav_list2 {
+    margin: 5px 0 10px 56px;
+    border: 1px solid #eee;
+    display: none
+}
+
+.nav_list .nav_list2 a:hover {
+    color: #009dc7;
+    background: none;
+}
+
+.nav_list .nav_list2 a.cur {
+    color: #009dc7;
+    background: none;
+}
+
+.video_list {
+    width: 106%;
+}
+
+.video_list .video_list_ul {
+    overflow: hidden;
+    list-style: none;
+    padding-left: 0px;
+    margin-top: 20px;
+}
+
+.video_list .video_list_ul li {
+    width: 30%;
+    float: left;
+    border: 1px solid #999;
+    margin-right: 2%;
+    margin-bottom: 20px;
+}
+
+.video_list .video_list_ul li a {
+    display: block;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    color: #555;
+}
+
+.video_list .video_list_ul li a img {
+    width: 100%;
+    min-height: 250px;
+}
+
+.video_list .video_list_ul li a span {
+    position: absolute;
+    z-index: 11;
+    top: 0px;
+    right: 0;
+    padding: 5px 10px;
+    background-color: #008000;
+    color: #fff;
+}
+
+.video_list .video_list_ul li a .video_main {
+    background-color: #eee;
+    overflow: hidden;
+    height: 50px;
+    line-height: 50px;
+    position: absolute;
+    z-index: 11;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0px 10px;
+}
+
+@media (min-width: 992px) {
+    .page-content {
+        padding-top: 30px !important;
+    }
+}
+

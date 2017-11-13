@@ -1,0 +1,106 @@
+/*update 2017.6.5*/
+.radioBtn {
+    height: 16px;
+    vertical-align: middle;
+}
+
+.checkboxBtn {
+    vertical-align: middle;
+    margin-right: 2px;
+}
+
+/*子节点横向展示*/
+.ztree * {
+    font-size: 14px;
+}
+
+.form-group .ztree {
+    margin: 0;
+    padding: 5px;
+    color: #333;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+.ztree li {
+    margin-left: 6px;
+}
+
+.ztree li a.curSelectedNode {
+    background: none;
+}
+
+.ztree li {
+    overflow: hidden;
+    line-height: 40px;
+    white-space: normal!important;
+}
+
+.ztree li a {
+    float: left;
+}
+
+/*.ztree li ul li>ul>li>ul>li{float: left;}*/
+/*.ztree li ul li>ul>li{float: left;}*/
+.ztree li span.button.chk {
+    float: left;
+    margin: 15px 0 0;
+}
+
+.ztree li ul {
+    overflow: hidden;
+}
+
+/*去掉节点展开隐藏加减号*/
+.ztree li span.button.noline_open, .ztree li span.button.noline_docu {
+    display: none;
+}
+
+.fl {
+    float: left;
+}
+
+li.level0 {
+    border-bottom: 1px solid #c2cad8;
+    padding: 10px 0px;
+}
+
+#authTree_41 {
+    border-bottom: none
+}
+
+
+li.level1 {
+    display: block;
+    overflow: hidden;
+    padding-bottom: 15px;
+}
+li.level2 {
+    display: inline-block;
+    float: left;
+}
+li.level3 {
+    display: inline-block;
+    float: left;
+}
+
+ul.level1 {
+    margin-left: 0;
+}
+
+a.level0 {
+    display: inline-block;
+}
+
+#authTree_54{
+  display: block;
+}
+
+ul.level0 {
+    margin-left: 95px !important;
+    overflow: visible!important;
+}
+
+ul.level0 li{
+    white-space: normal!important;
+}

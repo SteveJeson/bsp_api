@@ -13,10 +13,7 @@ import com.zdzc.electrocar.mapper.GpsMainEntityMapper;
 import com.zdzc.electrocar.mapper.TrailMapper;
 import com.zdzc.electrocar.service.GpsMainService;
 import com.zdzc.electrocar.service.TrailService;
-import com.zdzc.electrocar.util.DateUtil;
-import com.zdzc.electrocar.util.JSONResult;
-import com.zdzc.electrocar.util.StatusCode;
-import com.zdzc.electrocar.util.StringUtil;
+import com.zdzc.electrocar.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -66,7 +63,9 @@ public class TrailServiceImpl implements TrailService {
                             param.put("tableName", tableName);
                             long t1 = System.currentTimeMillis();
                             System.out.println("select start: " + t1);
-                            PageHelper.startPage(paramDto.getPageNumber(), paramDto.getPageSize());
+                            if (paramDto.getPageNumber() != null && paramDto.getPageSize() != null) {
+                                PageHelper.startPage(paramDto.getPageNumber(), paramDto.getPageSize());
+                            }
                             List<TrailEntity> trails = trailMapper.selectByDeviceCodeAndTime(param);
                             System.out.println("select end: " + System.currentTimeMillis() + " ,select takes: " + (System.currentTimeMillis() - t1) + "ms");
                             if (!CollectionUtils.isEmpty(trails)){
@@ -83,7 +82,7 @@ public class TrailServiceImpl implements TrailService {
                 }
             }
         }
-        return new JSONResult(true, StatusCode.EMPTY, "未找到该车辆的轨迹信息");
+        return new JSONResult(false, StatusCode.EMPTY, "未找到该车辆的轨迹信息");
     }
 
     @Override
@@ -99,7 +98,8 @@ public class TrailServiceImpl implements TrailService {
                     dto.setLat(lat);
                     dto.setLng(lon);
                     //转化成高德经纬度
-                    double[] gps = CommonBusiness.getGaodeGPS(lon,lat);
+//                    double[] gps = CommonBusiness.getGaodeGPS(lon,lat);
+                    double[] gps = GPSConvertion.gps84_to_gcj02(lon, lat);
                     dto.setOlng(lon!=0?gps[0]:lon);
                     dto.setOlat(lat!=0?gps[1]:lat);
                     dto.setTime(new Date(trail.getTime() * 1000));

@@ -53,7 +53,8 @@ public class GpsNapshotServiceImpl implements GpsNapshotService {
             dto.setLng(lng);//经度
             dto.setLat(lat);//纬度
             //转换成高德经纬度
-            double[] gps = CommonBusiness.getGaodeGPS(lng, lat);
+//            double[] gps = CommonBusiness.getGaodeGPS(lng, lat);
+            double[] gps = GPSConvertion.gps84_to_gcj02(lng, lat);
             dto.setOlng(lng!=0?gps[0]:lng);
             dto.setOlat(lat!=0?gps[1]:lat);
 
