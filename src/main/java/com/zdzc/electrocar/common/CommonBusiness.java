@@ -90,7 +90,7 @@ public class CommonBusiness {
         try {
             if (seqNoStr.length() >= 6){
                 int dbNo = Integer.valueOf(seqNoStr.substring(0, seqNoStr.length() - 6));
-                return Const.trail_db_prefix + dbNo;
+                return Const.DateBase.TRAIL_DB_PREFIX + dbNo;
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -110,7 +110,7 @@ public class CommonBusiness {
             int length = seqNoStr.length();
             if (length >= 6){
                 int tabNo = Integer.valueOf(seqNoStr.substring(length - 6, length));
-                return Const.trail_table_prefix + getMonth(DateUtil.getMonth(date)) + DateUtil.getDay(date) + "_" + getTrailTableNo(tabNo);
+                return Const.DateBase.TRAIL_TABLE_PREFIX + getMonth(DateUtil.getMonth(date)) + DateUtil.getDay(date) + "_" + getTrailTableNo(tabNo);
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -128,7 +128,7 @@ public class CommonBusiness {
         try {
             if (seqNoStr.length() >= 7){
                 int dbNo = Integer.valueOf(seqNoStr.substring(0, seqNoStr.length() - 7));
-                return Const.alarm_db_prefix + dbNo;
+                return Const.DateBase.ALARM_DB_PREFIX + dbNo;
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -148,7 +148,7 @@ public class CommonBusiness {
             int length = seqNoStr.length();
             if (length >= 7){
                 int tabNo = Integer.valueOf(seqNoStr.substring(length - 7, length));
-                return Const.alarm_table_prefix + getMonth(DateUtil.getMonth(date)) + "_" + getAlarmTableNo(tabNo);
+                return Const.DateBase.ALARM_TABLE_PREFIX + getMonth(DateUtil.getMonth(date)) + "_" + getAlarmTableNo(tabNo);
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -167,7 +167,7 @@ public class CommonBusiness {
      * @return
      */
     public static String getMonth(int month){
-        String[] indexs = {"a", "b", "c", "d"};
+        String[] indexs = Const.Public.MONTH_INDEX;
         if (month > 0 && month <= 12) {
             return indexs[(month - 1) % 4];
         }

@@ -79,4 +79,13 @@ public class JSONResult<T> extends Result implements Serializable{
         this.data = data;
         this.setStatusCode(StatusCode.OK);
     }
+
+    public static JSONResult getResult(JSONResult result, boolean success, int statusCode, String message){
+        if (result != null){
+            result.setSuccess(success);
+            result.setStatusCode(statusCode);
+            result.setMessage(message);
+        }
+        return  result;
+    }
 }

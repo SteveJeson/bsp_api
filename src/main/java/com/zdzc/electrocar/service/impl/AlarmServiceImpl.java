@@ -87,15 +87,15 @@ public class AlarmServiceImpl implements AlarmService {
             GpsMainEntity mainEntity = gpsMainService.selectByDeviceCode(paramDto.getDeviceCode());
             if (mainEntity != null){
                 Map<String, Object> param = new HashMap<>();
-                param.put("deviceCode", paramDto.getDeviceCode());
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                param.put("beginTime", simpleDateFormat.parse(paramDto.getBeginTime()).getTime() / 1000);
-                param.put("endTime", simpleDateFormat.parse(paramDto.getEndTime()).getTime() / 1000);
-                param.put("alarmHandle", paramDto.getAlarmHandle());
+                param.put(Const.Fields.DEVICE_CODE, paramDto.getDeviceCode());
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Const.Date.Y_M_D_HMS);
+                param.put(Const.Fields.BEGIN_TIME, simpleDateFormat.parse(paramDto.getBeginTime()).getTime() / 1000);
+                param.put(Const.Fields.END_TIME, simpleDateFormat.parse(paramDto.getEndTime()).getTime() / 1000);
+                param.put(Const.Fields.ALARM_HANDLE, paramDto.getAlarmHandle());
                 Integer alarmSeqNo = mainEntity.getAlarmSeqNo();
                 String dbName = CommonBusiness.getAlarmDbName(alarmSeqNo);
                 if (!StringUtil.isEmpty(dbName)) {
-                    param.put("dbName", dbName);
+                    param.put(Const.DateBase.DB_NAME, dbName);
                     // 判断查询区间是否在同一月内
                     Date startTime = simpleDateFormat.parse(paramDto.getBeginTime());
                     Date finishTime = simpleDateFormat.parse(paramDto.getEndTime());
@@ -103,21 +103,21 @@ public class AlarmServiceImpl implements AlarmService {
                             DateUtil.getMonth(startTime) == DateUtil.getMonth(finishTime)){
                         String tableName = CommonBusiness.getAlarmTableName(alarmSeqNo, startTime);
                         if (!StringUtil.isEmpty(tableName)) {
-                            param.put("tableName", tableName);
+                            param.put(Const.DateBase.TABLE_NAME, tableName);
                             PageHelper.startPage(paramDto.getPageNumber(), paramDto.getPageSize());
                             List<AlarmsEntity> alarms = alarmsMapper.getAlarmsByDeviceCodeAndTimeAndAlarmType(param);
                             if (!CollectionUtils.isEmpty(alarms)){
                                 List<AlarmDto> alarmDtos = copyAlarmsEntityToDto(alarms);
-                                return new JSONResult(true, StatusCode.OK, "ok", alarmDtos);
+                                return new JSONResult(true, StatusCode.OK, Const.Public.SUCCESS, alarmDtos);
                             }
                         }
                     }else {
-                        return new JSONResult(false, StatusCode.ERROR, "查询时间请保持在同一月内");
+                        return new JSONResult(false, StatusCode.ERROR, Const.Public.NOT_IN_THE_SAME_MONTH);
                     }
                 }
             }
         }
-        return new JSONResult(true, StatusCode.EMPTY, "未查询到符合条件的数据");
+        return new JSONResult(true, StatusCode.EMPTY, Const.Public.NO_RESULT);
     }
 
     @Override

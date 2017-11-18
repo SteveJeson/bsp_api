@@ -2,115 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88791e68-a195-407d-a6f3-0d52207adfd6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_fastjson_1_2_22.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_3_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_8_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_8_9.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_8_9.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_jsqlparser_jsqlparser_0_9_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_4_1_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_2_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_10.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__dom4j_dom4j_1_6_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_persistence_persistence_api_1_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_transaction_javax_transaction_api_1_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_1_1_0_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_17.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_40.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_accessors_smart_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_json_smart_2_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_dozer_dozer_5_5_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__nz_net_ultraq_thymeleaf_thymeleaf_layout_dialect_1_4_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ognl_ognl_3_0_8.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_8_5_16.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_8_5_16.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_8_5_16.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_jdbc_8_5_16.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_juli_8_5_16.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_8_10.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_2_6_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_groovy_groovy_2_4_12.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_library_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_0_1_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_core_5_0_12_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_entitymanager_5_0_12_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_validator_5_3_5_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_javax_persistence_hibernate_jpa_2_1_api_1_0_0_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_21_0_GA.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_jandex_2_0_0_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_1_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_1_10_19.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_generator_mybatis_generator_core_1_3_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_3_4_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_spring_1_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_spring_boot_mybatis_spring_boot_autoconfigure_1_2_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_spring_boot_mybatis_spring_boot_starter_1_2_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_5_0_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_4_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jcl_over_slf4j_1_7_25.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_log4j12_1_7_25.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_1_5_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_1_5_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_1_5_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_1_5_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_jpa_1_5_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_1_5_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_1_5_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_thymeleaf_1_5_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_1_5_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_1_5_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_1_5_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_1_5_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_commons_1_13_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_jpa_1_11_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_4_3_10_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aspects_4_3_10_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_4_3_10_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_4_3_10_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_4_3_10_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_4_3_10_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_4_3_10_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_orm_4_3_10_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_4_3_10_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_4_3_10_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_4_3_10_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_4_3_10_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_2_1_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_spring4_2_1_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_unbescape_unbescape_1_1_0_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_17.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__tk_mybatis_mapper_3_3_9.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__tk_mybatis_mapper_spring_boot_autoconfigure_1_0_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__tk_mybatis_mapper_spring_boot_starter_1_1_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bspapi.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/controller/LocationController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/pages/scripts/position.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/pages/scripts/trail.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/position.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/trail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/service/impl/GPSServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/service/impl/GPSServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/service/impl/GpsNapshotServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/service/impl/GpsNapshotServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/service/impl/GpsSnapshotServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/service/impl/GpsSnapshotServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/zdzc/electrocar/common/CommonBusiness.class" afterPath="$PROJECT_DIR$/target/classes/com/zdzc/electrocar/common/CommonBusiness.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/zdzc/electrocar/common/Const.class" afterPath="$PROJECT_DIR$/target/classes/com/zdzc/electrocar/common/Const.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/zdzc/electrocar/controller/GPSController.class" afterPath="$PROJECT_DIR$/target/classes/com/zdzc/electrocar/controller/GPSController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/zdzc/electrocar/service/impl/TrailServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/zdzc/electrocar/service/impl/TrailServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/common/CommonBusiness.java" afterPath="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/common/CommonBusiness.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/common/Const.java" afterPath="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/common/Const.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/controller/GPSController.java" afterPath="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/controller/GPSController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/service/impl/AlarmServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/service/impl/AlarmServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/service/impl/TrailServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/service/impl/TrailServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/util/GPSConvertion.java" afterPath="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/util/GPSConvertion.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/util/JSONResult.java" afterPath="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/util/JSONResult.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/application.properties" afterPath="$PROJECT_DIR$/target/classes/application.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -126,42 +30,18 @@
       <file leaf-file-name="TrailServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/service/impl/TrailServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="44" column="36" lean-forward="false" selection-start-line="44" selection-start-column="36" selection-end-line="44" selection-end-column="36" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="welcome.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/welcome.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1674">
-              <caret line="62" column="73" lean-forward="false" selection-start-line="62" selection-start-column="73" selection-end-line="62" selection-end-column="73" />
+            <state relative-caret-position="1296">
+              <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommonBusiness.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/common/CommonBusiness.java">
+      <file leaf-file-name="GPSController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/controller/GPSController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="28" column="22" lean-forward="false" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="11" column="31" lean-forward="false" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+            <state relative-caret-position="399">
+              <caret line="209" column="29" lean-forward="true" selection-start-line="209" selection-start-column="29" selection-end-line="209" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -170,33 +50,50 @@
       <file leaf-file-name="JSONResult.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/util/JSONResult.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="61" column="29" lean-forward="false" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="29" />
+            <state relative-caret-position="480">
+              <caret line="78" column="25" lean-forward="true" selection-start-line="78" selection-start-column="25" selection-end-line="78" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="trail.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/pages/scripts/trail.js">
+      <file leaf-file-name="AlarmServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/service/impl/AlarmServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2673">
-              <caret line="99" column="43" lean-forward="false" selection-start-line="99" selection-start-column="39" selection-end-line="99" selection-end-column="43" />
+            <state relative-caret-position="313">
+              <caret line="110" column="54" lean-forward="false" selection-start-line="110" selection-start-column="54" selection-end-line="110" selection-end-column="54" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="trail.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/trail.html">
+      <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="702">
-              <caret line="26" column="54" lean-forward="false" selection-start-line="26" selection-start-column="54" selection-end-line="26" selection-end-column="54" />
+            <state relative-caret-position="513">
+              <caret line="19" column="41" lean-forward="true" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommonBusiness.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/common/CommonBusiness.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="81">
+              <caret line="171" column="43" lean-forward="true" selection-start-line="171" selection-start-column="43" selection-end-line="171" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Const.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/common/Const.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -205,8 +102,8 @@
       <file leaf-file-name="LocationController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/controller/LocationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1296">
-              <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+            <state relative-caret-position="486">
+              <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="false" />
                 <element signature="e#1231#1232#0" expanded="false" />
@@ -215,102 +112,6 @@
                 <element signature="e#1360#1361#0" expanded="false" />
                 <element signature="e#2281#2282#0" expanded="false" />
                 <element signature="e#2311#2312#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbstractQueuedSynchronizer.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.7.0_80/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27">
-              <caret line="1258" column="43" lean-forward="false" selection-start-line="1258" selection-start-column="43" selection-end-line="1258" selection-end-column="43" />
-              <folding>
-                <element signature="e#61120#61128#0" expanded="true" />
-                <element signature="e#61743#61751#0" expanded="true" />
-                <element signature="e#62415#62423#0" expanded="true" />
-                <element signature="e#88217#88225#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReentrantReadWriteLock.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.7.0_80/src.zip!/java/util/concurrent/locks/ReentrantReadWriteLock.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8964">
-              <caret line="371" column="32" lean-forward="false" selection-start-line="371" selection-start-column="32" selection-end-line="371" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#57993#0" expanded="false" />
-                <element signature="imports" expanded="false" />
-                <element signature="e#7839#7840#0" expanded="false" />
-                <element signature="e#7866#7867#0" expanded="false" />
-                <element signature="e#10156#10157#0" expanded="false" />
-                <element signature="e#10212#10213#0" expanded="false" />
-                <element signature="e#23566#23567#0" expanded="false" />
-                <element signature="e#23618#23619#0" expanded="false" />
-                <element signature="e#23907#23908#0" expanded="false" />
-                <element signature="e#23961#23962#0" expanded="false" />
-                <element signature="e#24002#24003#0" expanded="false" />
-                <element signature="e#24064#24065#0" expanded="false" />
-                <element signature="e#24105#24106#0" expanded="false" />
-                <element signature="e#24188#24189#0" expanded="false" />
-                <element signature="e#25372#25373#0" expanded="false" />
-                <element signature="e#25436#25437#0" expanded="false" />
-                <element signature="e#26196#26197#0" expanded="false" />
-                <element signature="e#26250#26251#0" expanded="false" />
-                <element signature="e#26294#26295#0" expanded="false" />
-                <element signature="e#26348#26349#0" expanded="false" />
-                <element signature="e#26873#26874#0" expanded="false" />
-                <element signature="e#26913#26914#0" expanded="false" />
-                <element signature="e#27353#27354#0" expanded="false" />
-                <element signature="e#27398#27399#0" expanded="false" />
-                <element signature="e#30233#30234#0" expanded="false" />
-                <element signature="e#30282#30283#0" expanded="false" />
-                <element signature="e#33513#33514#0" expanded="false" />
-                <element signature="e#33558#33559#0" expanded="false" />
-                <element signature="e#33812#33813#0" expanded="false" />
-                <element signature="e#33877#33878#0" expanded="false" />
-                <element signature="e#34900#34901#0" expanded="false" />
-                <element signature="e#34940#34941#0" expanded="false" />
-                <element signature="e#35697#35698#0" expanded="false" />
-                <element signature="e#35736#35737#0" expanded="false" />
-                <element signature="e#39300#39301#0" expanded="false" />
-                <element signature="e#39350#39351#0" expanded="false" />
-                <element signature="e#43401#43402#0" expanded="false" />
-                <element signature="e#43440#43441#0" expanded="false" />
-                <element signature="e#45527#45528#0" expanded="false" />
-                <element signature="e#45577#45578#0" expanded="false" />
-                <element signature="e#46649#46650#0" expanded="false" />
-                <element signature="e#46704#46705#0" expanded="false" />
-                <element signature="e#47228#47229#0" expanded="false" />
-                <element signature="e#47283#47284#0" expanded="false" />
-                <element signature="e#47511#47512#0" expanded="false" />
-                <element signature="e#47558#47559#0" expanded="false" />
-                <element signature="e#48214#48215#0" expanded="false" />
-                <element signature="e#48252#48253#0" expanded="false" />
-                <element signature="e#48518#48519#0" expanded="false" />
-                <element signature="e#48564#48565#0" expanded="false" />
-                <element signature="e#48894#48895#0" expanded="false" />
-                <element signature="e#48937#48938#0" expanded="false" />
-                <element signature="e#49191#49192#0" expanded="false" />
-                <element signature="e#49238#49239#0" expanded="false" />
-                <element signature="e#49651#49652#0" expanded="false" />
-                <element signature="e#49698#49699#0" expanded="false" />
-                <element signature="e#50125#50126#0" expanded="false" />
-                <element signature="e#50171#50172#0" expanded="false" />
-                <element signature="e#50769#50770#0" expanded="false" />
-                <element signature="e#50824#50825#0" expanded="false" />
-                <element signature="e#51421#51422#0" expanded="false" />
-                <element signature="e#51473#51474#0" expanded="false" />
-                <element signature="e#51976#51977#0" expanded="false" />
-                <element signature="e#52022#52023#0" expanded="false" />
-                <element signature="e#52612#52613#0" expanded="false" />
-                <element signature="e#52656#52657#0" expanded="false" />
-                <element signature="e#53165#53166#0" expanded="false" />
-                <element signature="e#53209#53210#0" expanded="false" />
-                <element signature="e#53810#53811#0" expanded="false" />
-                <element signature="e#53856#53857#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -339,6 +140,8 @@
       <find>toLowerCase</find>
       <find>selectByDeviceCodeAndTime</find>
       <find>acquire</find>
+      <find>acquireIn</find>
+      <find>acquireshared</find>
       <find>release</find>
     </findStrings>
   </component>
@@ -368,12 +171,16 @@
         <option value="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/service/impl/GPSServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/service/impl/GpsSnapshotServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/pages/scripts/position.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/service/impl/TrailServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/pages/scripts/trail.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/controller/LocationController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/welcome.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/controller/LocationController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/service/impl/AlarmServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/common/CommonBusiness.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/common/Const.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/util/JSONResult.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/controller/GPSController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/service/impl/TrailServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -382,6 +189,48 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="bspapi" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="bspapi" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Plugins" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="bspapi" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="Lifecycle" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
+        </PATH_ELEMENT>
+      </PATH>
+    </treeState>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
@@ -408,7 +257,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -565,13 +414,107 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bspapi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BSPAPI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="electrocar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="impl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bspapi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BSPAPI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="electrocar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bspapi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BSPAPI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="electrocar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1067,45 +1010,49 @@
       <workItem from="1510102304235" duration="25010000" />
       <workItem from="1510188825303" duration="23330000" />
       <workItem from="1510274915289" duration="8874000" />
-      <workItem from="1510534093884" duration="1723000" />
+      <workItem from="1510534093884" duration="12051000" />
+      <workItem from="1510620725935" duration="5322000" />
+      <workItem from="1510903087360" duration="17579000" />
+      <workItem from="1510969769750" duration="9225000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78946000" />
+    <option name="totallyTimeSpent" value="121400000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="1" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26599148" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26218852" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2739872" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26218852" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1118,7 +1065,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="18" />
+      <option name="time" value="19" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1127,19 +1074,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/simple-line-icons.css" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/simple-line-icons/simple-line-icons.css" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/plugins/ol4/ol.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/custom.css" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/plugins/bootstrap/js/bootstrap.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/layout.min.css" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/custom.min.css" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/index.css" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/layout.css" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/plugins/bootstrap/css/bootstrap.css" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/plugins/layout5/scripts/app.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/app.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/plugins/layout5/css/newui.css" />
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2767">
@@ -1201,20 +1135,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/service/impl/GpsNapshotServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1215">
-          <caret line="56" column="66" lean-forward="false" selection-start-line="56" selection-start-column="66" selection-end-line="56" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/service/impl/GPSServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="52" column="70" lean-forward="false" selection-start-line="52" selection-start-column="70" selection-end-line="52" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/util/GPSConvertion.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="783">
@@ -1255,21 +1175,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-47">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/controller/GPSController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-29">
-          <caret line="205" column="15" lean-forward="true" selection-start-line="205" selection-start-column="15" selection-end-line="205" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/service/impl/GpsSnapshotServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="30" column="36" lean-forward="true" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -1294,29 +1199,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/common/CommonBusiness.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="28" column="22" lean-forward="false" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/pages/scripts/trail.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2673">
           <caret line="99" column="43" lean-forward="false" selection-start-line="99" selection-start-column="39" selection-end-line="99" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="11" column="31" lean-forward="false" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1324,28 +1210,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="702">
           <caret line="26" column="54" lean-forward="false" selection-start-line="26" selection-start-column="54" selection-end-line="26" selection-end-column="54" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/controller/LocationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1296">
-          <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1231#1232#0" expanded="false" />
-            <element signature="e#1263#1264#0" expanded="false" />
-            <element signature="e#1327#1328#0" expanded="false" />
-            <element signature="e#1360#1361#0" expanded="false" />
-            <element signature="e#2281#2282#0" expanded="false" />
-            <element signature="e#2311#2312#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1369,120 +1233,259 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/service/impl/TrailServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="44" column="36" lean-forward="false" selection-start-line="44" selection-start-column="36" selection-end-line="44" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/welcome.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1674">
           <caret line="62" column="73" lean-forward="false" selection-start-line="62" selection-start-column="73" selection-end-line="62" selection-end-column="73" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_80/src.zip!/java/util/concurrent/locks/ReentrantReadWriteLock.java">
+    <entry file="uml://JAVA/java.util.concurrent.locks.ReentrantLock.Sync">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>java.util.concurrent.locks.ReentrantLock.Sync</OriginalElement>
+          <nodes>
+            <node x="" y="">java.util.concurrent.locks.AbstractQueuedSynchronizer</node>
+            <node x="" y="">java.util.concurrent.locks.ReentrantLock.Sync</node>
+            <node x="" y="">java.util.concurrent.locks.AbstractOwnableSynchronizer</node>
+            <node x="" y="">java.io.Serializable</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="141.0" y="137.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/java.util.concurrent.locks.ReentrantLock">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>java.util.concurrent.locks.ReentrantLock</OriginalElement>
+          <nodes>
+            <node x="" y="">java.util.concurrent.locks.Lock</node>
+            <node x="" y="">java.util.concurrent.locks.ReentrantLock</node>
+            <node x="" y="">java.io.Serializable</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="107.0" y="56.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_80/src.zip!/java/lang/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8964">
-          <caret line="371" column="32" lean-forward="false" selection-start-line="371" selection-start-column="32" selection-end-line="371" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#57993#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#7839#7840#0" expanded="false" />
-            <element signature="e#7866#7867#0" expanded="false" />
-            <element signature="e#10156#10157#0" expanded="false" />
-            <element signature="e#10212#10213#0" expanded="false" />
-            <element signature="e#23566#23567#0" expanded="false" />
-            <element signature="e#23618#23619#0" expanded="false" />
-            <element signature="e#23907#23908#0" expanded="false" />
-            <element signature="e#23961#23962#0" expanded="false" />
-            <element signature="e#24002#24003#0" expanded="false" />
-            <element signature="e#24064#24065#0" expanded="false" />
-            <element signature="e#24105#24106#0" expanded="false" />
-            <element signature="e#24188#24189#0" expanded="false" />
-            <element signature="e#25372#25373#0" expanded="false" />
-            <element signature="e#25436#25437#0" expanded="false" />
-            <element signature="e#26196#26197#0" expanded="false" />
-            <element signature="e#26250#26251#0" expanded="false" />
-            <element signature="e#26294#26295#0" expanded="false" />
-            <element signature="e#26348#26349#0" expanded="false" />
-            <element signature="e#26873#26874#0" expanded="false" />
-            <element signature="e#26913#26914#0" expanded="false" />
-            <element signature="e#27353#27354#0" expanded="false" />
-            <element signature="e#27398#27399#0" expanded="false" />
-            <element signature="e#30233#30234#0" expanded="false" />
-            <element signature="e#30282#30283#0" expanded="false" />
-            <element signature="e#33513#33514#0" expanded="false" />
-            <element signature="e#33558#33559#0" expanded="false" />
-            <element signature="e#33812#33813#0" expanded="false" />
-            <element signature="e#33877#33878#0" expanded="false" />
-            <element signature="e#34900#34901#0" expanded="false" />
-            <element signature="e#34940#34941#0" expanded="false" />
-            <element signature="e#35697#35698#0" expanded="false" />
-            <element signature="e#35736#35737#0" expanded="false" />
-            <element signature="e#39300#39301#0" expanded="false" />
-            <element signature="e#39350#39351#0" expanded="false" />
-            <element signature="e#43401#43402#0" expanded="false" />
-            <element signature="e#43440#43441#0" expanded="false" />
-            <element signature="e#45527#45528#0" expanded="false" />
-            <element signature="e#45577#45578#0" expanded="false" />
-            <element signature="e#46649#46650#0" expanded="false" />
-            <element signature="e#46704#46705#0" expanded="false" />
-            <element signature="e#47228#47229#0" expanded="false" />
-            <element signature="e#47283#47284#0" expanded="false" />
-            <element signature="e#47511#47512#0" expanded="false" />
-            <element signature="e#47558#47559#0" expanded="false" />
-            <element signature="e#48214#48215#0" expanded="false" />
-            <element signature="e#48252#48253#0" expanded="false" />
-            <element signature="e#48518#48519#0" expanded="false" />
-            <element signature="e#48564#48565#0" expanded="false" />
-            <element signature="e#48894#48895#0" expanded="false" />
-            <element signature="e#48937#48938#0" expanded="false" />
-            <element signature="e#49191#49192#0" expanded="false" />
-            <element signature="e#49238#49239#0" expanded="false" />
-            <element signature="e#49651#49652#0" expanded="false" />
-            <element signature="e#49698#49699#0" expanded="false" />
-            <element signature="e#50125#50126#0" expanded="false" />
-            <element signature="e#50171#50172#0" expanded="false" />
-            <element signature="e#50769#50770#0" expanded="false" />
-            <element signature="e#50824#50825#0" expanded="false" />
-            <element signature="e#51421#51422#0" expanded="false" />
-            <element signature="e#51473#51474#0" expanded="false" />
-            <element signature="e#51976#51977#0" expanded="false" />
-            <element signature="e#52022#52023#0" expanded="false" />
-            <element signature="e#52612#52613#0" expanded="false" />
-            <element signature="e#52656#52657#0" expanded="false" />
-            <element signature="e#53165#53166#0" expanded="false" />
-            <element signature="e#53209#53210#0" expanded="false" />
-            <element signature="e#53810#53811#0" expanded="false" />
-            <element signature="e#53856#53857#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="196">
+          <caret line="981" column="26" lean-forward="false" selection-start-line="981" selection-start-column="26" selection-end-line="981" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/java.util.concurrent.locks.ReentrantReadWriteLock">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>java.util.concurrent.locks.ReentrantReadWriteLock</OriginalElement>
+          <nodes>
+            <node x="" y="">java.util.concurrent.locks.ReentrantReadWriteLock</node>
+            <node x="" y="">java.util.concurrent.locks.ReadWriteLock</node>
+            <node x="" y="">java.io.Serializable</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="137.0" y="56.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.7.0_80/src.zip!/java/util/concurrent/locks/AbstractQueuedSynchronizer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="1258" column="43" lean-forward="false" selection-start-line="1258" selection-start-column="43" selection-end-line="1258" selection-end-column="43" />
+        <state relative-caret-position="14067">
+          <caret line="563" column="28" lean-forward="false" selection-start-line="563" selection-start-column="28" selection-end-line="563" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/java.util.concurrent.locks.ReentrantLock.NonfairSync">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>java.util.concurrent.locks.ReentrantLock.NonfairSync</OriginalElement>
+          <nodes>
+            <node x="" y="">java.util.concurrent.locks.AbstractQueuedSynchronizer</node>
+            <node x="" y="">java.util.concurrent.locks.ReentrantLock.Sync</node>
+            <node x="" y="">java.util.concurrent.locks.AbstractOwnableSynchronizer</node>
+            <node x="" y="">java.util.concurrent.locks.ReentrantLock.NonfairSync</node>
+            <node x="" y="">java.io.Serializable</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="139.0" y="178.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_80/src.zip!/java/util/concurrent/locks/AbstractOwnableSynchronizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1026">
+          <caret line="71" column="25" lean-forward="false" selection-start-line="71" selection-start-column="25" selection-end-line="71" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_80/src.zip!/java/util/concurrent/locks/ReentrantReadWriteLock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5859">
+          <caret line="254" column="67" lean-forward="false" selection-start-line="254" selection-start-column="67" selection-end-line="254" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_80/src.zip!/java/util/concurrent/locks/ReentrantLock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-540">
+          <caret line="206" column="27" lean-forward="false" selection-start-line="206" selection-start-column="27" selection-end-line="206" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/service/impl/GPSServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1161">
+          <caret line="52" column="70" lean-forward="false" selection-start-line="52" selection-start-column="70" selection-end-line="52" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/service/impl/GpsNapshotServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1022">
+          <caret line="56" column="66" lean-forward="false" selection-start-line="56" selection-start-column="66" selection-end-line="56" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/service/impl/GpsMainServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="13" column="12" lean-forward="true" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding>
-            <element signature="e#61120#61128#0" expanded="true" />
-            <element signature="e#61743#61751#0" expanded="true" />
-            <element signature="e#62415#62423#0" expanded="true" />
-            <element signature="e#88217#88225#0" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/controller/LocationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1231#1232#0" expanded="false" />
+            <element signature="e#1263#1264#0" expanded="false" />
+            <element signature="e#1327#1328#0" expanded="false" />
+            <element signature="e#1360#1361#0" expanded="false" />
+            <element signature="e#2281#2282#0" expanded="false" />
+            <element signature="e#2311#2312#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/common/CommonBusiness.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="171" column="43" lean-forward="true" selection-start-line="171" selection-start-column="43" selection-end-line="171" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/common/Const.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/service/impl/GpsSnapshotServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="24" column="29" lean-forward="false" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/util/StatusCode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="9" column="28" lean-forward="false" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="19" column="41" lean-forward="true" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/service/impl/TrailServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1296">
+          <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/controller/GPSController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="209" column="29" lean-forward="true" selection-start-line="209" selection-start-column="29" selection-end-line="209" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/service/impl/AlarmServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="110" column="54" lean-forward="false" selection-start-line="110" selection-start-column="54" selection-end-line="110" selection-end-column="54" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zdzc/electrocar/util/JSONResult.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="61" column="29" lean-forward="false" selection-start-line="61" selection-start-column="29" selection-end-line="61" selection-end-column="29" />
+        <state relative-caret-position="480">
+          <caret line="78" column="25" lean-forward="true" selection-start-line="78" selection-start-column="25" selection-end-line="78" selection-end-column="25" />
           <folding />
         </state>
       </provider>

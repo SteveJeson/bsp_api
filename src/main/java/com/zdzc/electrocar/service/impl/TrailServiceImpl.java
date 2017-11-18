@@ -39,50 +39,45 @@ public class TrailServiceImpl implements TrailService {
 
     @Override
     public JSONResult selectByDeviceCodeAndTime(RequestParamDto paramDto) throws Exception {
+        JSONResult jsonResult = Const.Public.JSON_RESULT;
         if (paramDto != null && !StringUtils.isEmpty(paramDto.getDeviceCode())){
-            Map<String, Object> mainParam = new HashMap<>();
             GpsMainEntity mainEntity = gpsMainService.selectByDeviceCode(paramDto.getDeviceCode());
             if (mainEntity != null){
                 Map<String, Object> param = new HashMap<>();
-                param.put("deviceCode", paramDto.getDeviceCode());
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                param.put("beginTime", simpleDateFormat.parse(paramDto.getBeginTime()).getTime() / 1000);
-                param.put("endTime", simpleDateFormat.parse(paramDto.getEndTime()).getTime() / 1000);
+                param.put(Const.Fields.DEVICE_CODE, paramDto.getDeviceCode());
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Const.Date.Y_M_D_HMS);
+                param.put(Const.Fields.BEGIN_TIME, simpleDateFormat.parse(paramDto.getBeginTime()).getTime() / 1000);
+                param.put(Const.Fields.END_TIME, simpleDateFormat.parse(paramDto.getEndTime()).getTime() / 1000);
                 Integer trailSeqNo = mainEntity.getTrailSeqNo();
                 String dbName = CommonBusiness.getTrailDbName(trailSeqNo);
                 if (!StringUtil.isEmpty(dbName)) {
-                    param.put("dbName", dbName);
-                    // 判断查询区间是否在同一天
+                    param.put(Const.DateBase.DB_NAME, dbName);
                     Date startTime = simpleDateFormat.parse(paramDto.getBeginTime());
                     Date finishTime = simpleDateFormat.parse(paramDto.getEndTime());
+                    // 判断查询区间是否在同一天
                     if (DateUtil.getYear(startTime) == DateUtil.getYear(finishTime) &&
                             DateUtil.getMonth(startTime) == DateUtil.getMonth(finishTime) &&
                             DateUtil.getDay(startTime) == DateUtil.getDay(finishTime)){
                         String tableName = CommonBusiness.getTrailTableName(trailSeqNo, startTime);
                         if (!StringUtil.isEmpty(tableName)) {
-                            param.put("tableName", tableName);
-                            long t1 = System.currentTimeMillis();
-                            System.out.println("select start: " + t1);
+                            param.put(Const.DateBase.TABLE_NAME, tableName);
                             if (paramDto.getPageNumber() != null && paramDto.getPageSize() != null) {
                                 PageHelper.startPage(paramDto.getPageNumber(), paramDto.getPageSize());
                             }
                             List<TrailEntity> trails = trailMapper.selectByDeviceCodeAndTime(param);
-                            System.out.println("select end: " + System.currentTimeMillis() + " ,select takes: " + (System.currentTimeMillis() - t1) + "ms");
                             if (!CollectionUtils.isEmpty(trails)){
-                                long t2 = System.currentTimeMillis();
-                                System.out.println("transform start: " + System.currentTimeMillis());
                                 List<GPSDto> dtos = copyTrailToGPSDto(trails);
-                                System.out.println("transform end: " + System.currentTimeMillis() + " ,transform takes: " + (System.currentTimeMillis() - t2) + "ms");
-                                return new JSONResult(true, StatusCode.OK, "请求成功", dtos);
+                                jsonResult.setData(dtos);
+                                return JSONResult.getResult(jsonResult, true, StatusCode.OK, Const.Public.SUCCESS);
                             }
                         }
                     }else {
-                        return new JSONResult(false, StatusCode.ERROR, "查询时间请保持在同一天内");
+                        return JSONResult.getResult(jsonResult, false, StatusCode.ERROR, Const.Public.NOT_IN_THE_SAME_DAY);
                     }
                 }
             }
         }
-        return new JSONResult(false, StatusCode.EMPTY, "未找到该车辆的轨迹信息");
+        return JSONResult.getResult(jsonResult, false, StatusCode.EMPTY, Const.Public.NO_RESULT);
     }
 
     @Override

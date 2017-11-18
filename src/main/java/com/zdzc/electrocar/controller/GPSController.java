@@ -2,6 +2,7 @@ package com.zdzc.electrocar.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.zdzc.electrocar.common.Authentication;
+import com.zdzc.electrocar.common.Const;
 import com.zdzc.electrocar.dto.AlarmDto;
 import com.zdzc.electrocar.dto.GPSDto;
 import com.zdzc.electrocar.dto.RequestParamDto;
@@ -178,33 +179,73 @@ public class GPSController {
     public JSONResult getSnapshot(@RequestParam("deviceCode") String deviceCode,
                                    @RequestParam("token") String token,
                                    HttpServletRequest request){
-        if (Authentication.validateToken(token)){
-            GpsSnapshotEntity snapshotEntity = snapshotService.selectByDeviceCode(deviceCode);
-            if (snapshotEntity != null){
-                return new JSONResult(true, StatusCode.OK, "获取数据成功", snapshotService.copySnapshotToDto(snapshotEntity));
-            }else {
-                return new JSONResult(true, StatusCode.EMPTY, "数据为空");
-            }
-        }
-        return new JSONResult(true, StatusCode.ACCESS_DENIED, "TOKEN 错误");
-    }
-
-    @RequestMapping("/locationList")
-    public JSONResult getLocationList(@Valid RequestParamDto paramDto,BindingResult bindingResult,
-                                       HttpServletRequest request){
         try {
-            if (Authentication.validateToken(paramDto.getToken())) {
-                return trailService.selectByDeviceCodeAndTime(paramDto);
-            }else {
-                return new JSONResult(false, StatusCode.ACCESS_DENIED, "TOKEN 验证失败");
+            if (Authentication.validateToken(token)) {
+                GpsSnapshotEntity snapshotEntity = snapshotService.selectByDeviceCode(deviceCode);
+                if (snapshotEntity != null) {
+                    return new JSONResult(true, StatusCode.OK, Const.Public.SUCCESS, snapshotService.copySnapshotToDto(snapshotEntity));
+                } else {
+                    return new JSONResult(true, StatusCode.EMPTY, "数据为空");
+                }
+            } else {
+                return new JSONResult(false, StatusCode.ERROR, Const.Public.TOKEN_ERROR);
             }
         }catch (Exception e){
             log.error(e.getMessage());
             e.printStackTrace();
         }
+        return new JSONResult(false, StatusCode.ERROR, Const.Public.SYSTEM_ERROR);
+    }
+
+    @RequestMapping("/locationList")
+    public JSONResult getLocationList(@Valid RequestParamDto paramDto,BindingResult bindingResult,
+                                       HttpServletRequest request){
+        JSONResult jsonResult = Const.Public.JSON_RESULT;
+        try {
+            if (Authentication.validateToken(paramDto.getToken())) {
+                return trailService.selectByDeviceCodeAndTime(paramDto);
+            }else {
+                return JSONResult.getResult(jsonResult,false, StatusCode.ACCESS_DENIED, Const.Public.TOKEN_ERROR);
+            }
+        }catch (Exception e){
+            log.error(e.getMessage());
+            e.printStackTrace();
+        }
+        return JSONResult.getResult(jsonResult, false, StatusCode.ERROR, Const.Public.SYSTEM_ERROR);
+    }
+
+    @RequestMapping("/locationList1")
+    public JSONResult getLocationList1(@Valid RequestParamDto paramDto,BindingResult bindingResult,
+                                      HttpServletRequest request) {
+//        try {
+//            if (Authentication.validateToken(paramDto.getToken())) {
+//                return trailService.selectByDeviceCodeAndTime(paramDto);
+//            } else {
+//                return new JSONResult(false, StatusCode.ACCESS_DENIED, "TOKEN 验证失败");
+//            }
+//        } catch (Exception e) {
+//            log.error(e.getMessage());
+//            e.printStackTrace();
+//        }
 
         return new JSONResult(false, StatusCode.ERROR, "系统异常");
+    }
 
+    @RequestMapping("/locationList2")
+    public JSONResult getLocationList2(@RequestParam("deviceCode") String deviceCode,
+                                       HttpServletRequest request) {
+//        try {
+//            if (Authentication.validateToken(paramDto.getToken())) {
+//                return trailService.selectByDeviceCodeAndTime(paramDto);
+//            } else {
+//                return new JSONResult(false, StatusCode.ACCESS_DENIED, "TOKEN 验证失败");
+//            }
+//        } catch (Exception e) {
+//            log.error(e.getMessage());
+//            e.printStackTrace();
+//        }
+
+        return null;
     }
 
     @RequestMapping("/alarmsList")
@@ -214,13 +255,13 @@ public class GPSController {
             if (Authentication.validateToken(paramDto.getToken())) {
                 return alarmService.getAlarmsByDeviceCodeAndTimeAndAlarmType(paramDto);
             }else {
-                return new JSONResult(false, StatusCode.ACCESS_DENIED, "TOKEN 验证失败");
+                return new JSONResult(false, StatusCode.ACCESS_DENIED, Const.Public.TOKEN_ERROR);
             }
         }catch (Exception e){
             log.error(e.getMessage());
             e.printStackTrace();
         }
-        return new JSONResult(false, StatusCode.ERROR, "系统异常");
+        return new JSONResult(false, StatusCode.ERROR, Const.Public.SYSTEM_ERROR);
     }
 
 }
