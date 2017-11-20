@@ -83,6 +83,7 @@ public class AlarmServiceImpl implements AlarmService {
 
     @Override
     public JSONResult getAlarmsByDeviceCodeAndTimeAndAlarmType(RequestParamDto paramDto) throws Exception {
+        JSONResult jsonResult = Const.Public.JSON_RESULT;
         if (paramDto != null && !StringUtils.isEmpty(paramDto.getDeviceCode())){
             GpsMainEntity mainEntity = gpsMainService.selectByDeviceCode(paramDto.getDeviceCode());
             if (mainEntity != null){
@@ -98,9 +99,8 @@ public class AlarmServiceImpl implements AlarmService {
                     param.put(Const.DateBase.DB_NAME, dbName);
                     // 判断查询区间是否在同一月内
                     Date startTime = simpleDateFormat.parse(paramDto.getBeginTime());
-                    Date finishTime = simpleDateFormat.parse(paramDto.getEndTime());
-                    if (DateUtil.getYear(startTime) == DateUtil.getYear(finishTime) &&
-                            DateUtil.getMonth(startTime) == DateUtil.getMonth(finishTime)){
+                    Date endTime = simpleDateFormat.parse(paramDto.getEndTime());
+                    if (DateUtil.isSameMonth(startTime, endTime)){
                         String tableName = CommonBusiness.getAlarmTableName(alarmSeqNo, startTime);
                         if (!StringUtil.isEmpty(tableName)) {
                             param.put(Const.DateBase.TABLE_NAME, tableName);
@@ -108,16 +108,17 @@ public class AlarmServiceImpl implements AlarmService {
                             List<AlarmsEntity> alarms = alarmsMapper.getAlarmsByDeviceCodeAndTimeAndAlarmType(param);
                             if (!CollectionUtils.isEmpty(alarms)){
                                 List<AlarmDto> alarmDtos = copyAlarmsEntityToDto(alarms);
-                                return new JSONResult(true, StatusCode.OK, Const.Public.SUCCESS, alarmDtos);
+                                jsonResult.setData(alarmDtos);
+                                return JSONResult.getResult(jsonResult,true, StatusCode.OK, Const.Public.SUCCESS);
                             }
                         }
                     }else {
-                        return new JSONResult(false, StatusCode.ERROR, Const.Public.NOT_IN_THE_SAME_MONTH);
+                        return JSONResult.getResult(jsonResult, false, StatusCode.ERROR, Const.Public.NOT_IN_THE_SAME_MONTH);
                     }
                 }
             }
         }
-        return new JSONResult(true, StatusCode.EMPTY, Const.Public.NO_RESULT);
+        return JSONResult.getResult(jsonResult, true, StatusCode.EMPTY, Const.Public.NO_RESULT);
     }
 
     @Override

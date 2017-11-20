@@ -53,11 +53,9 @@ public class TrailServiceImpl implements TrailService {
                 if (!StringUtil.isEmpty(dbName)) {
                     param.put(Const.DateBase.DB_NAME, dbName);
                     Date startTime = simpleDateFormat.parse(paramDto.getBeginTime());
-                    Date finishTime = simpleDateFormat.parse(paramDto.getEndTime());
+                    Date endTime= simpleDateFormat.parse(paramDto.getEndTime());
                     // 判断查询区间是否在同一天
-                    if (DateUtil.getYear(startTime) == DateUtil.getYear(finishTime) &&
-                            DateUtil.getMonth(startTime) == DateUtil.getMonth(finishTime) &&
-                            DateUtil.getDay(startTime) == DateUtil.getDay(finishTime)){
+                    if (DateUtil.isSameDay(startTime, endTime)){
                         String tableName = CommonBusiness.getTrailTableName(trailSeqNo, startTime);
                         if (!StringUtil.isEmpty(tableName)) {
                             param.put(Const.DateBase.TABLE_NAME, tableName);

@@ -251,17 +251,18 @@ public class GPSController {
     @RequestMapping("/alarmsList")
     public JSONResult getAlarmsList(@Valid RequestParamDto paramDto,BindingResult bindingResult,
                                      HttpServletRequest request){
+        JSONResult jsonResult = Const.Public.JSON_RESULT;
         try {
             if (Authentication.validateToken(paramDto.getToken())) {
                 return alarmService.getAlarmsByDeviceCodeAndTimeAndAlarmType(paramDto);
             }else {
-                return new JSONResult(false, StatusCode.ACCESS_DENIED, Const.Public.TOKEN_ERROR);
+                return JSONResult.getResult(jsonResult,false, StatusCode.ACCESS_DENIED, Const.Public.TOKEN_ERROR);
             }
         }catch (Exception e){
             log.error(e.getMessage());
             e.printStackTrace();
         }
-        return new JSONResult(false, StatusCode.ERROR, Const.Public.SYSTEM_ERROR);
+        return JSONResult.getResult(jsonResult, false, StatusCode.ERROR, Const.Public.SYSTEM_ERROR);
     }
 
 }

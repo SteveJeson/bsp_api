@@ -83,6 +83,9 @@ public class JSONResult<T> extends Result implements Serializable{
     public static JSONResult getResult(JSONResult result, boolean success, int statusCode, String message){
         if (result != null){
             result.setSuccess(success);
+            if (!success || statusCode == StatusCode.ERROR || statusCode == StatusCode.ACCESS_DENIED || statusCode == StatusCode.EMPTY){
+                result.setData(null);
+            }
             result.setStatusCode(statusCode);
             result.setMessage(message);
         }
