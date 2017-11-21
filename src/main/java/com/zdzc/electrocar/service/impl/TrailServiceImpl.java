@@ -15,6 +15,7 @@ import com.zdzc.electrocar.service.GpsMainService;
 import com.zdzc.electrocar.service.TrailService;
 import com.zdzc.electrocar.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;

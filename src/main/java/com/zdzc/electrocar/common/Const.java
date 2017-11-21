@@ -2,6 +2,7 @@ package com.zdzc.electrocar.common;
 
 import com.zdzc.electrocar.util.JSONResult;
 import com.zdzc.electrocar.util.StatusCode;
+import com.zdzc.electrocar.util.threadPool.DefaultThreadPool;
 
 /**
  * Created by Administrator on 2017/9/12 0012.
@@ -23,6 +24,7 @@ public interface Const {
 
     class Public{
         public static final JSONResult JSON_RESULT = new JSONResult();
+        public static final DefaultThreadPool THREAD_POOL = new DefaultThreadPool(20);
         public static final String SUCCESS = "请求成功！";
         public static final String NOT_IN_THE_SAME_DAY = "查询时间请保持在同一天内!";
         public static final String NOT_IN_THE_SAME_MONTH = "查询时间请保持在同一月内！";

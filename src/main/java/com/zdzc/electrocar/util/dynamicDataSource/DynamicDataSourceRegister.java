@@ -93,6 +93,7 @@ public class DynamicDataSourceRegister
             dataSource.setTestWhileIdle(true);
             dataSource.setTimeBetweenEvictionRunsMillis(28800000);
             dataSource.setValidationQuery("select 1");
+            dataSource.setMaxActive(500);
             return dataSource;
 
 //            DataSourceBuilder factory = DataSourceBuilder.create().driverClassName(driverClassName).url(url)
