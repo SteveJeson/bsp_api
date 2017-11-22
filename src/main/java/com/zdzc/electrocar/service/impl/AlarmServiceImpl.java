@@ -104,7 +104,7 @@ public class AlarmServiceImpl implements AlarmService {
                         String tableName = CommonBusiness.getAlarmTableName(alarmSeqNo, startTime);
                         if (!StringUtil.isEmpty(tableName)) {
                             param.put(Const.DateBase.TABLE_NAME, tableName);
-                            PageHelper.startPage(paramDto.getPageNumber(), paramDto.getPageSize());
+                            PageHelper.startPage(paramDto.getPageNo(), paramDto.getPageSize());
                             List<AlarmsEntity> alarms = alarmsMapper.getAlarmsByDeviceCodeAndTimeAndAlarmType(param);
                             if (!CollectionUtils.isEmpty(alarms)){
                                 List<AlarmDto> alarmDtos = copyAlarmsEntityToDto(alarms);

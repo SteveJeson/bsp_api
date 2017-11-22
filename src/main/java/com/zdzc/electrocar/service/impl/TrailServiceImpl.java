@@ -60,9 +60,11 @@ public class TrailServiceImpl implements TrailService {
                         String tableName = CommonBusiness.getTrailTableName(trailSeqNo, startTime);
                         if (!StringUtil.isEmpty(tableName)) {
                             param.put(Const.DateBase.TABLE_NAME, tableName);
-                            if (paramDto.getPageNumber() != null && paramDto.getPageSize() != null) {
-                                PageHelper.startPage(paramDto.getPageNumber(), paramDto.getPageSize());
+                            if (paramDto.getPageNo() != null && paramDto.getPageSize() != null) {
+                                PageHelper.startPage(paramDto.getPageNo(), paramDto.getPageSize());
                             }
+//                            param.put("pageNo", paramDto.getPageNo()*10 +1);
+//                            param.put("pageSize", paramDto.getPageSize());
                             List<TrailEntity> trails = trailMapper.selectByDeviceCodeAndTime(param);
                             if (!CollectionUtils.isEmpty(trails)){
                                 List<GPSDto> dtos = copyTrailToGPSDto(trails);

@@ -17,7 +17,7 @@ public class RequestParamDto implements Serializable{
 
     private Integer alarmHandle;
 
-    private Integer pageNumber;
+    private Integer pageNo;
 
     private Integer pageSize;
 
@@ -61,12 +61,12 @@ public class RequestParamDto implements Serializable{
         this.alarmHandle = alarmHandle;
     }
 
-    public Integer getPageNumber() {
-        return pageNumber;
+    public Integer getPageNo() {
+        return pageNo;
     }
 
-    public void setPageNumber(Integer pageNumber) {
-        this.pageNumber = pageNumber;
+    public void setPageNo(Integer pageNo) {
+        this.pageNo = pageNo;
     }
 
     public Integer getPageSize() {

@@ -178,9 +178,9 @@ public class GPSController {
         return new JSONResult(true, StatusCode.EMPTY, "信息为空");
     }
 
-    @RequestMapping("/snapshot")
-    public JSONResult getSnapshot(@RequestParam("deviceCode") String deviceCode,
-                                   @RequestParam("token") String token,
+    @RequestMapping("/snapshot/{deviceCode}/{token}")
+    public JSONResult getSnapshot(@PathVariable("deviceCode") String deviceCode,
+                                   @PathVariable("token") String token,
                                    HttpServletRequest request){
         try {
             if (Authentication.validateToken(token)) {
