@@ -3,8 +3,6 @@ package com.zdzc.electrocar.entity;
 import java.util.Date;
 
 public class GpsSnapshotEntity {
-    private Long id;
-
     private String deviceCode;
 
     private Integer alarmStatus;
@@ -44,14 +42,6 @@ public class GpsSnapshotEntity {
     private Date createTime;
 
     private String vendorCode;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getDeviceCode() {
         return deviceCode;

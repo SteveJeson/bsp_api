@@ -8,8 +8,11 @@ import com.zdzc.electrocar.mapper.GpsMainEntityMapper;
 import com.zdzc.electrocar.mapper.GpsSnapshotEntityMapper;
 import com.zdzc.electrocar.service.GpsSnapshotService;
 import com.zdzc.electrocar.util.GPSConvertion;
+import com.zdzc.electrocar.util.JSONResult;
+import com.zdzc.electrocar.util.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.util.StringUtils;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -22,8 +25,17 @@ public class GpsSnapshotServiceImpl implements GpsSnapshotService {
     private GpsSnapshotEntityMapper snapshotMapper;
 
     @Override
-    public GpsSnapshotEntity selectByDeviceCode(String deviceCode) {
-        return snapshotMapper.selectByDeviceCode(deviceCode);
+    public JSONResult selectByDeviceCode(String deviceCode) {
+        JSONResult jsonResult = Const.Public.JSON_RESULT;
+        if (!StringUtils.isEmpty(deviceCode)){
+            GpsSnapshotEntity snapshotEntity= snapshotMapper.selectByPrimaryKey(deviceCode);
+            if (snapshotEntity != null){
+                GPSNapshotDto gpsNapshotDto = copySnapshotToDto(snapshotEntity);
+                jsonResult.setData(gpsNapshotDto);
+                return JSONResult.getResult(jsonResult, true, StatusCode.OK, Const.Public.SUCCESS);
+            }
+        }
+        return JSONResult.getResult(jsonResult, false, StatusCode.EMPTY, Const.Public.NO_RESULT);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.zdzc.electrocar.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.zdzc.electrocar.common.Const;
 import com.zdzc.electrocar.dto.GPSDto;
 import com.zdzc.electrocar.dto.GPSNapshotDto;
 import com.zdzc.electrocar.dto.RequestParamDto;
@@ -46,20 +47,18 @@ public class LocationController {
     @ResponseBody
     public JSONResult getPosition(@RequestParam("deviceCode") String deviceCode){
         try {
-            GpsSnapshotEntity snapshot = snapshotService.selectByDeviceCode(deviceCode);
-            if (snapshot != null) {
-                GPSNapshotDto gpsNapshotDto = snapshotService.copySnapshotToDto(snapshot);
-                if (gpsNapshotDto != null){
-                    gpsNapshotDto.setLng(116.487585177952);
-                    gpsNapshotDto.setLat(39.991754014757);
-                    return new JSONResult(true, StatusCode.OK, "请求成功！", gpsNapshotDto);
-                }
-            }
-            return new JSONResult(false,StatusCode.ERROR,"未找到设备信息！");
+//            JSONResult jsonResult = snapshotService.selectByDeviceCode(deviceCode);
+//            if (jsonResult != null && jsonResult.getData() != null) {
+//                GPSNapshotDto gpsNapshotDto = (GPSNapshotDto) jsonResult.getData();
+//                gpsNapshotDto.setLng(116.487585177952);
+//                gpsNapshotDto.setLat(39.991754014757);
+//                return new JSONResult(true, StatusCode.OK, "请求成功！", gpsNapshotDto);
+//            }
+            return snapshotService.selectByDeviceCode(deviceCode);
         } catch (Exception e){
             e.printStackTrace();
         }
-        return new JSONResult(false,StatusCode.ERROR,"系统异常！");
+        return JSONResult.getResult(Const.Public.JSON_RESULT, false, StatusCode.ERROR, Const.Public.SYSTEM_ERROR);
     }
 
     @RequestMapping("/trail")
@@ -96,7 +95,7 @@ public class LocationController {
         } catch (Exception e){
             e.printStackTrace();
         }
-        return new JSONResult(false, StatusCode.ERROR, "系统异常");
+        return JSONResult.getResult(Const.Public.JSON_RESULT, false, StatusCode.ERROR, Const.Public.SYSTEM_ERROR);
      }
 
 }

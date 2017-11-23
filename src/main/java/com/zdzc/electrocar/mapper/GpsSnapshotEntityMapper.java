@@ -2,18 +2,15 @@ package com.zdzc.electrocar.mapper;
 
 import com.zdzc.electrocar.entity.GpsSnapshotEntity;
 import java.util.List;
-import java.util.Map;
 
 public interface GpsSnapshotEntityMapper {
-    int deleteByPrimaryKey(Long id);
+    int deleteByPrimaryKey(String deviceCode);
 
     int insert(GpsSnapshotEntity record);
 
-    GpsSnapshotEntity selectByPrimaryKey(Long id);
+    GpsSnapshotEntity selectByPrimaryKey(String deviceCode);
 
     List<GpsSnapshotEntity> selectAll();
 
     int updateByPrimaryKey(GpsSnapshotEntity record);
-
-    GpsSnapshotEntity selectByDeviceCode(String deviceCode);
 }

@@ -2,8 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zdzc.electrocar.mapper.GpsSnapshotEntityMapper">
   <resultMap id="BaseResultMap" type="com.zdzc.electrocar.entity.GpsSnapshotEntity">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="device_code" jdbcType="VARCHAR" property="deviceCode" />
+    <id column="device_code" jdbcType="VARCHAR" property="deviceCode" />
     <result column="alarm_status" jdbcType="INTEGER" property="alarmStatus" />
     <result column="vehicle_status" jdbcType="INTEGER" property="vehicleStatus" />
     <result column="lat" jdbcType="DOUBLE" property="lat" />
@@ -24,30 +23,29 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="vendor_code" jdbcType="VARCHAR" property="vendorCode" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from t_gps_snapshot
-    where id = #{id,jdbcType=BIGINT}
+    where device_code = #{deviceCode,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.zdzc.electrocar.entity.GpsSnapshotEntity">
-    insert into t_gps_snapshot (id, device_code, alarm_status, 
-      vehicle_status, lat, lon, 
-      height, speed, direction, 
-      time, mile, oil, speed2, 
-      signal_status, bst, io_status, 
-      analog, wifi, satellite_num, 
-      create_time, vendor_code)
-    values (#{id,jdbcType=BIGINT}, #{deviceCode,jdbcType=VARCHAR}, #{alarmStatus,jdbcType=INTEGER}, 
-      #{vehicleStatus,jdbcType=INTEGER}, #{lat,jdbcType=DOUBLE}, #{lon,jdbcType=DOUBLE}, 
-      #{height,jdbcType=DOUBLE}, #{speed,jdbcType=DOUBLE}, #{direction,jdbcType=DOUBLE}, 
-      #{time,jdbcType=BIGINT}, #{mile,jdbcType=DOUBLE}, #{oil,jdbcType=DOUBLE}, #{speed2,jdbcType=DOUBLE}, 
-      #{signalStatus,jdbcType=INTEGER}, #{bst,jdbcType=INTEGER}, #{ioStatus,jdbcType=INTEGER}, 
-      #{analog,jdbcType=VARCHAR}, #{wifi,jdbcType=INTEGER}, #{satelliteNum,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{vendorCode,jdbcType=VARCHAR})
+    insert into t_gps_snapshot (device_code, alarm_status, vehicle_status, 
+      lat, lon, height, speed, 
+      direction, time, mile, 
+      oil, speed2, signal_status, 
+      bst, io_status, analog, 
+      wifi, satellite_num, create_time, 
+      vendor_code)
+    values (#{deviceCode,jdbcType=VARCHAR}, #{alarmStatus,jdbcType=INTEGER}, #{vehicleStatus,jdbcType=INTEGER}, 
+      #{lat,jdbcType=DOUBLE}, #{lon,jdbcType=DOUBLE}, #{height,jdbcType=DOUBLE}, #{speed,jdbcType=DOUBLE}, 
+      #{direction,jdbcType=DOUBLE}, #{time,jdbcType=BIGINT}, #{mile,jdbcType=DOUBLE}, 
+      #{oil,jdbcType=DOUBLE}, #{speed2,jdbcType=DOUBLE}, #{signalStatus,jdbcType=INTEGER}, 
+      #{bst,jdbcType=INTEGER}, #{ioStatus,jdbcType=INTEGER}, #{analog,jdbcType=VARCHAR}, 
+      #{wifi,jdbcType=INTEGER}, #{satelliteNum,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{vendorCode,jdbcType=VARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.zdzc.electrocar.entity.GpsSnapshotEntity">
     update t_gps_snapshot
-    set device_code = #{deviceCode,jdbcType=VARCHAR},
-      alarm_status = #{alarmStatus,jdbcType=INTEGER},
+    set alarm_status = #{alarmStatus,jdbcType=INTEGER},
       vehicle_status = #{vehicleStatus,jdbcType=INTEGER},
       lat = #{lat,jdbcType=DOUBLE},
       lon = #{lon,jdbcType=DOUBLE},
@@ -66,23 +64,23 @@
       satellite_num = #{satelliteNum,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       vendor_code = #{vendorCode,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=BIGINT}
+    where device_code = #{deviceCode,jdbcType=VARCHAR}
   </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select id, device_code, alarm_status, vehicle_status, lat, lon, height, speed, direction, 
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select device_code, alarm_status, vehicle_status, lat, lon, height, speed, direction, 
     time, mile, oil, speed2, signal_status, bst, io_status, analog, wifi, satellite_num, 
     create_time, vendor_code
     from t_gps_snapshot
-    where id = #{id,jdbcType=BIGINT}
+    where device_code = #{deviceCode,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, device_code, alarm_status, vehicle_status, lat, lon, height, speed, direction, 
+    select device_code, alarm_status, vehicle_status, lat, lon, height, speed, direction, 
     time, mile, oil, speed2, signal_status, bst, io_status, analog, wifi, satellite_num, 
     create_time, vendor_code
     from t_gps_snapshot
   </select>
   <select id="selectByDeviceCode" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select id, device_code, alarm_status, vehicle_status, lat, lon, height, speed, direction,
+    select device_code, alarm_status, vehicle_status, lat, lon, height, speed, direction,
     time, mile, oil, speed2, signal_status, bst, io_status, analog, wifi, satellite_num,
     create_time, vendor_code
     from t_gps_snapshot

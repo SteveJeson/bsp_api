@@ -184,20 +184,15 @@ public class GPSController {
                                    HttpServletRequest request){
         try {
             if (Authentication.validateToken(token)) {
-                GpsSnapshotEntity snapshotEntity = snapshotService.selectByDeviceCode(deviceCode);
-                if (snapshotEntity != null) {
-                    return new JSONResult(true, StatusCode.OK, Const.Public.SUCCESS, snapshotService.copySnapshotToDto(snapshotEntity));
-                } else {
-                    return new JSONResult(true, StatusCode.EMPTY, "数据为空");
-                }
+                return snapshotService.selectByDeviceCode(deviceCode);
             } else {
-                return new JSONResult(false, StatusCode.ERROR, Const.Public.TOKEN_ERROR);
+                return JSONResult.getResult(Const.Public.JSON_RESULT,false, StatusCode.ACCESS_DENIED, Const.Public.TOKEN_ERROR);
             }
         }catch (Exception e){
             log.error(e.getMessage());
             e.printStackTrace();
         }
-        return new JSONResult(false, StatusCode.ERROR, Const.Public.SYSTEM_ERROR);
+        return JSONResult.getResult(Const.Public.JSON_RESULT, false, StatusCode.ERROR, Const.Public.SYSTEM_ERROR);
     }
 
     @RequestMapping("/locationList")
