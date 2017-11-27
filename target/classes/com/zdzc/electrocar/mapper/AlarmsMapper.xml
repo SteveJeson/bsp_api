@@ -64,6 +64,6 @@
     time, mile, oil, speed2, signal_status, bst, io_status, analog, wifi, satellite_num,
     create_time, vendor_code, alarm_handle
     from ${tableName}
-    where device_code = #{deviceCode} and time &gt;= #{beginTime} and time &lt;= #{endTime} and alarm_handle = #{alarmHandle}
+    where device_code = #{deviceCode} and time &gt;= #{beginTime} and time &lt;= #{endTime} and alarm_handle = #{alarmHandle} order by time
   </select>
 </mapper>

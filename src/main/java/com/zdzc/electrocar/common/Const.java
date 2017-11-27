@@ -32,6 +32,8 @@ public interface Const {
         public static final String[] MONTH_INDEX = {"a", "b", "c", "d"};
         public static final String TOKEN_ERROR = "TOKEN 验证失败！";
         public static final String SYSTEM_ERROR = "系统异常！";
+        public static final String PAGE_NO = "pageNo";
+        public static final String PAGE_SIZE = "pageSize";
     }
 
     class Fields{
