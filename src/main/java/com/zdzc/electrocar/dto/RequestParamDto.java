@@ -1,5 +1,6 @@
 package com.zdzc.electrocar.dto;
 
+import javax.persistence.criteria.Predicate;
 import java.io.Serializable;
 
 /**
@@ -20,6 +21,8 @@ public class RequestParamDto implements Serializable{
     private Integer pageNo;
 
     private Integer pageSize;
+
+    private Boolean filterTrails;
 
     public String getDeviceCode() {
         return deviceCode;
@@ -75,5 +78,13 @@ public class RequestParamDto implements Serializable{
 
     public void setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
+    }
+
+    public Boolean getFilterTrails() {
+        return filterTrails;
+    }
+
+    public void setFilterTrails(Boolean filterTrails) {
+        this.filterTrails = filterTrails;
     }
 }

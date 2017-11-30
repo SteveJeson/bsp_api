@@ -10,6 +10,7 @@ import com.zdzc.electrocar.service.GpsSnapshotService;
 import com.zdzc.electrocar.service.TrailService;
 import com.zdzc.electrocar.util.JSONResult;
 import com.zdzc.electrocar.util.StatusCode;
+import groovy.util.IFileNameFinder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,13 +48,6 @@ public class LocationController {
     @ResponseBody
     public JSONResult getPosition(@RequestParam("deviceCode") String deviceCode){
         try {
-//            JSONResult jsonResult = snapshotService.selectByDeviceCode(deviceCode);
-//            if (jsonResult != null && jsonResult.getData() != null) {
-//                GPSNapshotDto gpsNapshotDto = (GPSNapshotDto) jsonResult.getData();
-//                gpsNapshotDto.setLng(116.487585177952);
-//                gpsNapshotDto.setLat(39.991754014757);
-//                return new JSONResult(true, StatusCode.OK, "请求成功！", gpsNapshotDto);
-//            }
             return snapshotService.selectByDeviceCode(deviceCode);
         } catch (Exception e){
             e.printStackTrace();
@@ -76,6 +70,7 @@ public class LocationController {
             paramDto.setDeviceCode(deviceCode);
             paramDto.setBeginTime(startTime);
             paramDto.setEndTime(endTime);
+            paramDto.setFilterTrails(true);
             JSONResult result = trailService.selectByDeviceCodeAndTime(paramDto);
             if (result != null) {
                 List<GPSDto> dtos = (List<GPSDto>) result.getData();
@@ -83,8 +78,10 @@ public class LocationController {
                 if (!CollectionUtils.isEmpty(dtos)){
                     for (int i = 0; i < dtos.size(); i++){
                         GPSDto gpsDto = dtos.get(i);
-                        double[] trail = {gpsDto.getOlng(),gpsDto.getOlat()};
-                        trails.add(trail);
+                        if (!Const.VehicleStatus.INVALID_POSITON.equals(gpsDto.getVehicleStatus())) {
+                            double[] trail = {gpsDto.getOlng(), gpsDto.getOlat()};
+                            trails.add(trail);
+                        }
                     }
                     result.setData(trails);
                     return result;

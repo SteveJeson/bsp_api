@@ -1,6 +1,7 @@
 package com.zdzc.electrocar;
 
 import com.zdzc.electrocar.util.Command;
+import com.zdzc.electrocar.util.GPSConvertion;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -26,5 +27,12 @@ public class CommonTest {
         BigDecimal dataB = new BigDecimal(tempB);
         System.out.println(dataB);
         System.out.println(dataA.compareTo(dataB));//大于为1，相同为0，小于为-1
+    }
+
+    @Test
+    public void test2(){
+//        30.29368296270136,120.07262706756592
+        System.out.println(GPSConvertion.gps84_to_gcj02(120.072627,30.293682)[0]);
+        System.out.println(GPSConvertion.gps84_to_gcj02(120.072627,30.293682)[1]);
     }
 }

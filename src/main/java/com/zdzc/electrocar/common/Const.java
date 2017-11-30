@@ -43,4 +43,9 @@ public interface Const {
         public static final String ALARM_HANDLE = "alarmHandle";
 
     }
+
+    class VehicleStatus{
+        public static final Integer OK = 440002;
+        public static final Integer INVALID_POSITON = 440000;
+    }
 }

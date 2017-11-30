@@ -38,6 +38,12 @@ public class GPSDto implements Serializable{
      */
     private int accStatus;
 
+    /**
+     * 车辆状态
+     *
+     */
+    private Integer vehicleStatus;
+
     public String getDeviceId() {
         return deviceId;
     }
@@ -100,5 +106,13 @@ public class GPSDto implements Serializable{
 
     public void setAccStatus(int accStatus) {
         this.accStatus = accStatus;
+    }
+
+    public Integer getVehicleStatus() {
+        return vehicleStatus;
+    }
+
+    public void setVehicleStatus(Integer vehicleStatus) {
+        this.vehicleStatus = vehicleStatus;
     }
 }

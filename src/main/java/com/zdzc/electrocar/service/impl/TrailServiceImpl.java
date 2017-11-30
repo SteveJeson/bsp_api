@@ -15,6 +15,9 @@ import com.zdzc.electrocar.service.GpsMainService;
 import com.zdzc.electrocar.service.TrailService;
 import com.zdzc.electrocar.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -65,7 +68,7 @@ public class TrailServiceImpl implements TrailService {
                             }
                             List<TrailEntity> trails = trailMapper.selectByDeviceCodeAndTime(param);
                             if (!CollectionUtils.isEmpty(trails)){
-                                List<GPSDto> dtos = copyTrailToGPSDto(trails);
+                                List<GPSDto> dtos = copyTrailToGPSDto(trails,paramDto.getFilterTrails());
                                 jsonResult.setData(dtos);
                                 return JSONResult.getResult(jsonResult, true, StatusCode.OK, Const.Public.SUCCESS);
                             }
@@ -80,26 +83,29 @@ public class TrailServiceImpl implements TrailService {
     }
 
     @Override
-    public List<GPSDto> copyTrailToGPSDto(List<TrailEntity> trails) {
+    public List<GPSDto> copyTrailToGPSDto(List<TrailEntity> trails, Boolean filterTrails) {
         if (!CollectionUtils.isEmpty(trails)){
             List<GPSDto> dtos = new ArrayList<>();
             for (TrailEntity trail : trails){
                 if (trail != null) {
-                    double lon = trail.getLon();
-                    double lat = trail.getLat();
-                    GPSDto dto = new GPSDto();
-                    dto.setDeviceId(trail.getDeviceCode());
-                    dto.setLat(lat);
-                    dto.setLng(lon);
-                    //转化成高德经纬度
-//                    double[] gps = CommonBusiness.getGaodeGPS(lon,lat);
-                    double[] gps = GPSConvertion.gps84_to_gcj02(lon, lat);
-                    dto.setOlng(lon!=0?gps[0]:lon);
-                    dto.setOlat(lat!=0?gps[1]:lat);
-                    dto.setTime(new Date(trail.getTime() * 1000));
-                    dto.setSpeed(trail.getSpeed());
-                    dto.setAccStatus(CommonBusiness.getAccStatus(trail.getAlarmStatus()));
-                    dtos.add(dto);
+                    if (!(filterTrails && Const.VehicleStatus.INVALID_POSITON.equals(trail.getVehicleStatus()))) {
+                        double lon = trail.getLon();
+                        double lat = trail.getLat();
+                        GPSDto dto = new GPSDto();
+                        dto.setDeviceId(trail.getDeviceCode());
+                        dto.setLat(lat);
+                        dto.setLng(lon);
+                        //转化成高德经纬度
+                    double[] gps = CommonBusiness.getGaodeGPS(lon,lat);
+//                        double[] gps = GPSConvertion.gps84_to_gcj02(lon, lat);
+                        dto.setOlng(lon != 0 ? gps[0] : lon);
+                        dto.setOlat(lat != 0 ? gps[1] : lat);
+                        dto.setTime(new Date(trail.getTime() * 1000));
+                        dto.setSpeed(trail.getSpeed());
+                        dto.setVehicleStatus(trail.getVehicleStatus());
+                        dto.setAccStatus(CommonBusiness.getAccStatus(trail.getAlarmStatus()));
+                        dtos.add(dto);
+                    }
                 }
             }
             return dtos;
@@ -107,4 +113,5 @@ public class TrailServiceImpl implements TrailService {
         }
         return null;
     }
+
 }
