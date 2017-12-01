@@ -74,8 +74,8 @@ public class DateUtil {
         int hour = parkerTime / 3600;
         int hourMod = parkerTime % 3600;
         int minute = hourMod / 60;
-        int minuteMod = hourMod % 60;
+        int second = hourMod % 60;
         StringBuilder parkerTimeStr = new StringBuilder();
-        return parkerTimeStr.append(hour).append("小时").append(minute).append("分钟").append(minuteMod).append("秒").toString();
+        return parkerTimeStr.append(hour).append("小时").append(minute).append("分钟").append(second).append("秒").toString();
     }
 }

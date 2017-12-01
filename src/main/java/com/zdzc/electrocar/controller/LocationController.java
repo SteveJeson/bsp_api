@@ -92,12 +92,12 @@ public class LocationController {
                         }
                         if (i > 0){
                             GPSDto dtoBefore = dtos.get(i - 1);
-                            long parkerTime = gpsDto.getTime().getTime() - dtoBefore.getTime().getTime();
-                            if (parkerTime > parkerInterval){
+                            long parkTime = gpsDto.getTime().getTime() - dtoBefore.getTime().getTime();
+                            if (parkTime > parkerInterval){
                                 Map<String, Object> parkerPoint = new HashMap<>();
                                 parkerPoint.put(Const.Fields.BEGIN_TIME, dtoBefore.getTime());
                                 parkerPoint.put(Const.Fields.END_TIME, gpsDto.getTime());
-                                parkerPoint.put(Const.Fields.PARKER_TIME, DateUtil.calculateTime(parkerTime));
+                                parkerPoint.put(Const.Fields.PARK_TIME, DateUtil.calculateTime(parkTime));
                                 parkerPoint.put(Const.Fields.LONGITUDE, dtoBefore.getOlng());
                                 parkerPoint.put(Const.Fields.LATITUDE, dtoBefore.getOlat());
                                 parkerPoint.put(Const.Fields.POSITON, CommonBusiness.getGaodeLocation(dtoBefore.getOlng(),dtoBefore.getOlat()));
