@@ -34,6 +34,16 @@ public class LocationController {
     @Autowired
     private TrailService trailService;
 
+    /**
+     * @Description:默认首页
+     * @Author chengwengao
+     * @Date 2017/12/1 0001 13:31
+     */
+    @RequestMapping("/")
+    public String index(){
+        return "welcome";
+    }
+
     @RequestMapping("/index")
     public String init(Model model){
         return "welcome";
