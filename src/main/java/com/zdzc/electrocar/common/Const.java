@@ -1,7 +1,6 @@
 package com.zdzc.electrocar.common;
 
 import com.zdzc.electrocar.util.JSONResult;
-import com.zdzc.electrocar.util.StatusCode;
 import com.zdzc.electrocar.util.threadPool.DefaultThreadPool;
 
 /**
@@ -20,6 +19,9 @@ public interface Const {
 
     class Date{
         public static final String Y_M_D_HMS = "yyyy-MM-dd HH:mm:ss";
+        public static final String HOUR = "小时";
+        public static final String MINUTE = "分钟";
+        public static final String SECOND = "秒";
     }
 
     class Public{

@@ -64,18 +64,5 @@ public class DateUtil {
         return false;
     }
 
-    /**
-     *  把毫秒数换算成时分秒
-     * @param time  毫秒数
-     * @return
-     */
-    public static String calculateTime(long time){
-        int parkerTime = (int)time / 1000;
-        int hour = parkerTime / 3600;
-        int hourMod = parkerTime % 3600;
-        int minute = hourMod / 60;
-        int second = hourMod % 60;
-        StringBuilder parkerTimeStr = new StringBuilder();
-        return parkerTimeStr.append(hour).append("小时").append(minute).append("分钟").append(second).append("秒").toString();
-    }
+
 }

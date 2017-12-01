@@ -97,7 +97,7 @@ var Trail = (function () {
                             }
 
                             pathSimplifierIns.setData([{
-                                name: "test",
+                                name: "轨迹",
                                 path: trails
                             }]);
 
@@ -141,7 +141,7 @@ var Trail = (function () {
                                 //var position = map.pixelToLngLat(new AMap.Pixel(x, y));
                                 //alert(position)
                                 var info = [];
-                                info.push("<div> 停留：" + points[c].parkerTime + "</div>");
+                                info.push("<div> 停留：" + points[c].parkTime + "</div>");
                                 info.push("<div> 开始：" + points[c].beginTime + "</div>");
                                 info.push("<div> 结束：" + points[c].endTime + "</div>");
                                 info.push("<div>地址：" + points[c].position + "</div>");

@@ -1,18 +1,15 @@
 package com.zdzc.electrocar.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.zdzc.electrocar.common.CommonBusiness;
 import com.zdzc.electrocar.common.Const;
 import com.zdzc.electrocar.dto.GPSDto;
-import com.zdzc.electrocar.dto.GPSNapshotDto;
 import com.zdzc.electrocar.dto.RequestParamDto;
-import com.zdzc.electrocar.entity.GpsSnapshotEntity;
 import com.zdzc.electrocar.service.GpsSnapshotService;
+import com.zdzc.electrocar.service.LocationService;
 import com.zdzc.electrocar.service.TrailService;
 import com.zdzc.electrocar.util.DateUtil;
 import com.zdzc.electrocar.util.JSONResult;
 import com.zdzc.electrocar.util.StatusCode;
-import groovy.util.IFileNameFinder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -26,7 +23,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 
 @Controller
 public class LocationController {
@@ -39,6 +35,9 @@ public class LocationController {
 
     @Value("${parkerInterval}")
     private int parkerInterval;
+
+    @Autowired
+    private LocationService locationService;
     /**
      * @Description:默认首页
      * @Author chengwengao
@@ -103,14 +102,8 @@ public class LocationController {
                             GPSDto dtoBefore = dtos.get(i - 1);
                             long parkTime = gpsDto.getTime().getTime() - dtoBefore.getTime().getTime();
                             if (parkTime > parkerInterval){
-                                Map<String, Object> parkerPoint = new HashMap<>();
-                                parkerPoint.put(Const.Fields.BEGIN_TIME, dtoBefore.getTime());
-                                parkerPoint.put(Const.Fields.END_TIME, gpsDto.getTime());
-                                parkerPoint.put(Const.Fields.PARK_TIME, DateUtil.calculateTime(parkTime));
-                                parkerPoint.put(Consgitt.Fields.LONGITUDE, dtoBefore.getOlng());
-                                parkerPoint.put(Const.Fields.LATITUDE, dtoBefore.getOlat());
-                                parkerPoint.put(Const.Fields.POSITON, CommonBusiness.getGaodeLocation(dtoBefore.getOlng(),dtoBefore.getOlat()));
-                                parkerPoints.add(parkerPoint);
+                                Map<String, Object> parkPoint = locationService.genParkPoint(dtoBefore, gpsDto, parkTime);
+                                parkerPoints.add(parkPoint);
                             }
                         }
                     }
