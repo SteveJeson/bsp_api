@@ -41,7 +41,12 @@ public interface Const {
         public static final String BEGIN_TIME = "beginTime";
         public static final String END_TIME = "endTime";
         public static final String ALARM_HANDLE = "alarmHandle";
-
+        public static final String PARKER_TIME = "parkerTime";
+        public static final String TRAILS = "trails";
+        public static final String PARKER_POINTS = "parkerPoints";
+        public static final String LONGITUDE = "longitude";
+        public static final String LATITUDE = "latitude";
+        public static final String POSITON = "position";
     }
 
     class VehicleStatus{

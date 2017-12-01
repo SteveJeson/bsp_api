@@ -1,6 +1,7 @@
 package com.zdzc.electrocar.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.zdzc.electrocar.common.CommonBusiness;
 import com.zdzc.electrocar.common.Const;
 import com.zdzc.electrocar.dto.GPSDto;
 import com.zdzc.electrocar.dto.GPSNapshotDto;
@@ -8,10 +9,12 @@ import com.zdzc.electrocar.dto.RequestParamDto;
 import com.zdzc.electrocar.entity.GpsSnapshotEntity;
 import com.zdzc.electrocar.service.GpsSnapshotService;
 import com.zdzc.electrocar.service.TrailService;
+import com.zdzc.electrocar.util.DateUtil;
 import com.zdzc.electrocar.util.JSONResult;
 import com.zdzc.electrocar.util.StatusCode;
 import groovy.util.IFileNameFinder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
@@ -33,6 +36,9 @@ public class LocationController {
 
     @Autowired
     private TrailService trailService;
+
+    @Value("${parkerInterval}")
+    private int parkerInterval;
 
     @RequestMapping("/index")
     public String init(Model model){
@@ -85,19 +91,22 @@ public class LocationController {
                             trails.add(trail);
                         }
                         if (i > 0){
-                            GPSDto dtoBefore = dtos.get(i-1);
+                            GPSDto dtoBefore = dtos.get(i - 1);
                             long parkerTime = gpsDto.getTime().getTime() - dtoBefore.getTime().getTime();
-                            if (parkerTime > 600000){
+                            if (parkerTime > parkerInterval){
                                 Map<String, Object> parkerPoint = new HashMap<>();
-                                parkerPoint.put("startTime", dtoBefore.getTime());
-                                parkerPoint.put("endTime", gpsDto.getTime());
-                                parkerPoint.put("parkerTime",parkerTime);
+                                parkerPoint.put(Const.Fields.BEGIN_TIME, dtoBefore.getTime());
+                                parkerPoint.put(Const.Fields.END_TIME, gpsDto.getTime());
+                                parkerPoint.put(Const.Fields.PARKER_TIME, DateUtil.calculateTime(parkerTime));
+                                parkerPoint.put(Const.Fields.LONGITUDE, dtoBefore.getOlng());
+                                parkerPoint.put(Const.Fields.LATITUDE, dtoBefore.getOlat());
+                                parkerPoint.put(Const.Fields.POSITON, CommonBusiness.getGaodeLocation(dtoBefore.getOlng(),dtoBefore.getOlat()));
                                 parkerPoints.add(parkerPoint);
                             }
                         }
                     }
-                    data.put("trails", trails);
-                    data.put("parkerPoints", parkerPoints);
+                    data.put(Const.Fields.TRAILS, trails);
+                    data.put(Const.Fields.PARKER_POINTS, parkerPoints);
                     result.setData(data);
                     return result;
                 }else {
