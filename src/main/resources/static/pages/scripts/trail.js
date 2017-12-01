@@ -92,8 +92,8 @@ var Trail = (function () {
 
                             //设置数据
                             var trails = new Array();
-                            for(var i = 0; i < response.data.length; i++){
-                                trails[i] = response.data[i];
+                            for(var i = 0; i < response.data.trails.length; i++){
+                                trails[i] = response.data.trails[i];
                             }
 
                             pathSimplifierIns.setData([{

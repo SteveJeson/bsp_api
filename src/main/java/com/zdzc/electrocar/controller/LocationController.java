@@ -74,16 +74,31 @@ public class LocationController {
             JSONResult result = trailService.selectByDeviceCodeAndTime(paramDto);
             if (result != null) {
                 List<GPSDto> dtos = (List<GPSDto>) result.getData();
-                List<double[]> trails = new ArrayList<>();
                 if (!CollectionUtils.isEmpty(dtos)){
+                    Map<String, Object> data = new HashMap<>();
+                    List<double[]> trails = new ArrayList<>();
+                    List<Map<String, Object>> parkerPoints = new ArrayList<>();
                     for (int i = 0; i < dtos.size(); i++){
                         GPSDto gpsDto = dtos.get(i);
                         if (!Const.VehicleStatus.INVALID_POSITON.equals(gpsDto.getVehicleStatus())) {
                             double[] trail = {gpsDto.getOlng(), gpsDto.getOlat()};
                             trails.add(trail);
                         }
+                        if (i > 0){
+                            GPSDto dtoBefore = dtos.get(i-1);
+                            long parkerTime = gpsDto.getTime().getTime() - dtoBefore.getTime().getTime();
+                            if (parkerTime > 600000){
+                                Map<String, Object> parkerPoint = new HashMap<>();
+                                parkerPoint.put("startTime", dtoBefore.getTime());
+                                parkerPoint.put("endTime", gpsDto.getTime());
+                                parkerPoint.put("parkerTime",parkerTime);
+                                parkerPoints.add(parkerPoint);
+                            }
+                        }
                     }
-                    result.setData(trails);
+                    data.put("trails", trails);
+                    data.put("parkerPoints", parkerPoints);
+                    result.setData(data);
                     return result;
                 }else {
                     return result;
