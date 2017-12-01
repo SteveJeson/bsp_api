@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zdzc.dataClear.mapper.DataClearMapper">
+    <resultMap id="BaseResultMap" type="com.zdzc.dataClear.entity.Schema">
+        <result column="tab_ame" jdbcType="VARCHAR" property="tabName" />
+    </resultMap>
+
+    <!--根据拼接字串模糊查找表-->
+    <select id="selectTabByStrLike" resultMap="BaseResultMap" parameterType="Map">
+        SELECT
+        TABLE_NAME,
+        cast(
+            REPLACE (RIGHT(TABLE_NAME, 2), '_', '') AS UNSIGNED
+        )
+        from INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA = #{dbName, jdbcType = VARCHAR}
+        and TABLE_NAME like #{tabNamePrefix, jdbcType = VARCHAR}
+        order by cast(REPLACE(RIGHT(TABLE_NAME,2), '_','') as UNSIGNED);
+    </select>
+</mapper>
