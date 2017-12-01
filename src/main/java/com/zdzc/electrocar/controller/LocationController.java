@@ -39,6 +39,15 @@ public class LocationController {
 
     @Value("${parkerInterval}")
     private int parkerInterval;
+    /**
+     * @Description:默认首页
+     * @Author chengwengao
+     * @Date 2017/12/1 0001 13:31
+     */
+    @RequestMapping("/")
+    public String index(){
+        return "welcome";
+    }
 
     @RequestMapping("/index")
     public String init(Model model){
@@ -98,7 +107,7 @@ public class LocationController {
                                 parkerPoint.put(Const.Fields.BEGIN_TIME, dtoBefore.getTime());
                                 parkerPoint.put(Const.Fields.END_TIME, gpsDto.getTime());
                                 parkerPoint.put(Const.Fields.PARK_TIME, DateUtil.calculateTime(parkTime));
-                                parkerPoint.put(Const.Fields.LONGITUDE, dtoBefore.getOlng());
+                                parkerPoint.put(Consgitt.Fields.LONGITUDE, dtoBefore.getOlng());
                                 parkerPoint.put(Const.Fields.LATITUDE, dtoBefore.getOlat());
                                 parkerPoint.put(Const.Fields.POSITON, CommonBusiness.getGaodeLocation(dtoBefore.getOlng(),dtoBefore.getOlat()));
                                 parkerPoints.add(parkerPoint);
