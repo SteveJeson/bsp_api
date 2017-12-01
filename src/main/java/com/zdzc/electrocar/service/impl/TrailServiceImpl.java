@@ -96,8 +96,8 @@ public class TrailServiceImpl implements TrailService {
                         dto.setLat(lat);
                         dto.setLng(lon);
                         //转化成高德经纬度
-                    double[] gps = CommonBusiness.getGaodeGPS(lon,lat);
-//                        double[] gps = GPSConvertion.gps84_to_gcj02(lon, lat);
+//                    double[] gps = CommonBusiness.getGaodeGPS(lon,lat);
+                        double[] gps = GPSConvertion.gps84_to_gcj02(lon, lat);
                         dto.setOlng(lon != 0 ? gps[0] : lon);
                         dto.setOlat(lat != 0 ? gps[1] : lat);
                         dto.setTime(new Date(trail.getTime() * 1000));

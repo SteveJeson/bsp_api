@@ -142,7 +142,7 @@ var Trail = (function () {
                                 //alert(position)
                                 var info = [];
                                 info.push("<div> 停留："+points[c]+"</div>");
-                                info.push("<div> 开始：</div>div>");
+                                info.push("<div> 开始：</div>");
                                 info.push("<div> 结束：</div>");
                                 info.push("<div>地址 : 北京市望京阜通东大街方恒国际中心A座16层</div>");
                                 var infoWindow = new AMap.InfoWindow({content: info.join("<br>")});
