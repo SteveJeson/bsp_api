@@ -178,16 +178,15 @@ public class GPSController {
         return new JSONResult(true, StatusCode.EMPTY, "信息为空");
     }
 
-    @RequestMapping("/snapshot/{deviceCode}/{token}")
+    @RequestMapping("/snapshot/{deviceCode}")
     public JSONResult getSnapshot(@PathVariable("deviceCode") String deviceCode,
-                                   @PathVariable("token") String token,
                                    HttpServletRequest request){
         try {
-            if (Authentication.validateToken(token)) {
+//            if (Authentication.validateToken(token)) {
                 return snapshotService.selectByDeviceCode(deviceCode);
-            } else {
-                return JSONResult.getResult(Const.Public.JSON_RESULT,false, StatusCode.ACCESS_DENIED, Const.Public.TOKEN_ERROR);
-            }
+//            } else {
+//                return JSONResult.getResult(Const.Public.JSON_RESULT,false, StatusCode.ACCESS_DENIED, Const.Public.TOKEN_ERROR);
+//            }
         }catch (Exception e){
             log.error(e.getMessage());
             e.printStackTrace();
@@ -200,11 +199,11 @@ public class GPSController {
                                        HttpServletRequest request){
         JSONResult jsonResult = Const.Public.JSON_RESULT;
         try {
-            if (Authentication.validateToken(paramDto.getToken())) {
+//            if (Authentication.validateToken(paramDto.getToken())) {
                 return trailService.selectByDeviceCodeAndTime(paramDto);
-            }else {
-                return JSONResult.getResult(jsonResult,false, StatusCode.ACCESS_DENIED, Const.Public.TOKEN_ERROR);
-            }
+//            }else {
+//                return JSONResult.getResult(jsonResult,false, StatusCode.ACCESS_DENIED, Const.Public.TOKEN_ERROR);
+//            }
         }catch (Exception e){
             log.error(e.getMessage());
             e.printStackTrace();
@@ -212,50 +211,17 @@ public class GPSController {
         return JSONResult.getResult(jsonResult, false, StatusCode.ERROR, Const.Public.SYSTEM_ERROR);
     }
 
-    @RequestMapping("/locationList1")
-    public JSONResult getLocationList1(@Valid RequestParamDto paramDto,BindingResult bindingResult,
-                                      HttpServletRequest request) {
-//        try {
-//            if (Authentication.validateToken(paramDto.getToken())) {
-//                return trailService.selectByDeviceCodeAndTime(paramDto);
-//            } else {
-//                return new JSONResult(false, StatusCode.ACCESS_DENIED, "TOKEN 验证失败");
-//            }
-//        } catch (Exception e) {
-//            log.error(e.getMessage());
-//            e.printStackTrace();
-//        }
-
-        return new JSONResult(false, StatusCode.ERROR, "系统异常");
-    }
-
-    @RequestMapping("/locationList2")
-    public JSONResult getLocationList2(@RequestParam("deviceCode") String deviceCode,
-                                       HttpServletRequest request) {
-//        try {
-//            if (Authentication.validateToken(paramDto.getToken())) {
-//                return trailService.selectByDeviceCodeAndTime(paramDto);
-//            } else {
-//                return new JSONResult(false, StatusCode.ACCESS_DENIED, "TOKEN 验证失败");
-//            }
-//        } catch (Exception e) {
-//            log.error(e.getMessage());
-//            e.printStackTrace();
-//        }
-
-        return null;
-    }
 
     @RequestMapping("/alarmsList")
     public JSONResult getAlarmsList(@Valid RequestParamDto paramDto,BindingResult bindingResult,
                                      HttpServletRequest request){
         JSONResult jsonResult = Const.Public.JSON_RESULT;
         try {
-            if (Authentication.validateToken(paramDto.getToken())) {
+//            if (Authentication.validateToken(paramDto.getToken())) {
                 return alarmService.getAlarmsByDeviceCodeAndTimeAndAlarmType(paramDto);
-            }else {
-                return JSONResult.getResult(jsonResult,false, StatusCode.ACCESS_DENIED, Const.Public.TOKEN_ERROR);
-            }
+//            }else {
+//                return JSONResult.getResult(jsonResult,false, StatusCode.ACCESS_DENIED, Const.Public.TOKEN_ERROR);
+//            }
         }catch (Exception e){
             log.error(e.getMessage());
             e.printStackTrace();

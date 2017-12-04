@@ -88,7 +88,7 @@ public class TrailServiceImpl implements TrailService {
             List<GPSDto> dtos = new ArrayList<>();
             for (TrailEntity trail : trails){
                 if (trail != null) {
-                    if (!(filterTrails && Const.VehicleStatus.INVALID_POSITON.equals(trail.getVehicleStatus()))) {
+                    if (!(filterTrails && (trail.getLat().equals(0.0) && trail.getLon().equals(0.0)))) {
                         double lon = trail.getLon();
                         double lat = trail.getLat();
                         GPSDto dto = new GPSDto();

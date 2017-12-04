@@ -94,10 +94,8 @@ public class LocationController {
                     List<Map<String, Object>> parkerPoints = new ArrayList<>();
                     for (int i = 0; i < dtos.size(); i++){
                         GPSDto gpsDto = dtos.get(i);
-                        if (!Const.VehicleStatus.INVALID_POSITON.equals(gpsDto.getVehicleStatus())) {
-                            double[] trail = {gpsDto.getOlng(), gpsDto.getOlat()};
-                            trails.add(trail);
-                        }
+                        double[] trail = {gpsDto.getOlng(), gpsDto.getOlat()};
+                        trails.add(trail);
                         if (i > 0){
                             GPSDto dtoBefore = dtos.get(i - 1);
                             long parkTime = gpsDto.getTime().getTime() - dtoBefore.getTime().getTime();
