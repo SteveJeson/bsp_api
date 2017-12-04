@@ -3,9 +3,12 @@ package com.zdzc.dataClear.schedule;
 import com.zdzc.dataClear.entity.Schema;
 import com.zdzc.dataClear.service.DataClearService;
 import com.zdzc.dataClear.util.DataHandle;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +22,8 @@ import java.util.Map;
  */
 @Component
 public class ClearTablesSchedule {
+
+    private static final Logger log = Logger.getLogger(ClearTablesSchedule.class);
 
     @Autowired
     private DataClearService dataClearService;
@@ -34,10 +39,11 @@ public class ClearTablesSchedule {
      * @Date 2017/12/4 0004 13:44
      */
 //    @Scheduled(initialDelay=2000, fixedRate=6000*60*60)
-//    @Scheduled(cron="0 0 0 * * ?")
+    @Scheduled(cron="0 0 0 * * ?")
     public void clearTables(){
         System.out.println("当前时间：" + new Date());
 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Map<String, String> param = new HashMap<String, String>();  //查询参数
         String tablePrefix = DataHandle.getDelTabPrefix(DIVMON, DIVDAY);    //表前缀
         //获取当前数据库个数
@@ -52,8 +58,10 @@ public class ClearTablesSchedule {
                 System.out.println(param.get("dbName") + "." + schema.getTableName());
                 //删除表
                 dataClearService.dropTable(param.get("dbName") + "." + schema.getTableName());
+                log.info(sdf.format(new Date()) + "\t删除表：" + param.get("dbName") + "." + schema.getTableName());
                 //创建表
                 dataClearService.createTrailTable(param.get("dbName") + "." + schema.getTableName());
+                log.info(sdf.format(new Date()) + "\t创建表：" + param.get("dbName") + "." + schema.getTableName());
 
             }
         }
