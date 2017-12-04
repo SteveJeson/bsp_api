@@ -49,6 +49,7 @@ public interface Const {
         public static final String LONGITUDE = "longitude";
         public static final String LATITUDE = "latitude";
         public static final String POSITON = "position";
+        public static final String START_END_POINTS = "startEndPoints";
     }
 
     class VehicleStatus{

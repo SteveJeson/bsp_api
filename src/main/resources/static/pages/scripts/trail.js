@@ -53,7 +53,6 @@ var Trail = (function () {
                 },
                 success : function(response){
                     if (response.success){
-                        // console.log(response);
                         map = new AMap.Map('map-content',{
                             center: [120.198487,30.785582],
                             zoom:13
@@ -103,8 +102,8 @@ var Trail = (function () {
 
                             //对第一条线路（即索引 0）创建一个巡航器
                             var navg1 = pathSimplifierIns.createPathNavigator(0, {
-                                loop: false, //循环播放
-                                speed: 10000 //巡航速度，单位千米/小时
+                                loop: true, //循环播放
+                                speed: 5000 //巡航速度，单位千米/小时
                             });
 
                             navg1.start();
@@ -116,18 +115,7 @@ var Trail = (function () {
                                 alert('当前环境不支持SVG');
                             }
                             var points = response.data.parkerPoints;
-                            // var colors = [
-                            //     "#d62728", "#ff9896", "#9467bd", "#c5b0d5", "#8c564b", "#c49c94"
-                            // ];
-                            //SvgMarker.Shape下的Shape
-                            // var shapeKeys = [
-                            //     'WaterDrop'
-                            // ];
                             for (var c = 0; c < points.length; c++) {
-
-                                //var x = startX + (c - colNum / 2) * 70;
-                                // var y = startY + 50 + (0 - rowNum / 2) * 80;
-                                //alert('x: ' + x + ' ,y: ' + y)
                                 //创建shape
                                 var shape = new SvgMarker.Shape['WaterDrop']({
                                     height: 24,
@@ -135,11 +123,7 @@ var Trail = (function () {
                                     strokeColor: '#ccc',
                                     fillColor: '#d62728'
                                 });
-
                                 var labelCenter = shape.getCenter();
-
-                                //var position = map.pixelToLngLat(new AMap.Pixel(x, y));
-                                //alert(position)
                                 var info = [];
                                 info.push("<div> 停留：" + points[c].parkTime + "</div>");
                                 info.push("<div> 开始：" + points[c].beginTime + "</div>");
@@ -165,14 +149,13 @@ var Trail = (function () {
 
                                 marker.content = info.join("<br>");
                                 marker.on('click', markerClick);
-                                marker.emit('click', {target: marker});
+                                // marker.emit('click', {target: marker});
                                 function markerClick(e) {
                                     infoWindow.setContent(e.target.content);
                                     infoWindow.open(map, e.target.getPosition());
                                 }
-                                // map.setFitView();
-
                             }
+
                         })
                     }else {
                         toastr.warning(response.message);

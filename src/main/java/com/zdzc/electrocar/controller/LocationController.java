@@ -92,6 +92,7 @@ public class LocationController {
                     Map<String, Object> data = new HashMap<>();
                     List<double[]> trails = new ArrayList<>();
                     List<Map<String, Object>> parkerPoints = new ArrayList<>();
+                    List<Map<String, Object>> startEndPoints = new ArrayList<>();
                     for (int i = 0; i < dtos.size(); i++){
                         GPSDto gpsDto = dtos.get(i);
                         double[] trail = {gpsDto.getOlng(), gpsDto.getOlat()};
@@ -104,9 +105,16 @@ public class LocationController {
                                 parkerPoints.add(parkPoint);
                             }
                         }
+                        if (i == 0 || i == dtos.size() - 1){
+                            Map<String, Object> startEndPoint = new HashMap<>();
+                            startEndPoint.put(Const.Fields.BEGIN_TIME, gpsDto.getTime());
+                            startEndPoint.put(Const.Fields.POSITON, CommonBusiness.getGaodeLocation(gpsDto.getOlng(), gpsDto.getOlat()));
+                            startEndPoints.add(startEndPoint);
+                        }
                     }
                     data.put(Const.Fields.TRAILS, trails);
                     data.put(Const.Fields.PARKER_POINTS, parkerPoints);
+                    data.put(Const.Fields.START_END_POINTS, startEndPoints);
                     result.setData(data);
                     return result;
                 }else {
