@@ -7,13 +7,13 @@ package com.zdzc.dataClear.entity;
  *  
  */
 public class Schema {
-    public String tabName;  //表名
+    public String tableName;  //表名
 
-    public String getTabName() {
-        return tabName;
+    public String getTableName() {
+        return tableName;
     }
 
-    public void setTabName(String tabName) {
-        this.tabName = tabName;
+    public void setTableName(String tableName) {
+        this.tableName = tableName;
     }
 }

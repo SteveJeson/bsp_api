@@ -1,14 +1,12 @@
-package com.zdzc.electrocar;
+package com.zdzc;
 
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.zdzc.electrocar.util.dynamicDataSource.DynamicDataSourceRegister;
-import com.zdzc.electrocar.util.threadPool.DefaultThreadPool;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -23,7 +21,7 @@ import java.util.List;
 @SpringBootApplication
 @EnableScheduling
 @Import({DynamicDataSourceRegister.class})
-@MapperScan(basePackages = {"com.zdzc.electrocar.mapper","org.dozer"})
+@MapperScan(basePackages = {"com.zdzc.electrocar.mapper","org.dozer","com.zdzc.dataClear.mapper"})
 public class Application extends WebMvcConfigurerAdapter {
 
 	@Override
