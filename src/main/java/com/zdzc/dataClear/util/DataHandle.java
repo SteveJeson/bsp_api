@@ -12,7 +12,7 @@ import java.util.Calendar;
  *  
  */
 public class DataHandle {
-
+    private static final String TRAINCOLNAME = "trail_seq_no"; //轨迹序列号列名
     /**
      * 往前推3个月，减去指定天数（3,1）
      当前时间：2018年5月30
@@ -48,17 +48,35 @@ public class DataHandle {
      换算时间：2017年9月3日
      * @Author chengwengao
      * @Date 2017/12/1 0001 15:12
+     * @param type 类型
      * @param tablePrefix 表名前缀
      * @param divMon 往前推的月份
      * @param divDay 往前推的天数
      */
-    public static String getDelTabPrefix(String tablePrefix, int divMon, int divDay){
+    public static String getDelTabPrefix(String type, String tablePrefix, int divMon, int divDay){
         String tabPrefix = null;
         MonthDay monthDay = divideTime(divMon, divDay);
         if(DataConst.MONTH_MUL_TAB_MAP.containsKey(monthDay.getMon())){
-            tabPrefix = tablePrefix + DataConst.MONTH_MUL_TAB_MAP.get(monthDay.getMon()) + String.valueOf(monthDay.getDay()) + "\\_";
+            if (type.equals(TRAINCOLNAME)){
+                //报警表每天一张表，诸如：t_gps_a3_10
+                tabPrefix = tablePrefix + DataConst.MONTH_MUL_TAB_MAP.get(monthDay.getMon()) + String.valueOf(monthDay.getDay()) + "\\_";
+            }else{
+                //报警表每月150张表，诸如：t_gps_alarm_a_1
+                tabPrefix = tablePrefix + DataConst.MONTH_MUL_TAB_MAP.get(monthDay.getMon()) + "\\_";
+            }
         }
 
         return tabPrefix;
+    }
+
+    /**
+      * @Description:通过报警序列号得到报警数据库数量
+      * @Author chengwengao
+     * @Date 2017/12/5 0005 15:34
+     * @param alarm_seq_no 报警序列号
+     */
+    public static Long getAlarmDBCount(Long alarm_seq_no){
+        String s = new Reverse(String.valueOf(alarm_seq_no)).reverseByBit();   //反转后字串
+        return Long.valueOf(new Reverse(s.substring(7, s.length())).reverseByBit());
     }
 }

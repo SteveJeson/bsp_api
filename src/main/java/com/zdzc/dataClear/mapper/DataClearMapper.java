@@ -41,4 +41,11 @@ public interface DataClearMapper {
      * @Date 2017/12/4 0004 15:16
      */
     int createTrailTable(String tableName);
+
+    /**
+      * @Description:创建报警表
+      * @Author chengwengao
+     * @Date 2017/12/4 0004 15:16
+     */
+    int createAlarmTable(String tableName);
 }

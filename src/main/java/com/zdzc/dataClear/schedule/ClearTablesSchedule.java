@@ -13,6 +13,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  *  * @Description: 清表与创建定时任务
@@ -43,19 +45,48 @@ public class ClearTablesSchedule {
     private final String ALARMCREATEOPER = "创建报警表";
     private final String ALARMDROPOPER = "删除报警表";
 
+    private Lock lock = new ReentrantLock();
     /**
      * @Description:每天凌晨清理指定日期的表
      * @Author chengwengao
      * @Date 2017/12/4 0004 13:44
      */
-    //@Scheduled(initialDelay=2000, fixedRate=6000*60*60)
-    //@Scheduled(cron="0 0 0 * * ?")
+//    @Scheduled(initialDelay=2000, fixedRate=6000*60*60)
+//    @Scheduled(cron="0 0 0 * * ?")
     public void dataClear(){
         System.out.println("当前时间：" + new Date());
         //轨迹表清理
-//        clearTables(TRAILTABPREFIX, DIVMON, DIVDAY, TRAINCOLNAME, TRAILCOUNTPERDB, TRAILDBPREFIX, TRAILCREATEOPER, TRAILDROPOPER);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    lock.lock();    //得到锁
+                    clearTables(TRAINCOLNAME, TRAILTABPREFIX, DIVMON, DIVDAY, TRAINCOLNAME, TRAILCOUNTPERDB, TRAILDBPREFIX, TRAILCREATEOPER, TRAILDROPOPER);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    log.error(e.getMessage(), e.getCause());
+                } finally {
+                    lock.unlock();  //释放锁
+                }
+            }
+        }).start();
+
         //报警表清理
-//        clearTables(ALARMTABPREFIX, DIVMON, DIVDAY, ALARMCOLNAME, ALARMCOUNTPERDB, ALARMDBPREFIX, ALARMCREATEOPER, ALARMDROPOPER);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    lock.lock();    //得到锁
+                    clearTables(ALARMCOLNAME, ALARMTABPREFIX, DIVMON, DIVDAY, ALARMCOLNAME, ALARMCOUNTPERDB, ALARMDBPREFIX, ALARMCREATEOPER, ALARMDROPOPER);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    log.error(e.getMessage(), e.getCause());
+                } finally {
+                    lock.unlock();  //释放锁
+                }
+            }
+        }).start();
 
     }
 
@@ -64,27 +95,37 @@ public class ClearTablesSchedule {
      * @Author chengwengao
      * @Date 2017/12/5 0005 9:33
      */
-    public void clearTables(String tabPrefix, int divMon, int divDay, String colName, int countPerDB, String dbPrefix, String createOper, String dropOper){
+    public void clearTables(String type, String tabPrefix, int divMon, int divDay, String colName, int countPerDB, String dbPrefix, String createOper, String dropOper){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Map<String, String> param = new HashMap<String, String>();  //查询参数
-        String tablePrefix = DataHandle.getDelTabPrefix(tabPrefix, divMon, divDay);    //表前缀
+        String tablePrefix = DataHandle.getDelTabPrefix(type, tabPrefix, divMon, divDay);    //表前缀
         //获取当前数据库个数
-        Long dbCount = dataClearService.getMaxTrailSeqNo(colName)/countPerDB;
+        Long dbCount = dataClearService.getMaxTrailSeqNo(colName);  //最大轨迹/报警序列号
+        if (type.equals(TRAINCOLNAME)){
+            dbCount /=  countPerDB;     //轨迹库每库10w辆车的数据
+        }else{
+            dbCount = DataHandle.getAlarmDBCount(dbCount);  //报警表后7位，每300w辆车一个库
+        }
 
         for (int i = 1; i <= dbCount; i++){
             param.put("dbName", dbPrefix + i);
             param.put("tabNamePrefix", tablePrefix + "%");
+            param.put("orderRule", type);   //排序规则
             //查询该库下将要删除的表集合
             List<Schema> schemas = dataClearService.selectTabByStrLike(param);
             for (Schema schema:schemas){
                 System.out.println(param.get("dbName") + "." + schema.getTableName());
                 //删除表
                 dataClearService.dropTable(param.get("dbName") + "." + schema.getTableName());
-                log.info(sdf.format(new Date()) + "\t" + createOper + "：" + param.get("dbName") + "." + schema.getTableName());
-                //创建表
-                dataClearService.createTrailTable(param.get("dbName") + "." + schema.getTableName());
                 log.info(sdf.format(new Date()) + "\t" + dropOper + "：" + param.get("dbName") + "." + schema.getTableName());
-
+                if (type.equals(TRAINCOLNAME)){
+                    //创建轨迹表
+                    dataClearService.createTrailTable(param.get("dbName") + "." + schema.getTableName());
+                }else{
+                    //创建报警表
+                    dataClearService.createAlarmTable(param.get("dbName") + "." + schema.getTableName());
+                }
+                log.info(sdf.format(new Date()) + "\t" + createOper + "：" + param.get("dbName") + "." + schema.getTableName());
             }
         }
     }

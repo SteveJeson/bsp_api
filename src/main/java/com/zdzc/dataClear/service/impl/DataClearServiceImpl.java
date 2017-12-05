@@ -62,4 +62,14 @@ public class DataClearServiceImpl implements DataClearService {
     public int createTrailTable(String tableName){
         return dataClearMapper.createTrailTable(tableName);
     }
+
+    /**
+      * @Description:创建报警表
+      * @Author chengwengao
+     * @Date 2017/12/4 0004 15:16
+     */
+    @Override
+    public int createAlarmTable(String tableName){
+        return dataClearMapper.createAlarmTable(tableName);
+    }
 }
