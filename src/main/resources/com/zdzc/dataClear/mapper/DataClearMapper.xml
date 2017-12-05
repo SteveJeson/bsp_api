@@ -20,8 +20,8 @@
     </update>
     
     <!--获取gps_main表最大轨迹序列号-->
-    <select id="getMaxTrailSeqNo" resultType="Long">
-        select max(trail_seq_no) from gps_main.t_gps_main
+    <select id="getMaxTrailSeqNo" resultType="Long" parameterType="java.lang.String">
+        select max(${_parameter}) from gps_main.t_gps_main
     </select>
 
     <!--创建指定日期的轨迹表-->

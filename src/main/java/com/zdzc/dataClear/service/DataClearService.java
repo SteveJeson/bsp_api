@@ -31,8 +31,9 @@ public interface DataClearService {
       * @Description:获取gps_main表最大轨迹序列号
       * @Author chengwengao
      * @Date 2017/12/4 0004 14:25
+     * @param colName 列名
      */
-    Long getMaxTrailSeqNo();
+    Long getMaxTrailSeqNo(String colName);
 
     /**
       * @Description:创建指定日期的轨迹表

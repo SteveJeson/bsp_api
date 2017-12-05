@@ -46,10 +46,11 @@ public class DataClearServiceImpl implements DataClearService {
       * @Description:获取gps_main表最大轨迹序列号
       * @Author chengwengao
      * @Date 2017/12/4 0004 14:25
+     * @param colName 列名
      */
     @Override
-    public Long getMaxTrailSeqNo(){
-        return dataClearMapper.getMaxTrailSeqNo();
+    public Long getMaxTrailSeqNo(String colName){
+        return dataClearMapper.getMaxTrailSeqNo(colName);
     }
 
     /**
