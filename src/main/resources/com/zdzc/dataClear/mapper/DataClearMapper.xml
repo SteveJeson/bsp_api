@@ -13,4 +13,43 @@
         and TABLE_NAME like #{tabNamePrefix, jdbcType = VARCHAR}
         order by cast(REPLACE(RIGHT(TABLE_NAME,2), '_','') as UNSIGNED)
     </select>
+
+    <!--drop table-->
+    <update id="dropTable" parameterType="java.lang.String">
+        drop TABLE if exists ${_parameter}
+    </update>
+    
+    <!--获取gps_main表最大轨迹序列号-->
+    <select id="getMaxTrailSeqNo" resultType="Long">
+        select max(trail_seq_no) from gps_main.t_gps_main
+    </select>
+
+    <!--创建指定日期的轨迹表-->
+    <update id="createTrailTable" parameterType="java.lang.String">
+        CREATE TABLE ${_parameter} (
+          `id` bigint(11) NOT NULL AUTO_INCREMENT COMMENT '主键，自增',
+          `device_code` varchar(12) DEFAULT NULL COMMENT '终端编号',
+          `alarm_status` int(11) DEFAULT NULL COMMENT '报警标志',
+          `vehicle_status` int(11) DEFAULT NULL COMMENT '车辆状态',
+          `lat` double DEFAULT NULL COMMENT '纬度',
+          `lon` double DEFAULT NULL COMMENT '经度',
+          `height` double DEFAULT NULL COMMENT '海拔',
+          `speed` double DEFAULT NULL COMMENT 'GPS 速度',
+          `direction` double DEFAULT NULL COMMENT '方向',
+          `time` bigint(32) DEFAULT NULL COMMENT 'GPS 时间',
+          `mile` double DEFAULT NULL COMMENT '里程',
+          `oil` double DEFAULT NULL COMMENT '油量L',
+          `speed2` double DEFAULT NULL COMMENT '记录仪速度',
+          `signal_status` int(11) DEFAULT NULL COMMENT '扩展车辆信号状态位',
+          `bst` int(11) DEFAULT NULL COMMENT '位置基本信息状态位',
+          `io_status` int(11) DEFAULT NULL COMMENT 'IO状态位',
+          `analog` varchar(32) DEFAULT NULL COMMENT '模拟量',
+          `wifi` int(11) DEFAULT NULL COMMENT '无线通信网络信号强度',
+          `satellite_num` int(11) DEFAULT NULL COMMENT '定位卫星数',
+          `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+          `vendor_code` varchar(20) DEFAULT NULL COMMENT '运营商代码',
+          PRIMARY KEY (`id`),
+          KEY `index_devicecode_time_vendorcode` (`device_code`,`time`,`vendor_code`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    </update>
 </mapper>

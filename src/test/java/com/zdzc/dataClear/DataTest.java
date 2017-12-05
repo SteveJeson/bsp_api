@@ -24,5 +24,6 @@ public class DataTest {
 
     @Test
     public void test3(){
+        System.out.println(Long.MAX_VALUE);
     }
 }

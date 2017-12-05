@@ -3,7 +3,6 @@ package com.zdzc.dataClear.controller;
 import com.zdzc.dataClear.entity.Schema;
 import com.zdzc.dataClear.service.DataClearService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,7 +30,6 @@ public class DataClearController {
         param.put("dbName", "gps_1");
         param.put("tabNamePrefix", "t_gps_a2\\_%");
         List<Schema> schemas = dataClearService.selectTabByStrLike(param);
-        schemas.removeAll(Collections.singleton(null));
         System.out.println(schemas.size());
     }
 }
