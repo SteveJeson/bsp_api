@@ -12,11 +12,10 @@ import com.zdzc.electrocar.util.JSONResult;
 import com.zdzc.electrocar.util.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.thymeleaf.util.StringUtils;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class GpsSnapshotServiceImpl implements GpsSnapshotService {
@@ -32,6 +31,24 @@ public class GpsSnapshotServiceImpl implements GpsSnapshotService {
             if (snapshotEntity != null){
                 GPSNapshotDto gpsNapshotDto = copySnapshotToDto(snapshotEntity);
                 jsonResult.setData(gpsNapshotDto);
+                return JSONResult.getResult(jsonResult, true, StatusCode.OK, Const.Public.SUCCESS);
+            }
+        }
+        return JSONResult.getResult(jsonResult, false, StatusCode.EMPTY, Const.Public.NO_RESULT);
+    }
+
+    @Override
+    public JSONResult selectByDeviceCodes(List<String> deviceCodes) {
+        JSONResult jsonResult = Const.Public.JSON_RESULT;
+        if (!CollectionUtils.isEmpty(deviceCodes)){
+            List<GpsSnapshotEntity> snapshotEntityList = snapshotMapper.selectByDeviceCodes(deviceCodes);
+            if (!CollectionUtils.isEmpty(snapshotEntityList)){
+                List<GPSNapshotDto> dtos = new ArrayList<>();
+                for (GpsSnapshotEntity gpsSnapshotEntity : snapshotEntityList){
+                    GPSNapshotDto gpsNapshotDto = copySnapshotToDto(gpsSnapshotEntity);
+                    dtos.add(gpsNapshotDto);
+                }
+                jsonResult.setData(dtos);
                 return JSONResult.getResult(jsonResult, true, StatusCode.OK, Const.Public.SUCCESS);
             }
         }

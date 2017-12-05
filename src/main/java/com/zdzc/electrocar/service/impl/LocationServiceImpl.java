@@ -19,12 +19,20 @@ public class LocationServiceImpl implements LocationService{
     @Override
     public Map<String, Object> genParkPoint(GPSDto dtoBefore, GPSDto dto, long parkTime) {
         Map<String, Object> parkerPoint = new HashMap<>();
-        parkerPoint.put(Const.Fields.BEGIN_TIME, dtoBefore.getTime());
-        parkerPoint.put(Const.Fields.END_TIME, dto.getTime());
-        parkerPoint.put(Const.Fields.PARK_TIME, calculateParkTime(parkTime));
-        parkerPoint.put(Const.Fields.LONGITUDE, dtoBefore.getOlng());
-        parkerPoint.put(Const.Fields.LATITUDE, dtoBefore.getOlat());
-        parkerPoint.put(Const.Fields.POSITON, CommonBusiness.getGaodeLocation(dtoBefore.getOlng(),dtoBefore.getOlat()));
+        if (dtoBefore != null) {
+            parkerPoint.put(Const.Fields.BEGIN_TIME, dtoBefore.getTime());
+            parkerPoint.put(Const.Fields.LONGITUDE, dtoBefore.getOlng());
+            parkerPoint.put(Const.Fields.LATITUDE, dtoBefore.getOlat());
+            parkerPoint.put(Const.Fields.POSITON, CommonBusiness.getGaodeLocation(dtoBefore.getOlng(),dtoBefore.getOlat()));
+        }
+        if (dto != null) {
+            parkerPoint.put(Const.Fields.END_TIME, dto.getTime());
+        }
+        if (parkTime != 0) {
+            parkerPoint.put(Const.Fields.PARK_TIME, calculateParkTime(parkTime));
+        }
+
+
         return parkerPoint;
     }
 

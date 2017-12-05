@@ -66,7 +66,8 @@ public class TrailServiceImpl implements TrailService {
                             if (paramDto.getPageNo() != null && paramDto.getPageSize() != null) {
                                 PageHelper.startPage(paramDto.getPageNo(), paramDto.getPageSize());
                             }
-                            List<TrailEntity> trails = trailMapper.selectByDeviceCodeAndTime(param);
+                            Page<TrailEntity> pageInfo = trailMapper.selectByDeviceCodeAndTime(param);
+                            List<TrailEntity> trails = pageInfo.getResult();
                             if (!CollectionUtils.isEmpty(trails)){
                                 List<GPSDto> dtos = copyTrailToGPSDto(trails,paramDto.getFilterTrails());
                                 jsonResult.setData(dtos);

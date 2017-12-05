@@ -1,5 +1,6 @@
 package com.zdzc.electrocar.mapper;
 
+import com.github.pagehelper.Page;
 import com.zdzc.electrocar.entity.GpsSnapshotEntity;
 import com.zdzc.electrocar.entity.TrailEntity;
 
@@ -19,7 +20,7 @@ public interface TrailMapper {
 
     TrailEntity selectByDeviceCode(String deviceCode);
 
-    List<TrailEntity> selectByDeviceCodeAndTime(Map<String, Object> paramMap);
+    Page<TrailEntity> selectByDeviceCodeAndTime(Map<String, Object> paramMap);
 
     int insert(Map<String, Object> param);
 }

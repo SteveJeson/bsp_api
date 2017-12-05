@@ -105,10 +105,12 @@ public class LocationController {
                                 parkerPoints.add(parkPoint);
                             }
                         }
-                        if (i == 0 || i == dtos.size() - 1){
+                        if (i == 0 || i == dtos.size() - 1){//获取起点和终点的信息
                             Map<String, Object> startEndPoint = new HashMap<>();
                             startEndPoint.put(Const.Fields.BEGIN_TIME, gpsDto.getTime());
                             startEndPoint.put(Const.Fields.POSITON, CommonBusiness.getGaodeLocation(gpsDto.getOlng(), gpsDto.getOlat()));
+                            startEndPoint.put(Const.Fields.LONGITUDE, gpsDto.getOlng());
+                            startEndPoint.put(Const.Fields.LATITUDE, gpsDto.getOlat());
                             startEndPoints.add(startEndPoint);
                         }
                     }

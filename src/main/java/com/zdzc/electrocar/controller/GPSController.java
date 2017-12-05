@@ -27,9 +27,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.lang.reflect.Array;
+import java.util.*;
+import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ThreadPoolExecutor;
 
@@ -226,6 +226,21 @@ public class GPSController {
             log.error(e.getMessage());
             e.printStackTrace();
         }
+        return JSONResult.getResult(jsonResult, false, StatusCode.ERROR, Const.Public.SYSTEM_ERROR);
+    }
+
+    @RequestMapping("/snapshots")
+    public JSONResult getSnapshots(@RequestParam("deviceCodes") String deviceCodes){
+        JSONResult jsonResult = Const.Public.JSON_RESULT;
+        try {
+            String[] deviceCodeArray = deviceCodes.split(",");
+            List<String> deviceCodeList = Arrays.asList(deviceCodeArray);
+            return snapshotService.selectByDeviceCodes(deviceCodeList);
+        }catch (Exception e){
+            log.error(e.getMessage());
+            e.printStackTrace();
+        }
+
         return JSONResult.getResult(jsonResult, false, StatusCode.ERROR, Const.Public.SYSTEM_ERROR);
     }
 
