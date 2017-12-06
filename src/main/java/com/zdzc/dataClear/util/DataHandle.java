@@ -2,6 +2,7 @@ package com.zdzc.dataClear.util;
 
 import com.zdzc.dataClear.entity.DataConst;
 import com.zdzc.dataClear.entity.MonthDay;
+import com.zdzc.dataClear.entity.SeqNoAttr;
 
 import java.util.Calendar;
 
@@ -74,9 +75,14 @@ public class DataHandle {
       * @Author chengwengao
      * @Date 2017/12/5 0005 15:34
      * @param alarm_seq_no 报警序列号
+     * @param subIndex 截取位数
      */
-    public static Long getAlarmDBCount(Long alarm_seq_no){
+    public static SeqNoAttr getAlarmDBCount(Long alarm_seq_no, int subIndex){
+        SeqNoAttr seqNoAttr = new SeqNoAttr();
         String s = new Reverse(String.valueOf(alarm_seq_no)).reverseByBit();   //反转后字串
-        return Long.valueOf(new Reverse(s.substring(7, s.length())).reverseByBit());
+        seqNoAttr.setHead(Long.valueOf(new Reverse(s.substring(subIndex, s.length())).reverseByBit())); //库序号
+        seqNoAttr.setTail(Long.valueOf(new Reverse(s.substring(0, subIndex)).reverseByBit()));
+        seqNoAttr.setSeqNo(alarm_seq_no);   //完整序列号
+        return seqNoAttr;
     }
 }

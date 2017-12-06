@@ -52,22 +52,20 @@ public class ClearTablesSchedule {
      * @Date 2017/12/4 0004 13:44
      */
 //    @Scheduled(initialDelay=2000, fixedRate=6000*60*60)
-//    @Scheduled(cron="0 0 0 * * ?")
+    @Scheduled(cron="0 0 0 * * ?")
     public void dataClear(){
         System.out.println("当前时间：" + new Date());
+        //todo:控制线程执行顺序
         //轨迹表清理
         new Thread(new Runnable() {
             @Override
             public void run() {
 
                 try {
-                    lock.lock();    //得到锁
                     clearTables(TRAINCOLNAME, TRAILTABPREFIX, DIVMON, DIVDAY, TRAINCOLNAME, TRAILCOUNTPERDB, TRAILDBPREFIX, TRAILCREATEOPER, TRAILDROPOPER);
                 } catch (Exception e) {
                     e.printStackTrace();
                     log.error(e.getMessage(), e.getCause());
-                } finally {
-                    lock.unlock();  //释放锁
                 }
             }
         }).start();
@@ -77,13 +75,10 @@ public class ClearTablesSchedule {
             @Override
             public void run() {
                 try {
-                    lock.lock();    //得到锁
                     clearTables(ALARMCOLNAME, ALARMTABPREFIX, DIVMON, DIVDAY, ALARMCOLNAME, ALARMCOUNTPERDB, ALARMDBPREFIX, ALARMCREATEOPER, ALARMDROPOPER);
                 } catch (Exception e) {
                     e.printStackTrace();
                     log.error(e.getMessage(), e.getCause());
-                } finally {
-                    lock.unlock();  //释放锁
                 }
             }
         }).start();
@@ -102,9 +97,9 @@ public class ClearTablesSchedule {
         //获取当前数据库个数
         Long dbCount = dataClearService.getMaxTrailSeqNo(colName);  //最大轨迹/报警序列号
         if (type.equals(TRAINCOLNAME)){
-            dbCount /=  countPerDB;     //轨迹库每库10w辆车的数据
+            dbCount /=  DataHandle.getAlarmDBCount(dbCount, 6).getHead();     //轨迹表后6位，每库10w辆车的数据
         }else{
-            dbCount = DataHandle.getAlarmDBCount(dbCount);  //报警表后7位，每300w辆车一个库
+            dbCount = DataHandle.getAlarmDBCount(dbCount, 7).getHead();  //报警表后7位，每300w辆车一个库
         }
 
         for (int i = 1; i <= dbCount; i++){

@@ -163,6 +163,18 @@
 			<version>4.1.0</version>
 		</dependency>
 
+		<!-- SpringWebSocket依赖 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+
+		<!-- 引入security模块 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>
