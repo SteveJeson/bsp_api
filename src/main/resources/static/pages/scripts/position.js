@@ -9,6 +9,24 @@ var Position = (function () {
                 center: [120.111691,30.219249],
                 zoom:6
             })
+            AMapUI.loadUI(['control/BasicControl'], function(BasicControl) {
+
+                //添加一个缩放控件
+                map.addControl(new BasicControl.Zoom({
+                    position: 'lt'
+                }));
+
+                //缩放控件，显示Zoom值
+                map.addControl(new BasicControl.Zoom({
+                    position: 'lb',
+                    showZoomNum: true
+                }));
+
+                //图层切换控件
+                map.addControl(new BasicControl.LayerSwitcher({
+                    position: 'rt'
+                }));
+            });
 
         },
         getPosition:function (url,data,map) {
@@ -25,6 +43,24 @@ var Position = (function () {
                             center: [response.data.lng,response.data.lat],
                             zoom:13
                         })
+                        AMapUI.loadUI(['control/BasicControl'], function(BasicControl) {
+
+                            //添加一个缩放控件
+                            map.addControl(new BasicControl.Zoom({
+                                position: 'lt'
+                            }));
+
+                            //缩放控件，显示Zoom值
+                            map.addControl(new BasicControl.Zoom({
+                                position: 'lb',
+                                showZoomNum: true
+                            }));
+
+                            //图层切换控件
+                            map.addControl(new BasicControl.LayerSwitcher({
+                                position: 'rt'
+                            }));
+                        });
                         var marker = new AMap.Marker({
                             position : [response.data.lng,response.data.lat],
                             map : map

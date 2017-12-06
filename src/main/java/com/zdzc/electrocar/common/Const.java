@@ -36,6 +36,7 @@ public interface Const {
         public static final String SYSTEM_ERROR = "系统异常！";
         public static final String PAGE_NO = "pageNo";
         public static final String PAGE_SIZE = "pageSize";
+        public static final String COMMA = ",";
     }
 
     class Fields{

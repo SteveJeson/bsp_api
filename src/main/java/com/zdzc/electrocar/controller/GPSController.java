@@ -233,7 +233,7 @@ public class GPSController {
     public JSONResult getSnapshots(@RequestParam("deviceCodes") String deviceCodes){
         JSONResult jsonResult = Const.Public.JSON_RESULT;
         try {
-            String[] deviceCodeArray = deviceCodes.split(",");
+            String[] deviceCodeArray = deviceCodes.split(Const.Public.COMMA);
             List<String> deviceCodeList = Arrays.asList(deviceCodeArray);
             return snapshotService.selectByDeviceCodes(deviceCodeList);
         }catch (Exception e){

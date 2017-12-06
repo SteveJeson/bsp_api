@@ -33,8 +33,9 @@ public class LocationController {
     @Autowired
     private TrailService trailService;
 
+    // 停车间隔
     @Value("${parkerInterval}")
-    private int parkerInterval;
+    private int parkInterval;
 
     @Autowired
     private LocationService locationService;
@@ -100,7 +101,7 @@ public class LocationController {
                         if (i > 0){
                             GPSDto dtoBefore = dtos.get(i - 1);
                             long parkTime = gpsDto.getTime().getTime() - dtoBefore.getTime().getTime();
-                            if (parkTime > parkerInterval){
+                            if (parkTime > parkInterval){
                                 Map<String, Object> parkPoint = locationService.genParkPoint(dtoBefore, gpsDto, parkTime);
                                 parkerPoints.add(parkPoint);
                             }
