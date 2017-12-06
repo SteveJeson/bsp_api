@@ -12,6 +12,15 @@ public class SeqNoAttr {
     private Long head;   //头部，库序号
     private Long tail;  //尾部，标志第多少条数据
     private Long seqNo; //带库信息与序号的完整序列号
+    private boolean pushAlarm;  //是否推送报警
+
+    public boolean isPushAlarm() {
+        return pushAlarm;
+    }
+
+    public void setPushAlarm(boolean pushAlarm) {
+        this.pushAlarm = pushAlarm;
+    }
 
     public Long getHead() {
         return head;
@@ -40,9 +49,10 @@ public class SeqNoAttr {
     public SeqNoAttr() {
     }
 
-    public SeqNoAttr(Long head, Long tail, Long seqNo) {
+    public SeqNoAttr(Long head, Long tail, Long seqNo, boolean pushAlarm) {
         this.head = head;
         this.tail = tail;
         this.seqNo = seqNo;
+        this.pushAlarm = pushAlarm;
     }
 }

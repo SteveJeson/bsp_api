@@ -97,7 +97,7 @@ public class ClearTablesSchedule {
         //获取当前数据库个数
         Long dbCount = dataClearService.getMaxTrailSeqNo(colName);  //最大轨迹/报警序列号
         if (type.equals(TRAINCOLNAME)){
-            dbCount /=  DataHandle.getAlarmDBCount(dbCount, 6).getHead();     //轨迹表后6位，每库10w辆车的数据
+            dbCount =  DataHandle.getAlarmDBCount(dbCount, 6).getHead();     //轨迹表后6位，每库10w辆车的数据
         }else{
             dbCount = DataHandle.getAlarmDBCount(dbCount, 7).getHead();  //报警表后7位，每300w辆车一个库
         }

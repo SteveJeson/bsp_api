@@ -1,6 +1,7 @@
 package com.zdzc.dataClear.service;
 
 import com.zdzc.dataClear.entity.Schema;
+import com.zdzc.dataClear.entity.SeqNoAttr;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
@@ -48,4 +49,11 @@ public interface DataClearService {
      * @Date 2017/12/4 0004 15:16
      */
     int createAlarmTable(String tableName);
+
+    /**
+     * @Description:获取main表数据量,判断是否推送报警
+     * @Author chengwengao
+     * @Date 2017/12/6 0006 17:47
+     */
+    SeqNoAttr pushAlarm(String colName);
 }

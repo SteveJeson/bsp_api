@@ -2,6 +2,8 @@ package com.zdzc.websocket.controller;
 
 
 
+import com.zdzc.dataClear.entity.SeqNoAttr;
+import com.zdzc.dataClear.service.DataClearService;
 import com.zdzc.websocket.bean.Message;
 import com.zdzc.websocket.bean.Response;
 import com.zdzc.websocket.service.WebSocketService;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -30,6 +33,9 @@ public class WebSocketController {
     private WebSocketService ws;
     @Autowired
     private SimpMessagingTemplate messagingTemplate;
+
+    @Resource
+    private DataClearService dataClearService;
 
 
     @RequestMapping(value = "/login")
@@ -83,12 +89,19 @@ public class WebSocketController {
              + message.getName());
              */
         } else {
+            SeqNoAttr seqNoAttr = dataClearService.pushAlarm("trail_seq_no");
             while (true){
 
                 try {
-                    messagingTemplate.convertAndSendToUser("cwg",
-                            "/queue/notifications", sdf.format(new Date())+"\t"+principal.getName() + "-send:"
-                                    + message.getName());
+                    if (seqNoAttr.isPushAlarm()) {
+                        messagingTemplate.convertAndSendToUser("cwg",
+                                "/queue/notifications", sdf.format(new Date()) + "\t" + principal.getName() + "-send:"
+                                        + "超限："+seqNoAttr.getTail());
+                    }else{
+                        messagingTemplate.convertAndSendToUser("cwg",
+                                "/queue/notifications", sdf.format(new Date()) + "\t" + principal.getName() + "-send:"
+                                        + "未超限："+seqNoAttr.getTail());
+                    }
                     Thread.sleep(3000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
