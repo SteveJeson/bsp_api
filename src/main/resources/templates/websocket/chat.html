@@ -9,21 +9,25 @@
     <script th:src="@{/websocket/jquery.js}"></script>
 </head>
 <body>
-<p>
-    聊天室
-</p>
+<!--<p>-->
+    <!--聊天室-->
+<!--</p>-->
 
 <form id="wiselyForm">
-    <textarea rows="4" cols="60" name="text"></textarea>
-    <input type="submit"/>
+    <!--<textarea rows="4" cols="60" name="text"></textarea>-->
+    <input type="submit" style="display: none;" id="query" value="查询" />
 </form>
+<input type="button" style="display: none;" id="stop" value="停止" />
 
 <script th:inline="javascript">
+
     $('#wiselyForm').submit(function(e){
         e.preventDefault();
-        var text = $('#wiselyForm').find('textarea[name="text"]').val();
+//        var text = $('#wiselyForm').find('textarea[name="text"]').val();
+        var text = '超限请求';
         sendSpittle(text);
     });
+
     //链接endpoint名称为 "/endpointChat" 的endpoint。
     var sock = new SockJS("/endpointChat");
     var stomp = Stomp.over(sock);
@@ -38,11 +42,17 @@
 
 
     function handleNotification(message) {
-        $('#output').append("<b>Received: " + message.body + "</b><br/>")
+        $("#output").empty();
+        $('#output').prepend("<b> " + message.body + "</b><br/>")
     }
 
     function sendSpittle(text) {
         stomp.send("/chat", {}, JSON.stringify({ 'name': text }));//3
+    }
+    window.onload=function(){
+        setTimeout(function () {
+            $("#query").click();
+        }, 1000);
     }
     $('#stop').click(function() {sock.close()});
 </script>

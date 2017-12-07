@@ -79,10 +79,39 @@ public class DataHandle {
      */
     public static SeqNoAttr getAlarmDBCount(Long alarm_seq_no, int subIndex){
         SeqNoAttr seqNoAttr = new SeqNoAttr();
-        String s = new Reverse(String.valueOf(alarm_seq_no)).reverseByBit();   //反转后字串
-        seqNoAttr.setHead(Long.valueOf(new Reverse(s.substring(subIndex, s.length())).reverseByBit())); //库序号
-        seqNoAttr.setTail(Long.valueOf(new Reverse(s.substring(0, subIndex)).reverseByBit()));
-        seqNoAttr.setSeqNo(alarm_seq_no);   //完整序列号
+        if(alarm_seq_no == 0L){
+            seqNoAttr.setHead(0L);
+            seqNoAttr.setTail(0L);
+            seqNoAttr.setSeqNo(0L);
+        }else if(String.valueOf(alarm_seq_no).length() <= subIndex){
+            seqNoAttr.setMsg("数据格式不符合分库策略，请检查数据源！");
+        }else{
+            String s = new Reverse(String.valueOf(alarm_seq_no)).reverseByBit();   //反转后字串
+            seqNoAttr.setHead(Long.valueOf(new Reverse(s.substring(subIndex, s.length())).reverseByBit())); //库序号
+            seqNoAttr.setTail(Long.valueOf(new Reverse(s.substring(0, subIndex)).reverseByBit()));
+            seqNoAttr.setSeqNo(alarm_seq_no);   //完整序列号
+        }
         return seqNoAttr;
+    }
+
+    /**
+     * 判断字符串是否为空
+     * @param arr
+     * @return
+     */
+    public static boolean isEmpty(String arr){
+        if(!(null == arr || arr.length()==0)){
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * 判断字符串是否非空
+     * @param arr
+     * @return
+     */
+    public static boolean isNotEmpty(String arr){
+        return !isEmpty(arr);
     }
 }

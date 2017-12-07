@@ -93,13 +93,13 @@ public class DataClearServiceImpl implements DataClearService {
         Long dataCount = this.getMaxTrailSeqNo(colName);  //最大轨迹/报警序列号
         if (colName.equals(TRAINCOLNAME)){
             seqNoAttr =  DataHandle.getAlarmDBCount(dataCount, 6);     //轨迹表后6位，每库10w辆车的数据
-            if (dataCount >= MAXTRAIN){
+            if (DataHandle.isEmpty(seqNoAttr.getMsg()) && seqNoAttr.getTail() >= MAXTRAIN){
                 seqNoAttr.setPushAlarm(true);
             }
         }
         if(colName.equals(ALARMCOLNAME)){
-            dataCount = DataHandle.getAlarmDBCount(dataCount, 7).getTail();  //报警表后7位，每300w辆车一个库
-            if(dataCount > MAXALARM){
+            seqNoAttr = DataHandle.getAlarmDBCount(dataCount, 7);  //报警表后7位，每300w辆车一个库
+            if(DataHandle.isEmpty(seqNoAttr.getMsg()) && seqNoAttr.getTail() >= MAXALARM){
                 seqNoAttr.setPushAlarm(true);
             }
         }
