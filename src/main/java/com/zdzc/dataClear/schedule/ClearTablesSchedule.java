@@ -124,4 +124,15 @@ public class ClearTablesSchedule {
             }
         }
     }
+
+    /**todo:参数配置化
+     * @Description:每天凌晨2点执行main库备份
+     * @Author chengwengao
+     * @Date 2017/12/7 0007 15:32
+     */
+//    @Scheduled(initialDelay=2000, fixedRate=6000*60*60)
+    @Scheduled(cron="0 0 2 * * ?")
+    public void dbBackup(){
+        DataHandle.dbBackup("127.0.0.1", "root", "123456", "gps_main", "F:\\项目备份");
+    }
 }

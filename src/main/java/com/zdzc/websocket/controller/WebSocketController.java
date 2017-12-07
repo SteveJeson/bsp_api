@@ -76,6 +76,7 @@ public class WebSocketController {
         return "is ok";
     }
 
+    //todo:是否需要阻止刷新页面提交
     @MessageMapping("/chat")
     //在springmvc 中可以直接获得principal,principal 中包含当前用户的信息
     public void handleChat(Principal principal, Message message) {
