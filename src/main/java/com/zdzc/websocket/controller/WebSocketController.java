@@ -1,7 +1,6 @@
 package com.zdzc.websocket.controller;
 
 
-
 import com.zdzc.dataClear.entity.SeqNoAttr;
 import com.zdzc.dataClear.service.DataClearService;
 import com.zdzc.dataClear.util.DataHandle;
@@ -82,7 +81,7 @@ public class WebSocketController {
     public void handleChat(Principal principal, Message message) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         /**
-         * 此处是一段硬编码。如果发送人是wyf 则发送给 wisely 如果发送人是wisely 就发送给 wyf。
+         * 此处是一段硬编码
          * 通过当前用户,然后查找消息,如果查找到未读消息,则发送给当前用户。
          */
         if (principal.getName().equals("cwg") || principal.getName().equals("cfx")) {
