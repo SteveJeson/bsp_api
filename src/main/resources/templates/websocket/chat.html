@@ -18,6 +18,7 @@
     <input type="submit" style="display: none;" id="query" value="查询" />
 </form>
 <input type="button" style="display: none;" id="stop" value="停止" />
+<input type="button"  id="dbRevert" value="数据库还原" />
 
 <script th:inline="javascript">
 
@@ -55,6 +56,9 @@
         }, 1000);
     }
     $('#stop').click(function() {sock.close()});
+    $('#dbRevert').click(function() {
+        location.href = "/dataClear/dbRevertPage";
+    });
 </script>
 
 <div id="output"></div>

@@ -1,15 +1,10 @@
 package com.zdzc.dataClear.controller;
 
-import com.zdzc.dataClear.entity.Schema;
-import com.zdzc.dataClear.service.DataClearService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.zdzc.dataClear.entity.DBRevertAttr;
+import com.zdzc.dataClear.util.DataHandle;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  *  * @Description: 数据清理Controller
@@ -17,19 +12,28 @@ import java.util.Map;
  *  * @date 2017/12/4 0004 10:15
  *  
  */
-@RestController
+@Controller
 @RequestMapping("/dataClear")
 public class DataClearController {
 
-    @Autowired
-    private DataClearService dataClearService;
-
-    @RequestMapping(value = "/dropTab")
-    public void dropTab(){
-        Map<String, String> param = new HashMap<String, String>();
-        param.put("dbName", "gps_1");
-        param.put("tabNamePrefix", "t_gps_a2\\_%");
-        List<Schema> schemas = dataClearService.selectTabByStrLike(param);
-        System.out.println(schemas.size());
+    /**
+     * @Description:跳转到数据库还原页面
+     * @Author chengwengao
+     * @Date 2017/12/7 0007 16:09
+     */
+    @RequestMapping("dbRevertPage")
+    public String dbRevertPage(){
+        return "dbRevert";
+    }
+    /**
+     * @Description:执行数据库还原
+     * @Author chengwengao
+     * @Date 2017/12/7 0007 15:55
+     */
+    @RequestMapping("/dbRevert")
+    @ResponseBody
+    public String dbRevert(DBRevertAttr dr){
+//        DataHandle.dbRevert("127.0.0.1", "root", "123456", "gps_main1", "F:\\项目备份", "gps_main", "2017-12-07");
+        return DataHandle.dbRevert(dr.getHostName(), dr.getUsername(), dr.getPasswd(), dr.getDatabaseName(), dr.getSourcePath(), dr.getDbBackPrefix(), dr.getRevertDate());
     }
 }

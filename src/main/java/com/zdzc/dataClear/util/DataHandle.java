@@ -193,7 +193,7 @@ public class DataHandle {
      * @param dbBackPrefix 数据库备份名前缀
      * @param revertDate 还原日期
      */
-    public static void dbRevert(String hostName, String username, String passwd, String databaseName, String sourcePath, String dbBackPrefix, String revertDate) {
+    public static String dbRevert(String hostName, String username, String passwd, String databaseName, String sourcePath, String dbBackPrefix, String revertDate) {
         try {
             Runtime runtime = Runtime.getRuntime();
             Process process = runtime
@@ -217,10 +217,14 @@ public class DataHandle {
             br.close();
             writer.close();
 
-            log.info(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + "数据库恢复成功，源文件：" + sourcePath + "\\" + dbBackPrefix + revertDate);
+            sb.delete(0, sb.length());
+            sb.append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + "数据库恢复成功，源文件：" + sourcePath + "\\" + dbBackPrefix + revertDate);
+            log.info(sb.toString());
+            return sb.toString();
         } catch (Exception e) {
             e.printStackTrace();
             log.error(e.getMessage(), e.getCause());
+            return "数据库还原失败，失败原因：\n" + e.getMessage();
         }
     }
 }
