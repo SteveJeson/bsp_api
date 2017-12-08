@@ -56,7 +56,7 @@
           `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
           `vendor_code` varchar(20) DEFAULT NULL COMMENT '运营商代码',
           PRIMARY KEY (`id`),
-          KEY `index_devicecode_time_vendorcode` (`device_code`,`time`,`vendor_code`)
+          KEY `index_devicecode_time_vendorcode` (`device_code`,`time`,`vendor_code`) USING BTREE
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
     </update>
 
@@ -83,10 +83,10 @@
           `wifi` int(11) DEFAULT NULL COMMENT '无线通信网络信号强度',
           `satellite_num` int(11) DEFAULT NULL COMMENT '定位卫星数',
           `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
-          `vendor_code` int(11) unsigned zerofill NOT NULL COMMENT '运营商代码',
+          `vendor_code` VARCHAR (20) DEFAULT '0' COMMENT '运营商代码',
           `alarm_handle` int(11) unsigned zerofill NOT NULL COMMENT '是否处理（0：未处理，1：已处理）',
           PRIMARY KEY (`id`),
-          KEY `index_devicecode_time_alarmhandle` (`device_code`,`time`,`alarm_handle`)
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+          KEY `index_devicecode_time_alarmhandle` (`device_code`,`time`,`alarm_handle`) USING BTREE
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
     </update>
 </mapper>
