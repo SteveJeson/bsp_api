@@ -1,6 +1,7 @@
 package com.zdzc.electrocar.util;
 
 import com.zdzc.electrocar.common.Const;
+import org.springframework.util.StringUtils;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -46,11 +47,15 @@ public class DateUtil {
         return calendar.get(Calendar.DAY_OF_MONTH);
     }
 
-    public static boolean isSameDay(Date startTime, Date endTime){
-        if (startTime != null && endTime != null){
-            return DateUtil.getYear(startTime) == DateUtil.getYear(endTime) &&
-                    DateUtil.getMonth(startTime) == DateUtil.getMonth(endTime) &&
-                    DateUtil.getDay(startTime) == DateUtil.getDay(endTime);
+    public static boolean isSameDay(String startTime, String endTime){
+//        if (startTime != null && endTime != null){
+//            return DateUtil.getYear(startTime) == DateUtil.getYear(endTime) &&
+//                    DateUtil.getMonth(startTime) == DateUtil.getMonth(endTime) &&
+//                    DateUtil.getDay(startTime) == DateUtil.getDay(endTime);
+//        }
+        if (!StringUtils.isEmpty(startTime) && !StringUtils.isEmpty(endTime) && startTime.length() > 6 && endTime.length() > 6){
+            return startTime.substring(0,2).equals(endTime.substring(0,2)) && startTime.substring(2,4).equals(endTime.substring(2,4))
+                    && startTime.substring(4,6).equals(endTime.substring(4,6));
         }
         return false;
     }

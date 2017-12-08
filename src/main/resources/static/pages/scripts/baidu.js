@@ -148,22 +148,26 @@ $(function(){
     $("#trailSearch").click(function () {
         var isGaode = false;
         var deviceCode = $("#deviceCode").val();
-        var startTime = $("#startTime").val() + ":00";
-        var endTime = $("#endTime").val() + ":59";
+        var startTime = $("#startTime").val();
+        var endTime = $("#endTime").val()
         var startYear = startTime.split(" ")[0].split("-")[0];
         var endYear = endTime.split(" ")[0].split("-")[0];
         var startMonth = startTime.split(" ")[0].split("-")[1];
         var endMonth = endTime.split(" ")[0].split("-")[1];
         var startDay = startTime.split(" ")[0].split("-")[2];
         var endDay = endTime.split(" ")[0].split("-")[2];
+        var endTimeInt = endYear + endMonth + endDay + endTime.split(" ")[1].split(":")[0] + endTime.split(" ")[1].split(":")[1]+"00";
         if (startYear == endYear && startMonth == endMonth && (endDay - startDay == 1)){
             var endHour = endTime.split(" ")[1].split(":")[0];
             var endMinute = endTime.split(" ")[1].split(":")[1];
             if (endHour == 0 && endMinute == 0){
-                endTime = endYear + "-" + endMonth + "-" + startDay + " " + "23:59:59";
-                console.log("endTime: " + endTime)
+                // endTime = endYear + "-" + endMonth + "-" + startDay + " " + "23:59:59";
+                endTimeInt = endYear + endMonth + endDay + "235959";
             }
         }
-        Baidu.getTrail("getTrail",{deviceCode: deviceCode,startTime: startTime,endTime: endTime,isGaode: isGaode},map);
+        var startTimeInt = startYear+startMonth+startDay+startTime.split(" ")[1].split(":")[0]+startTime.split(" ")[1].split(":")[1]+"00";
+        startTimeInt = startTimeInt.substr(2,startTimeInt.length-2)
+        endTimeInt = endTimeInt.substr(2,endTimeInt.length-2)
+        Baidu.getTrail("getTrail",{deviceCode: deviceCode,startTime: startTimeInt,endTime: endTimeInt,isGaode: isGaode},map);
     })
 })

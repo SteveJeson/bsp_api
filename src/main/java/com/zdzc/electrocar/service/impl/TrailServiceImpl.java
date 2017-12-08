@@ -50,14 +50,16 @@ public class TrailServiceImpl implements TrailService {
                 Map<String, Object> param = new HashMap<>();
                 param.put(Const.Fields.DEVICE_CODE, paramDto.getDeviceCode());
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Const.Date.Y_M_D_HMS);
-                param.put(Const.Fields.BEGIN_TIME, simpleDateFormat.parse(paramDto.getBeginTime()).getTime() / 1000);
-                param.put(Const.Fields.END_TIME, simpleDateFormat.parse(paramDto.getEndTime()).getTime() / 1000);
+                String startTime = paramDto.getBeginTime();
+                String endTime = paramDto.getEndTime();
+                param.put(Const.Fields.BEGIN_TIME, startTime);
+                param.put(Const.Fields.END_TIME, endTime);
                 Integer trailSeqNo = mainEntity.getTrailSeqNo();
                 String dbName = CommonBusiness.getTrailDbName(trailSeqNo);
                 if (!StringUtil.isEmpty(dbName)) {
                     param.put(Const.DateBase.DB_NAME, dbName);
-                    Date startTime = simpleDateFormat.parse(paramDto.getBeginTime());
-                    Date endTime= simpleDateFormat.parse(paramDto.getEndTime());
+//                    Date startTime = simpleDateFormat.parse(paramDto.getBeginTime());
+//                    Date endTime= simpleDateFormat.parse(paramDto.getEndTime());
                     // 判断查询区间是否在同一天
                     if (DateUtil.isSameDay(startTime, endTime)){
                         String tableName = CommonBusiness.getTrailTableName(trailSeqNo, startTime);

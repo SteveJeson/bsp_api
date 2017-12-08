@@ -175,13 +175,21 @@ public class CommonBusiness {
      * @param date     查询日期
      * @return
      */
-    public static String getTrailTableName(Integer seqNo, Date date){
+    public static String getTrailTableName(Integer seqNo, String date){
         String seqNoStr = seqNo + "";
+        String month = date.substring(2,4);
+        if (month.startsWith("0")){
+            month = month.substring(1);
+        }
+        String day = date.substring(4,6);
+        if (day.startsWith("0")){
+            day = day.substring(1);
+        }
         try {
             int length = seqNoStr.length();
             if (length >= 6){
                 int tabNo = Integer.valueOf(seqNoStr.substring(length - 6, length));
-                return Const.DateBase.TRAIL_TABLE_PREFIX + getMonth(DateUtil.getMonth(date)) + DateUtil.getDay(date) + "_" + getTrailTableNo(tabNo);
+                return Const.DateBase.TRAIL_TABLE_PREFIX + getMonth(Integer.valueOf(month)) + day + "_" + getTrailTableNo(tabNo);
             }
         }catch (Exception e){
             e.printStackTrace();
