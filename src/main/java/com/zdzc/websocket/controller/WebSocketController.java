@@ -34,6 +34,7 @@ public class WebSocketController {
     private static final Logger log = Logger.getLogger(WebSocketController.class);
 
     private final int PUSH_INTERVAL = 1000*60*60*12;   //推送时间间隔，单位毫秒
+//    private final int PUSH_INTERVAL = 3000;   //推送时间间隔，单位毫秒
     private final String TRAINCOLNAME = "trail_seq_no"; //轨迹序列号列名
     private final String ALARMCOLNAME = "alarm_seq_no"; //报警序列号列名
 

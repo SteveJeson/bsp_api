@@ -4,7 +4,12 @@ import com.zdzc.dataClear.entity.DBRevertAttr;
 import com.zdzc.dataClear.util.DataHandle;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  *  * @Description: 数据清理Controller
@@ -32,8 +37,17 @@ public class DataClearController {
      */
     @RequestMapping("/dbRevert")
     @ResponseBody
-    public String dbRevert(DBRevertAttr dr){
+    public String dbRevert(@RequestParam("file") MultipartFile multipartFile,
+                           HttpServletRequest  request, HttpServletResponse response, DBRevertAttr dr){
 //        DataHandle.dbRevert("127.0.0.1", "root", "123456", "gps_main1", "F:\\项目备份", "gps_main", "2017-12-07");
-        return DataHandle.dbRevert(dr.getHostName(), dr.getUsername(), dr.getPasswd(), dr.getDatabaseName(), dr.getSourcePath(), dr.getDbBackPrefix(), dr.getRevertDate());
+        System.out.println(multipartFile.getOriginalFilename());
+        return DataHandle.dbRevert(dr.getHostName(), dr.getUsername(), dr.getPasswd(), dr.getDatabaseName(), multipartFile);
+    }
+
+    @RequestMapping("/dbBackUp")
+    @ResponseBody
+    public String dbBackUp(){
+        //todo:参数配置化
+        return DataHandle.dbBackup("127.0.0.1", "root", "123456", "gps_main", "F:\\项目备份");
     }
 }

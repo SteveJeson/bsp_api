@@ -4,6 +4,7 @@ import com.zdzc.dataClear.entity.DataConst;
 import com.zdzc.dataClear.entity.MonthDay;
 import com.zdzc.dataClear.entity.SeqNoAttr;
 import org.apache.log4j.Logger;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
@@ -133,7 +134,7 @@ public class DataHandle {
      * @param sourceDbName 原将要备份的数据库名
      * @param destinatonPath 备份文件存放路径
      */
-    public static void dbBackup(String hostName, String username, String passwd, String sourceDbName, String destinatonPath) {
+    public static String dbBackup(String hostName, String username, String passwd, String sourceDbName, String destinatonPath) {
         try {
             Runtime rt = Runtime.getRuntime();
 
@@ -170,13 +171,15 @@ public class DataHandle {
             writer.close();
             fout.close();
 
-            log.info(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + "数据库备份成功，文件名：" + destinatonPath + "\\" + sourceDbName + time);
-
+            sb.delete(0, sb.length());
+            sb.append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + "数据库备份成功，文件名：" + destinatonPath + "\\" + sourceDbName + time);
+            log.info(sb.toString());
+            return sb.toString();
         } catch (Exception e) {
             e.printStackTrace();
             log.error(e.getMessage(), e.getCause());
+            return "数据库备份失败，失败原因：\n" + e.getMessage();
         }
-
     }
 
     /**恢复数据库：
@@ -189,19 +192,16 @@ public class DataHandle {
      * @param username 数据库用户名
      * @param passwd 数据库密码
      * @param databaseName 数据库名
-     * @param sourcePath 原备份数据库脚本路径
-     * @param dbBackPrefix 数据库备份名前缀
-     * @param revertDate 还原日期
+     * @param multipartFile 上传的数据库文件
      */
-    public static String dbRevert(String hostName, String username, String passwd, String databaseName, String sourcePath, String dbBackPrefix, String revertDate) {
+    public static String dbRevert(String hostName, String username, String passwd, String databaseName, MultipartFile multipartFile){
         try {
             Runtime runtime = Runtime.getRuntime();
             Process process = runtime
                     .exec("mysql -h " + hostName + " -u" + username + " -p" + passwd + " --default-character-set=utf8 "
                             + databaseName);
             OutputStream outputStream = process.getOutputStream();
-            BufferedReader br = new BufferedReader(new InputStreamReader(
-                    new FileInputStream(sourcePath + "\\" + dbBackPrefix + revertDate), "utf-8"));
+            BufferedReader br = new BufferedReader(new InputStreamReader(multipartFile.getInputStream(), "utf-8"));
             String str = null;
             StringBuffer sb = new StringBuffer();
             while ((str = br.readLine()) != null) {
@@ -218,7 +218,7 @@ public class DataHandle {
             writer.close();
 
             sb.delete(0, sb.length());
-            sb.append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + "数据库恢复成功，源文件：" + sourcePath + "\\" + dbBackPrefix + revertDate);
+            sb.append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + "数据库恢复成功，源文件：" + multipartFile.getOriginalFilename());
             log.info(sb.toString());
             return sb.toString();
         } catch (Exception e) {

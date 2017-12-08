@@ -1,5 +1,7 @@
 package com.zdzc.dataClear.entity;
 
+import java.io.File;
+
 /**
  *  * @Description: 数据库还原相关属性
  *  * @author chengwengao
@@ -11,9 +13,6 @@ public class DBRevertAttr {
     private String username; //数据库用户名
     private String passwd; //数据库密码
     private String databaseName; //数据库名
-    private String sourcePath; //原备份数据库脚本路径
-    private String dbBackPrefix; //数据库备份名前缀
-    private String revertDate; //还原日期
 
     public String getHostName() {
         return hostName;
@@ -47,27 +46,4 @@ public class DBRevertAttr {
         this.databaseName = databaseName;
     }
 
-    public String getSourcePath() {
-        return sourcePath;
-    }
-
-    public void setSourcePath(String sourcePath) {
-        this.sourcePath = sourcePath;
-    }
-
-    public String getDbBackPrefix() {
-        return dbBackPrefix;
-    }
-
-    public void setDbBackPrefix(String dbBackPrefix) {
-        this.dbBackPrefix = dbBackPrefix;
-    }
-
-    public String getRevertDate() {
-        return revertDate;
-    }
-
-    public void setRevertDate(String revertDate) {
-        this.revertDate = revertDate;
-    }
 }

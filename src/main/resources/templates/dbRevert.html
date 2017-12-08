@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
 <head>
-    <title>登陆页面</title>
+    <title>数据备份还原页面</title>
 </head>
 <script th:src="@{/websocket/jquery.js}"></script>
 <body>
@@ -13,34 +13,16 @@
 <div th:if="${param.logout}">
     你已注销
 </div>
-<form method="post">
+<!--todo:源文件改为文件选择控件获取-->
+<form enctype="multipart/form-data" method="post" action="/dataClear/dbRevert">
     <div><label> 数据库主机名 : <input type="text" name="hostName" value="127.0.0.1"/> </label></div>
     <div><label> 数据库用户名: <input type="text" name="username" value="root" /> </label></div>
     <div><label> 数据库密码: <input type="password" name="passwd" value="123456" /> </label></div>
     <div><label> 数据库名: <input type="text" name="databaseName" value="gps_main1" /> </label></div>
-    <div><label> 原备份数据库脚本路径: <input type="text" name="sourcePath" value="F:\\项目备份" /> </label></div>
-    <div><label> 数据库备份名前缀: <input type="text" name="dbBackPrefix" value="gps_main" /> </label></div>
-    <div><label> 还原日期: <input type="text" name="revertDate" value="2017-12-07" /> </label></div>
+    <div><label> 文件路径: <input type="file" name="file" /> </label></div>
     <div><input type="submit" id="revert" value="还原"/></div>
 </form>
 </body>
 <script th:inline="javascript">
-    $("#revert").click(function (e) {
-        e.preventDefault();
-        if(confirm('确定还原吗？')){
-            $.ajax({
-                type: 'POST',
-                dataType: "text",
-                url: "/dataClear/dbRevert",
-                data: $("form").serialize(),
-                success : function (data){
-                    alert(data);
-                },
-                error: function(XMLHttpRequest, textStatus, errorThrown) {
-                    alert("还原失败！");
-                }
-            });
-        }
-    });
 </script>
 </html>
