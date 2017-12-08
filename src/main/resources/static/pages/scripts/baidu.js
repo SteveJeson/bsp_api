@@ -107,7 +107,6 @@ var Baidu = (function () {
                         }
                         //初始化地图,选取第一个点为起始点
                         map = new BMap.Map("map-content");
-                        console.log(response.data.trails[0])
                         map.centerAndZoom(new BMap.Point(response.data.trails[0][0],response.data.trails[0][1]), 15);
                         map.enableScrollWheelZoom();
                         map.addControl(new BMap.NavigationControl());
