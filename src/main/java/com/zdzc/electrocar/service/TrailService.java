@@ -14,5 +14,5 @@ import java.util.Map;
 public interface TrailService {
     JSONResult selectByDeviceCodeAndTime(RequestParamDto paramDto) throws Exception;
 
-    List<GPSDto> copyTrailToGPSDto(List<TrailEntity> trails, Boolean filterTrails);
+    List<GPSDto> copyTrailToGPSDto(List<TrailEntity> trails, Boolean filterTrails, Boolean isGaode);
 }

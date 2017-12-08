@@ -13,4 +13,6 @@ public interface GpsSnapshotEntityMapper {
     List<GpsSnapshotEntity> selectAll();
 
     int updateByPrimaryKey(GpsSnapshotEntity record);
+
+    List<GpsSnapshotEntity> selectByDeviceCodes(List<String> deviceCodes);
 }

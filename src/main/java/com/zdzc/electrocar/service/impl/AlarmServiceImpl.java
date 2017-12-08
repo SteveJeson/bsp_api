@@ -138,7 +138,7 @@ public class AlarmServiceImpl implements AlarmService {
                 dto.setLatitude(entity.getLat());
                 dto.setSpeed(entity.getSpeed());
                 dto.setTime(new Date (entity.getTime() * 1000));
-                dto.setVendor(entity.getVendorCode()==null?0:Integer.valueOf(entity.getVendorCode()));
+                dto.setVendor(StringUtils.isEmpty(entity.getVendorCode())?0:Integer.valueOf(entity.getVendorCode()));
                 dtos.add(dto);
             }
             return dtos;

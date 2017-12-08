@@ -1,11 +1,13 @@
 package com.zdzc.electrocar.common;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.zdzc.electrocar.util.ByteUtil;
 import com.zdzc.electrocar.util.DateUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,6 +16,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
+import java.util.Map;
 
 /**
  * Created by liuw on 2017/8/31.
@@ -21,6 +24,8 @@ import java.util.Date;
  */
 public class CommonBusiness {
     private static Logger log = LoggerFactory.getLogger(CommonBusiness.class);
+
+    private static String gaodeWebServerKey = "261b9ce89ab991fc23a481974ad6b881";
     /**
      * 通过报警信息获取ACC状态 1：开启 0：关闭
      * @param alarmStatus
@@ -78,6 +83,72 @@ public class CommonBusiness {
         gps[0] = Double.valueOf(strArr[0]);
         gps[1] = Double.valueOf(strArr[1]);
         return gps;
+    }
+
+    /**
+     * 获取百度地图GPS坐标
+     * @param lng
+     * @param lat
+     * @return
+     */
+    public static double[] getBaiduGPS(double lng,double lat) {
+        double[] gps = new double[2];
+        String locations = String.valueOf(lng)+","+String.valueOf(lat);
+        String key = "FnobWp9rTBylcNitkgoWWEmEnqcKQlGL";//百度地图API KEY
+        //高德地图API URL
+        String httpUrl = "http://api.map.baidu.com/geoconv/v1/?coords="+locations
+                +"&from=1&to=5&ak="+key;
+        BufferedReader br = null;
+        String result = "";
+        try {
+            URL url = new URL(httpUrl);
+            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+            br = new BufferedReader(new InputStreamReader(connection.getInputStream(),"UTF-8"));
+            String line;
+            while ((line = br.readLine()) != null) {
+                result += line;
+            }
+            br.close();
+        } catch (MalformedURLException e) {
+            log.error("=========MalformedURLException 百度地图API URL解析错误！==========");
+        } catch (IOException e) {
+            log.error("=========IOException 百度地图API URL IO异常！");
+        }
+        //将返回的字符串数据转为JSON对象
+        JSONObject jsonObject = JSONObject.parseObject(result);
+        JSONArray location = jsonObject.getJSONArray("result");
+        JSONObject loca = location.getJSONObject(0);
+        String x = loca.getString("x");
+        String y = loca.getString("y");
+        gps[0] = Double.valueOf(x);
+        gps[1] = Double.valueOf(y);
+        return gps;
+    }
+
+
+    public static String getGaodeLocation(Double lng, Double lat){
+        String key = gaodeWebServerKey;
+        String httpUrl = "http://restapi.amap.com/v3/geocode/regeo?key=" + key + "&location=" + lng + "," + lat + "";
+        BufferedReader br = null;
+        String result = "";
+        try {
+            URL url = new URL(httpUrl);
+            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+            br = new BufferedReader(new InputStreamReader(connection.getInputStream(),"UTF-8"));
+            String line;
+            while ((line = br.readLine()) != null) {
+                result += line;
+            }
+            br.close();
+            JSONObject jsonObject = JSONObject.parseObject(result);
+            Map<String, Object> regeocode = (Map<String,Object>)jsonObject.get("regeocode");
+            return regeocode.get("formatted_address").toString();
+        } catch (MalformedURLException e) {
+            log.error("=========MalformedURLException 高德地图API URL解析错误！==========");
+        } catch (IOException e) {
+            log.error("=========IOException 高德地图API URL IO异常！");
+        }
+        return null;
     }
 
     /**

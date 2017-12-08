@@ -1,7 +1,6 @@
 package com.zdzc.electrocar.common;
 
 import com.zdzc.electrocar.util.JSONResult;
-import com.zdzc.electrocar.util.StatusCode;
 import com.zdzc.electrocar.util.threadPool.DefaultThreadPool;
 
 /**
@@ -20,6 +19,9 @@ public interface Const {
 
     class Date{
         public static final String Y_M_D_HMS = "yyyy-MM-dd HH:mm:ss";
+        public static final String HOUR = "小时";
+        public static final String MINUTE = "分钟";
+        public static final String SECOND = "秒";
     }
 
     class Public{
@@ -34,6 +36,7 @@ public interface Const {
         public static final String SYSTEM_ERROR = "系统异常！";
         public static final String PAGE_NO = "pageNo";
         public static final String PAGE_SIZE = "pageSize";
+        public static final String COMMA = ",";
     }
 
     class Fields{
@@ -41,7 +44,13 @@ public interface Const {
         public static final String BEGIN_TIME = "beginTime";
         public static final String END_TIME = "endTime";
         public static final String ALARM_HANDLE = "alarmHandle";
-
+        public static final String PARK_TIME = "parkTime";
+        public static final String TRAILS = "trails";
+        public static final String PARKER_POINTS = "parkerPoints";
+        public static final String LONGITUDE = "longitude";
+        public static final String LATITUDE = "latitude";
+        public static final String POSITON = "position";
+        public static final String START_END_POINTS = "startEndPoints";
     }
 
     class VehicleStatus{

@@ -9,6 +9,24 @@ var Trail = (function () {
                 center: [120.111691,30.219249],
                 zoom:6
             })
+            AMapUI.loadUI(['control/BasicControl'], function(BasicControl) {
+
+                //添加一个缩放控件
+                map.addControl(new BasicControl.Zoom({
+                    position: 'lt'
+                }));
+
+                //缩放控件，显示Zoom值
+                map.addControl(new BasicControl.Zoom({
+                    position: 'lb',
+                    showZoomNum: true
+                }));
+
+                //图层切换控件
+                map.addControl(new BasicControl.LayerSwitcher({
+                    position: 'rt'
+                }));
+            });
 
             $(".form_datetime").datetimepicker({
                 minView: "hour",
@@ -43,6 +61,47 @@ var Trail = (function () {
             });
 
         },
+        genPoints : function (point, map, info, iconText, shapeColor) {
+            AMapUI.loadUI(['overlay/SvgMarker'], function(SvgMarker) {
+                if (!SvgMarker.supportSvg) {
+                    //当前环境并不支持SVG，此时SvgMarker会回退到父类，即SimpleMarker
+                    alert('当前环境不支持SVG');
+                }
+                //创建shape
+                var shape = new SvgMarker.Shape['WaterDrop']({
+                    height: 24,
+                    strokeWidth: 1,
+                    strokeColor: '#ccc',
+                    fillColor: shapeColor
+                });
+                var labelCenter = shape.getCenter();
+
+                var lnglat = [];
+                lnglat.push(point.longitude)
+                lnglat.push(point.latitude)
+                var marker = new SvgMarker(
+                    shape, {
+                        map: map,
+                        position: lnglat,
+                        containerClassNames: 'shape-WaterDrop',
+                        iconLabel: {
+                            innerHTML: String.fromCharCode(iconText.charCodeAt(0)),
+                            style: {
+                                top: labelCenter[1] - 9 + 'px'
+                            }
+                        },
+                        showPositionPoint: true
+                    });
+
+                var infoWindow = new AMap.InfoWindow({content: info.join("<br>")});
+                marker.content = info.join("<br>");
+                marker.on('click', markerClick);
+                function markerClick(e) {
+                    infoWindow.setContent(e.target.content);
+                    infoWindow.open(map, e.target.getPosition());
+                }
+            })
+        },
         getTrail:function (url,data,map) {
             $.ajax({
                 url : url,
@@ -53,11 +112,29 @@ var Trail = (function () {
                 },
                 success : function(response){
                     if (response.success){
-                        // console.log(response);
                         map = new AMap.Map('map-content',{
                             center: [120.198487,30.785582],
                             zoom:13
                         })
+
+                        AMapUI.loadUI(['control/BasicControl'], function(BasicControl) {
+
+                            //添加一个缩放控件
+                            map.addControl(new BasicControl.Zoom({
+                                position: 'lt'
+                            }));
+
+                            //缩放控件，显示Zoom值
+                            map.addControl(new BasicControl.Zoom({
+                                position: 'lb',
+                                showZoomNum: true
+                            }));
+
+                            //图层切换控件
+                            map.addControl(new BasicControl.LayerSwitcher({
+                                position: 'rt'
+                            }));
+                        });
 
                         AMapUI.load(['ui/misc/PathSimplifier', 'lib/$'], function(PathSimplifier, $) {
                             if (!PathSimplifier.supportCanvas) {
@@ -97,14 +174,14 @@ var Trail = (function () {
                             }
 
                             pathSimplifierIns.setData([{
-                                name: "test",
+                                name: "轨迹",
                                 path: trails
                             }]);
 
                             //对第一条线路（即索引 0）创建一个巡航器
                             var navg1 = pathSimplifierIns.createPathNavigator(0, {
-                                loop: false, //循环播放
-                                speed: 1000 //巡航速度，单位千米/小时
+                                loop: true, //循环播放
+                                speed: 5000 //巡航速度，单位千米/小时
                             });
 
                             navg1.start();
@@ -115,61 +192,36 @@ var Trail = (function () {
                                 //当前环境并不支持SVG，此时SvgMarker会回退到父类，即SimpleMarker
                                 alert('当前环境不支持SVG');
                             }
-                            var points = [[120.306264105903,29.903348253039],[120.310802408855,29.914267306858]]
-                            var colors = [
-                                "#d62728", "#ff9896", "#9467bd", "#c5b0d5", "#8c564b", "#c49c94"
-                            ];
-                            //SvgMarker.Shape下的Shape
-                            var shapeKeys = [
-                                'WaterDrop'
-                            ];
-                            for (var c = 0; c < points.length; c++) {
-
-                                //var x = startX + (c - colNum / 2) * 70;
-                                // var y = startY + 50 + (0 - rowNum / 2) * 80;
-                                //alert('x: ' + x + ' ,y: ' + y)
-                                //创建shape
-                                var shape = new SvgMarker.Shape[shapeKeys[0]]({
-                                    height: 24 * (1 + c * 0.3),
-                                    strokeWidth: 1,
-                                    strokeColor: '#ccc',
-                                    fillColor: colors[0]
-                                });
-
-                                var labelCenter = shape.getCenter();
-
-                                //var position = map.pixelToLngLat(new AMap.Pixel(x, y));
-                                //alert(position)
+                            var parkPoints = response.data.parkerPoints;
+                            for (var c = 0; c < parkPoints.length; c++) {
+                                var point = parkPoints[c];
                                 var info = [];
-                                info.push("<div> 停留："+points[c]+"</div>");
-                                info.push("<div> 开始：</div>");
-                                info.push("<div> 结束：</div>");
-                                info.push("<div>地址 : 北京市望京阜通东大街方恒国际中心A座16层</div>");
-                                var infoWindow = new AMap.InfoWindow({content: info.join("<br>")});
-
-                                var marker = new SvgMarker(
-                                    shape, {
-                                        map: map,
-                                        position: points[c],
-                                        containerClassNames: 'shape-' + shapeKeys[0],
-                                        iconLabel: {
-                                            innerHTML: String.fromCharCode('P'.charCodeAt(0)),
-                                            style: {
-                                                top: labelCenter[1] - 9 + 'px'
-                                            }
-                                        },
-                                        showPositionPoint: true
-                                    });
-
-                                marker.content = info.join("<br>");
-                                marker.on('click', markerClick);
-                                marker.emit('click', {target: marker});
-                                function markerClick(e) {
-                                    infoWindow.setContent(e.target.content);
-                                    infoWindow.open(map, e.target.getPosition());
+                                info.push("<div> 停留：" + point.parkTime + "</div>");
+                                info.push("<div> 开始：" + point.beginTime + "</div>");
+                                info.push("<div> 结束：" + point.endTime + "</div>");
+                                info.push("<div>地址：" + point.position + "</div>");
+                                Trail.genPoints(point, map, info, 'P', '#ff7f0e')
+                            }
+                            var startEndPoints = response.data.startEndPoints;
+                            for (var i = 0; i < startEndPoints.length; i++){
+                                var point = startEndPoints[i];
+                                var info = [];
+                                var iconText;
+                                var shapeColor;
+                                var title;
+                                if (i == 0){
+                                    iconText = 'S';
+                                    shapeColor = '#2ca02c';
+                                    title = '起点'
+                                } else {
+                                    iconText = 'D';
+                                    shapeColor = '#d62728';
+                                    title = '终点';
                                 }
-                                map.setFitView();
-
+                                info.push("<div>" + title +  "</div>")
+                                info.push("<div>时间：" + point.beginTime + "</div>");
+                                info.push("<div>地址：" + point.position + "</div>");
+                                Trail.genPoints(point, map, info, iconText, shapeColor)
                             }
                         })
                     }else {
@@ -185,9 +237,24 @@ $(function(){
     var map;
     Trail.init(map);
     $("#trailSearch").click(function () {
+        var isGaode = true;
         var deviceCode = $("#deviceCode").val();
         var startTime = $("#startTime").val() + ":00";
         var endTime = $("#endTime").val() + ":59";
-        Trail.getTrail("getTrail",{deviceCode: deviceCode,startTime: startTime,endTime: endTime},map);
+        var startYear = startTime.split(" ")[0].split("-")[0];
+        var endYear = endTime.split(" ")[0].split("-")[0];
+        var startMonth = startTime.split(" ")[0].split("-")[1];
+        var endMonth = endTime.split(" ")[0].split("-")[1];
+        var startDay = startTime.split(" ")[0].split("-")[2];
+        var endDay = endTime.split(" ")[0].split("-")[2];
+        if (startYear == endYear && startMonth == endMonth && (endDay - startDay == 1)){
+            var endHour = endTime.split(" ")[1].split(":")[0];
+            var endMinute = endTime.split(" ")[1].split(":")[1];
+            if (endHour == 0 && endMinute == 0){
+                endTime = endYear + "-" + endMonth + "-" + startDay + " " + "23:59:59";
+                console.log("endTime: " + endTime)
+            }
+        }
+        Trail.getTrail("getTrail",{deviceCode: deviceCode,startTime: startTime,endTime: endTime,isGaode: isGaode},map);
     })
 })

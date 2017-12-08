@@ -79,11 +79,14 @@
     create_time, vendor_code
     from t_gps_snapshot
   </select>
-  <select id="selectByDeviceCode" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByDeviceCodes" parameterType="java.util.List" resultMap="BaseResultMap">
     select device_code, alarm_status, vehicle_status, lat, lon, height, speed, direction,
     time, mile, oil, speed2, signal_status, bst, io_status, analog, wifi, satellite_num,
     create_time, vendor_code
     from t_gps_snapshot
-    where device_code = #{deviceCode}
+    where device_code in
+    <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+    </foreach>
   </select>
 </mapper>

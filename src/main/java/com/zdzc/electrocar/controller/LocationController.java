@@ -1,17 +1,17 @@
 package com.zdzc.electrocar.controller;
 
-import com.alibaba.fastjson.JSON;
+import com.zdzc.electrocar.common.CommonBusiness;
 import com.zdzc.electrocar.common.Const;
 import com.zdzc.electrocar.dto.GPSDto;
-import com.zdzc.electrocar.dto.GPSNapshotDto;
 import com.zdzc.electrocar.dto.RequestParamDto;
-import com.zdzc.electrocar.entity.GpsSnapshotEntity;
 import com.zdzc.electrocar.service.GpsSnapshotService;
+import com.zdzc.electrocar.service.LocationService;
 import com.zdzc.electrocar.service.TrailService;
+import com.zdzc.electrocar.util.DateUtil;
 import com.zdzc.electrocar.util.JSONResult;
 import com.zdzc.electrocar.util.StatusCode;
-import groovy.util.IFileNameFinder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 
 @Controller
 public class LocationController {
@@ -34,6 +33,12 @@ public class LocationController {
     @Autowired
     private TrailService trailService;
 
+    // 停车间隔
+    @Value("${parkerInterval}")
+    private int parkInterval;
+
+    @Autowired
+    private LocationService locationService;
     /**
      * @Description:默认首页
      * @Author chengwengao
@@ -70,17 +75,24 @@ public class LocationController {
         return "trail";
     }
 
+    @RequestMapping("/baiduTrail")
+    public String baiduTrail(){
+        return "baiduTrail";
+    }
+
     @RequestMapping("/getTrail")
     @ResponseBody
     public JSONResult getTrail(@RequestParam("deviceCode") String deviceCode,
-                         @RequestParam("startTime") String startTime,
-                         @RequestParam("endTime") String endTime){
+                                @RequestParam("startTime") String startTime,
+                                @RequestParam("endTime") String endTime,
+                                @RequestParam("isGaode") Boolean isGaode){
         try {
             RequestParamDto paramDto = new RequestParamDto();
             paramDto.setDeviceCode(deviceCode);
             paramDto.setBeginTime(startTime);
             paramDto.setEndTime(endTime);
             paramDto.setFilterTrails(true);
+            paramDto.setGaode(isGaode);
             JSONResult result = trailService.selectByDeviceCodeAndTime(paramDto);
             if (result != null) {
                 List<GPSDto> dtos = (List<GPSDto>) result.getData();
@@ -88,26 +100,31 @@ public class LocationController {
                     Map<String, Object> data = new HashMap<>();
                     List<double[]> trails = new ArrayList<>();
                     List<Map<String, Object>> parkerPoints = new ArrayList<>();
+                    List<Map<String, Object>> startEndPoints = new ArrayList<>();
                     for (int i = 0; i < dtos.size(); i++){
                         GPSDto gpsDto = dtos.get(i);
-                        if (!Const.VehicleStatus.INVALID_POSITON.equals(gpsDto.getVehicleStatus())) {
-                            double[] trail = {gpsDto.getOlng(), gpsDto.getOlat()};
-                            trails.add(trail);
-                        }
+                        double[] trail = {gpsDto.getOlng(), gpsDto.getOlat()};
+                        trails.add(trail);
                         if (i > 0){
-                            GPSDto dtoBefore = dtos.get(i-1);
-                            long parkerTime = gpsDto.getTime().getTime() - dtoBefore.getTime().getTime();
-                            if (parkerTime > 600000){
-                                Map<String, Object> parkerPoint = new HashMap<>();
-                                parkerPoint.put("startTime", dtoBefore.getTime());
-                                parkerPoint.put("endTime", gpsDto.getTime());
-                                parkerPoint.put("parkerTime",parkerTime);
-                                parkerPoints.add(parkerPoint);
+                            GPSDto dtoBefore = dtos.get(i - 1);
+                            long parkTime = gpsDto.getTime().getTime() - dtoBefore.getTime().getTime();
+                            if (parkTime > parkInterval){
+                                Map<String, Object> parkPoint = locationService.genParkPoint(dtoBefore, gpsDto, parkTime);
+                                parkerPoints.add(parkPoint);
                             }
                         }
+                        if (i == 0 || i == dtos.size() - 1){//获取起点和终点的信息
+                            Map<String, Object> startEndPoint = new HashMap<>();
+                            startEndPoint.put(Const.Fields.BEGIN_TIME, gpsDto.getTime());
+                            startEndPoint.put(Const.Fields.POSITON, CommonBusiness.getGaodeLocation(gpsDto.getOlng(), gpsDto.getOlat()));
+                            startEndPoint.put(Const.Fields.LONGITUDE, gpsDto.getOlng());
+                            startEndPoint.put(Const.Fields.LATITUDE, gpsDto.getOlat());
+                            startEndPoints.add(startEndPoint);
+                        }
                     }
-                    data.put("trails", trails);
-                    data.put("parkerPoints", parkerPoints);
+                    data.put(Const.Fields.TRAILS, trails);
+                    data.put(Const.Fields.PARKER_POINTS, parkerPoints);
+                    data.put(Const.Fields.START_END_POINTS, startEndPoints);
                     result.setData(data);
                     return result;
                 }else {

@@ -11,8 +11,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 /**
  * Created by Administrator on 2017/11/20 0020.
  */
-@Configuration
-@EnableAsync
+//@Configuration
+//@EnableAsync
 public class ExecutorConfig {
     /** Set the ThreadPoolExecutor's core pool size. */
     private int corePoolSize = 10;
