@@ -9,10 +9,7 @@ import com.zdzc.electrocar.dto.RequestParamDto;
 import com.zdzc.electrocar.entity.*;
 import com.zdzc.electrocar.mapper.TrailMapper;
 import com.zdzc.electrocar.service.*;
-import com.zdzc.electrocar.util.Command;
-import com.zdzc.electrocar.util.JSONResult;
-import com.zdzc.electrocar.util.StatusCode;
-import com.zdzc.electrocar.util.StringUtil;
+import com.zdzc.electrocar.util.*;
 import org.apache.commons.lang3.StringUtils;
 import org.dozer.Mapper;
 import org.mybatis.spring.annotation.MapperScan;
@@ -199,12 +196,10 @@ public class GPSController {
                                        HttpServletRequest request){
         JSONResult jsonResult = Const.Public.JSON_RESULT;
         try {
-//            if (Authentication.validateToken(paramDto.getToken())) {
-                paramDto.setGaode(true);
-                return trailService.selectByDeviceCodeAndTime(paramDto);
-//            }else {
-//                return JSONResult.getResult(jsonResult,false, StatusCode.ACCESS_DENIED, Const.Public.TOKEN_ERROR);
-//            }
+            paramDto.setBeginTime(DateUtil.transformDateTimeStr(paramDto.getBeginTime()));
+            paramDto.setEndTime(DateUtil.transformDateTimeStr(paramDto.getEndTime()));
+            paramDto.setGaode(true);
+            return trailService.selectByDeviceCodeAndTime(paramDto);
         }catch (Exception e){
             log.error(e.getMessage());
             e.printStackTrace();

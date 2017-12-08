@@ -69,5 +69,20 @@ public class DateUtil {
         return false;
     }
 
+    /**
+     * 把 YYyy-MM-dd HH:mm:ss 的时间格式转化成 yyMMddHHmmss
+     * @param date
+     * @return
+     */
+    public static String transformDateTimeStr(String date){
+        StringBuilder dateStr = new StringBuilder();
+        if (!StringUtils.isEmpty(date)){
+            String[] ymd = date.split(" ")[0].split("-");
+            String[] hms = date.split(" ")[1].split(":");
+            return dateStr.append(ymd[0]).append(ymd[1]).append(ymd[2]).append(hms[0]).append(hms[1]).append(hms[2]).toString().substring(2);
+        }
+        return dateStr.toString();
+    }
+
 
 }
