@@ -17,5 +17,5 @@ public interface AlarmService {
 
     JSONResult getAlarmsByDeviceCodeAndTimeAndAlarmType(RequestParamDto paramDto) throws Exception;
 
-    List<AlarmDto> copyAlarmsEntityToDto(List<AlarmsEntity> alarms);
+    List<AlarmDto> copyAlarmsEntityToDto(List<AlarmsEntity> alarms) throws Exception;
 }

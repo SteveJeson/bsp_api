@@ -86,7 +86,7 @@ public class TrailServiceImpl implements TrailService {
     }
 
     @Override
-    public List<GPSDto> copyTrailToGPSDto(List<TrailEntity> trails, Boolean filterTrails, Boolean isGaode) {
+    public List<GPSDto> copyTrailToGPSDto(List<TrailEntity> trails, Boolean filterTrails, Boolean isGaode) throws Exception{
         if (!CollectionUtils.isEmpty(trails)){
             List<GPSDto> dtos = new ArrayList<>();
             for (TrailEntity trail : trails){
@@ -107,7 +107,7 @@ public class TrailServiceImpl implements TrailService {
                         }
                         dto.setOlng(lon != 0 ? gps[0] : lon);
                         dto.setOlat(lat != 0 ? gps[1] : lat);
-                        dto.setTime(new Date(trail.getTime() * 1000));
+                        dto.setTime(DateUtil.transDateTimeStrToDate(String.valueOf(trail.getTime())));
                         dto.setSpeed(trail.getSpeed());
                         dto.setVehicleStatus(trail.getVehicleStatus());
                         dto.setAccStatus(CommonBusiness.getAccStatus(trail.getAlarmStatus()));

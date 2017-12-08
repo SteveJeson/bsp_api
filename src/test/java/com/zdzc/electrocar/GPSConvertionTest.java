@@ -2,6 +2,7 @@ package com.zdzc.electrocar;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.zdzc.electrocar.common.Const;
 import com.zdzc.electrocar.util.ByteUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
@@ -15,6 +16,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 
@@ -60,7 +62,18 @@ public class GPSConvertionTest {
 //        gps[1] = Double.valueOf(strArr[1]);
 //        System.out.println(gps[0]);
 //        System.out.println(gps[1]);
-        String aa = "171207180059";
-        System.out.println(aa.substring(4,6).substring(1));
+        String dateTimeStr = "171208171510";
+        SimpleDateFormat sdf = new SimpleDateFormat(Const.Date.Y_M_D_HMS);
+        StringBuilder sb = new StringBuilder();
+        String date = sb.append("20").append(dateTimeStr.substring(0, 2)).append("-").append(dateTimeStr.substring(2, 4))
+                .append("-").append(dateTimeStr.substring(4, 6)).append(" ").append(dateTimeStr.substring(6, 8)).append(":")
+                .append(dateTimeStr.substring(8, 10)).append(":").append(dateTimeStr.substring(10, 12)).toString();
+        System.out.println(date);
+        try {
+            System.out.println(sdf.parse(date));
+        }catch (Exception e){
+
+        }
+
     }
 }

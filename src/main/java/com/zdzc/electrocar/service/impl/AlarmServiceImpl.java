@@ -124,7 +124,7 @@ public class AlarmServiceImpl implements AlarmService {
     }
 
     @Override
-    public List<AlarmDto> copyAlarmsEntityToDto(List<AlarmsEntity> alarms) {
+    public List<AlarmDto> copyAlarmsEntityToDto(List<AlarmsEntity> alarms) throws Exception{
         if (!CollectionUtils.isEmpty(alarms)) {
             List<AlarmDto> dtos = new ArrayList<>(alarms.size());
             for (int i = 0;i < alarms.size();i++) {
@@ -139,7 +139,7 @@ public class AlarmServiceImpl implements AlarmService {
                 dto.setLongitude(entity.getLon());
                 dto.setLatitude(entity.getLat());
                 dto.setSpeed(entity.getSpeed());
-                dto.setTime(new Date (entity.getTime() * 1000));
+                dto.setTime(DateUtil.transDateTimeStrToDate(String.valueOf(entity.getTime())));
                 dto.setVendor(StringUtils.isEmpty(entity.getVendorCode())?0:Integer.valueOf(entity.getVendorCode()));
                 dtos.add(dto);
             }

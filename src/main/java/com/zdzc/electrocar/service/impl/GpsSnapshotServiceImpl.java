@@ -7,6 +7,7 @@ import com.zdzc.electrocar.entity.GpsSnapshotEntity;
 import com.zdzc.electrocar.mapper.GpsMainEntityMapper;
 import com.zdzc.electrocar.mapper.GpsSnapshotEntityMapper;
 import com.zdzc.electrocar.service.GpsSnapshotService;
+import com.zdzc.electrocar.util.DateUtil;
 import com.zdzc.electrocar.util.GPSConvertion;
 import com.zdzc.electrocar.util.JSONResult;
 import com.zdzc.electrocar.util.StatusCode;
@@ -24,7 +25,7 @@ public class GpsSnapshotServiceImpl implements GpsSnapshotService {
     private GpsSnapshotEntityMapper snapshotMapper;
 
     @Override
-    public JSONResult selectByDeviceCode(String deviceCode) {
+    public JSONResult selectByDeviceCode(String deviceCode) throws Exception{
         JSONResult jsonResult = Const.Public.JSON_RESULT;
         if (!StringUtils.isEmpty(deviceCode)){
             GpsSnapshotEntity snapshotEntity= snapshotMapper.selectByPrimaryKey(deviceCode);
@@ -38,7 +39,7 @@ public class GpsSnapshotServiceImpl implements GpsSnapshotService {
     }
 
     @Override
-    public JSONResult selectByDeviceCodes(List<String> deviceCodes) {
+    public JSONResult selectByDeviceCodes(List<String> deviceCodes) throws Exception {
         JSONResult jsonResult = Const.Public.JSON_RESULT;
         if (!CollectionUtils.isEmpty(deviceCodes)){
             List<GpsSnapshotEntity> snapshotEntityList = snapshotMapper.selectByDeviceCodes(deviceCodes);
@@ -56,7 +57,7 @@ public class GpsSnapshotServiceImpl implements GpsSnapshotService {
     }
 
     @Override
-    public GPSNapshotDto copySnapshotToDto(GpsSnapshotEntity snapshotEntity) {
+    public GPSNapshotDto copySnapshotToDto(GpsSnapshotEntity snapshotEntity) throws Exception{
         if (snapshotEntity != null){
             GPSNapshotDto dto = new GPSNapshotDto();
             dto.setDeviceId(snapshotEntity.getDeviceCode());//终端设备号
@@ -70,7 +71,7 @@ public class GpsSnapshotServiceImpl implements GpsSnapshotService {
             dto.setOlng(lon!=0?gps[0]:lon);
             dto.setOlat(lat!=0?gps[1]:lat);
 
-            dto.setTime(new Date(snapshotEntity.getTime()*1000));//采集时间
+            dto.setTime(DateUtil.transDateTimeStrToDate(String.valueOf(snapshotEntity.getTime())));//采集时间
             dto.setSpeed(snapshotEntity.getSpeed());//速度
             dto.setOnline("1");//在线状态，默认为1
             dto.setMile(snapshotEntity.getMile());

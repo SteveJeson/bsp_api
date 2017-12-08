@@ -16,8 +16,8 @@ public class GPSControllerTest {
 
     @Test
     public void getSnapshot(){
-        JSONResult jsonResult = snapshotService.selectByDeviceCode("917090500013");
-        System.out.println(jsonResult.getStatusCode());
-        System.out.println(jsonResult.getMessage());
+////        JSONResult jsonResult = snapshotService.selectByDeviceCode("917090500013");
+//        System.out.println(jsonResult.getStatusCode());
+//        System.out.println(jsonResult.getMessage());
     }
 }

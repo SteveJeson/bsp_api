@@ -2,7 +2,9 @@ package com.zdzc.electrocar.util;
 
 import com.zdzc.electrocar.common.Const;
 import org.springframework.util.StringUtils;
+import sun.java2d.pipe.SpanShapeRenderer;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -81,6 +83,24 @@ public class DateUtil {
             return dateStr.append(ymd[0]).append(ymd[1]).append(ymd[2]).append(hms[0]).append(hms[1]).append(hms[2]).toString().substring(2);
         }
         return dateStr.toString();
+    }
+
+    /**
+     * 把 yyMMddHHmmss 格式的字符串转化成 date 实体
+     * @param dateTimeStr
+     * @return
+     */
+    public static Date transDateTimeStrToDate(String dateTimeStr) throws Exception{
+        if (!StringUtils.isEmpty(dateTimeStr) && dateTimeStr.length() >= 12) {
+            SimpleDateFormat sdf = new SimpleDateFormat(Const.Date.Y_M_D_HMS);
+            StringBuilder sb = new StringBuilder();
+            String date = sb.append("20").append(dateTimeStr.substring(0, 2)).append("-").append(dateTimeStr.substring(2, 4))
+                    .append("-").append(dateTimeStr.substring(4, 6)).append(" ").append(dateTimeStr.substring(6, 8)).append(":")
+                    .append(dateTimeStr.substring(8, 10)).append(":").append(dateTimeStr.substring(10, 12)).toString();
+            return sdf.parse(date);
+        }
+
+        return new Date();
     }
 
 
