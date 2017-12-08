@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
+<head>
+    <title>数据备份还原页面</title>
+</head>
+<script th:src="@{/websocket/jquery.js}"></script>
+<body>
+<div th:if="${param.error}">
+    无效的账号和密码
+</div>
+<div th:if="${param.logout}">
+    你已注销
+</div>
+<!--todo:源文件改为文件选择控件获取-->
+<form enctype="multipart/form-data" method="post" action="/dataClear/dbRevert">
+    <div><label> 数据库主机名 : <input type="text" name="hostName" value="127.0.0.1"/> </label></div>
+    <div><label> 数据库用户名: <input type="text" name="username" value="root" /> </label></div>
+    <div><label> 数据库密码: <input type="password" name="passwd" value="123456" /> </label></div>
+    <div><label> 数据库名: <input type="text" name="databaseName" value="gps_main1" /> </label></div>
+    <div><label> 文件路径: <input type="file" name="file" /> </label></div>
+    <div><input type="submit" id="revert" value="还原"/></div>
+</form>
+</body>
+<script th:inline="javascript">
+</script>
+</html>
