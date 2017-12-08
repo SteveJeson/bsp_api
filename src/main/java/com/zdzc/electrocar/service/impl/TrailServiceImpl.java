@@ -49,7 +49,7 @@ public class TrailServiceImpl implements TrailService {
             if (mainEntity != null){
                 Map<String, Object> param = new HashMap<>();
                 param.put(Const.Fields.DEVICE_CODE, paramDto.getDeviceCode());
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Const.Date.Y_M_D_HMS);
+//                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Const.Date.Y_M_D_HMS);
                 String startTime = paramDto.getBeginTime();
                 String endTime = paramDto.getEndTime();
                 param.put(Const.Fields.BEGIN_TIME, startTime);

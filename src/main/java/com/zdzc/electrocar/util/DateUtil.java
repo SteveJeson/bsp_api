@@ -61,10 +61,9 @@ public class DateUtil {
     }
 
 
-    public static boolean isSameMonth(Date startTime, Date endTime){
-        if (startTime != null && endTime != null){
-            return DateUtil.getYear(startTime) == DateUtil.getYear(endTime) &&
-                    DateUtil.getMonth(startTime) == DateUtil.getMonth(endTime);
+    public static boolean isSameMonth(String startTime, String endTime){
+        if (!StringUtils.isEmpty(startTime) && !StringUtils.isEmpty(endTime) && startTime.length() > 6 && endTime.length() > 6){
+            return startTime.substring(0,2).equals(endTime.substring(0,2)) && startTime.substring(2,4).equals(endTime.substring(2,4));
         }
         return false;
     }

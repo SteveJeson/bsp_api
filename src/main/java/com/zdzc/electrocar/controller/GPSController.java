@@ -214,6 +214,8 @@ public class GPSController {
         JSONResult jsonResult = Const.Public.JSON_RESULT;
         try {
 //            if (Authentication.validateToken(paramDto.getToken())) {
+                paramDto.setBeginTime(DateUtil.transformDateTimeStr(paramDto.getBeginTime()));
+                paramDto.setEndTime(DateUtil.transformDateTimeStr(paramDto.getEndTime()));
                 return alarmService.getAlarmsByDeviceCodeAndTimeAndAlarmType(paramDto);
 //            }else {
 //                return JSONResult.getResult(jsonResult,false, StatusCode.ACCESS_DENIED, Const.Public.TOKEN_ERROR);

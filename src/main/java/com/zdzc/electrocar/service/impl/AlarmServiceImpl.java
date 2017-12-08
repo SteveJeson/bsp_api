@@ -89,17 +89,19 @@ public class AlarmServiceImpl implements AlarmService {
             if (mainEntity != null){
                 Map<String, Object> param = new HashMap<>();
                 param.put(Const.Fields.DEVICE_CODE, paramDto.getDeviceCode());
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Const.Date.Y_M_D_HMS);
-                param.put(Const.Fields.BEGIN_TIME, simpleDateFormat.parse(paramDto.getBeginTime()).getTime() / 1000);
-                param.put(Const.Fields.END_TIME, simpleDateFormat.parse(paramDto.getEndTime()).getTime() / 1000);
+//                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Const.Date.Y_M_D_HMS);
+                String startTime = paramDto.getBeginTime();
+                String endTime = paramDto.getEndTime();
+                param.put(Const.Fields.BEGIN_TIME, startTime);
+                param.put(Const.Fields.END_TIME, endTime);
                 param.put(Const.Fields.ALARM_HANDLE, paramDto.getAlarmHandle());
                 Integer alarmSeqNo = mainEntity.getAlarmSeqNo();
                 String dbName = CommonBusiness.getAlarmDbName(alarmSeqNo);
                 if (!StringUtil.isEmpty(dbName)) {
                     param.put(Const.DateBase.DB_NAME, dbName);
                     // 判断查询区间是否在同一月内
-                    Date startTime = simpleDateFormat.parse(paramDto.getBeginTime());
-                    Date endTime = simpleDateFormat.parse(paramDto.getEndTime());
+//                    Date startTime = simpleDateFormat.parse(paramDto.getBeginTime());
+//                    Date endTime = simpleDateFormat.parse(paramDto.getEndTime());
                     if (DateUtil.isSameMonth(startTime, endTime)){
                         String tableName = CommonBusiness.getAlarmTableName(alarmSeqNo, startTime);
                         if (!StringUtil.isEmpty(tableName)) {

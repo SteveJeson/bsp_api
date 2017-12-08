@@ -221,13 +221,17 @@ public class CommonBusiness {
      * @param date         查询日期
      * @return
      */
-    public static String getAlarmTableName(Integer seqNo, Date date){
+    public static String getAlarmTableName(Integer seqNo, String date){
         String seqNoStr = seqNo + "";
         try {
             int length = seqNoStr.length();
+            String month = date.substring(2,4);
+            if (month.startsWith("0")){
+                month = month.substring(1);
+            }
             if (length >= 7){
                 int tabNo = Integer.valueOf(seqNoStr.substring(length - 7, length));
-                return Const.DateBase.ALARM_TABLE_PREFIX + getMonth(DateUtil.getMonth(date)) + "_" + getAlarmTableNo(tabNo);
+                return Const.DateBase.ALARM_TABLE_PREFIX + getMonth(Integer.valueOf(month)) + "_" + getAlarmTableNo(tabNo);
             }
         }catch (Exception e){
             e.printStackTrace();
