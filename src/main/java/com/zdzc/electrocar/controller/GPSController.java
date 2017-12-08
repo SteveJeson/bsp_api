@@ -200,6 +200,7 @@ public class GPSController {
         JSONResult jsonResult = Const.Public.JSON_RESULT;
         try {
 //            if (Authentication.validateToken(paramDto.getToken())) {
+                paramDto.setGaode(true);
                 return trailService.selectByDeviceCodeAndTime(paramDto);
 //            }else {
 //                return JSONResult.getResult(jsonResult,false, StatusCode.ACCESS_DENIED, Const.Public.TOKEN_ERROR);

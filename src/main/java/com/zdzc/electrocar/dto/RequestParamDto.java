@@ -24,6 +24,8 @@ public class RequestParamDto implements Serializable{
 
     private Boolean filterTrails;
 
+    private Boolean isGaode;
+
     public String getDeviceCode() {
         return deviceCode;
     }
@@ -86,5 +88,13 @@ public class RequestParamDto implements Serializable{
 
     public void setFilterTrails(Boolean filterTrails) {
         this.filterTrails = filterTrails;
+    }
+
+    public Boolean getGaode() {
+        return isGaode;
+    }
+
+    public void setGaode(Boolean gaode) {
+        isGaode = gaode;
     }
 }

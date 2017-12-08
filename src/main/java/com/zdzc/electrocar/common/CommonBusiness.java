@@ -1,5 +1,6 @@
 package com.zdzc.electrocar.common;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.zdzc.electrocar.util.ByteUtil;
 import com.zdzc.electrocar.util.DateUtil;
@@ -81,6 +82,46 @@ public class CommonBusiness {
         String[] strArr = StringUtils.split(loc,",");
         gps[0] = Double.valueOf(strArr[0]);
         gps[1] = Double.valueOf(strArr[1]);
+        return gps;
+    }
+
+    /**
+     * 获取百度地图GPS坐标
+     * @param lng
+     * @param lat
+     * @return
+     */
+    public static double[] getBaiduGPS(double lng,double lat) {
+        double[] gps = new double[2];
+        String locations = String.valueOf(lng)+","+String.valueOf(lat);
+        String key = "FnobWp9rTBylcNitkgoWWEmEnqcKQlGL";//百度地图API KEY
+        //高德地图API URL
+        String httpUrl = "http://api.map.baidu.com/geoconv/v1/?coords="+locations
+                +"&from=1&to=5&ak="+key;
+        BufferedReader br = null;
+        String result = "";
+        try {
+            URL url = new URL(httpUrl);
+            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+            br = new BufferedReader(new InputStreamReader(connection.getInputStream(),"UTF-8"));
+            String line;
+            while ((line = br.readLine()) != null) {
+                result += line;
+            }
+            br.close();
+        } catch (MalformedURLException e) {
+            log.error("=========MalformedURLException 百度地图API URL解析错误！==========");
+        } catch (IOException e) {
+            log.error("=========IOException 百度地图API URL IO异常！");
+        }
+        //将返回的字符串数据转为JSON对象
+        JSONObject jsonObject = JSONObject.parseObject(result);
+        JSONArray location = jsonObject.getJSONArray("result");
+        JSONObject loca = location.getJSONObject(0);
+        String x = loca.getString("x");
+        String y = loca.getString("y");
+        gps[0] = Double.valueOf(x);
+        gps[1] = Double.valueOf(y);
         return gps;
     }
 

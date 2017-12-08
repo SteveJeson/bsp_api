@@ -75,17 +75,24 @@ public class LocationController {
         return "trail";
     }
 
+    @RequestMapping("/baiduTrail")
+    public String baiduTrail(){
+        return "baiduTrail";
+    }
+
     @RequestMapping("/getTrail")
     @ResponseBody
     public JSONResult getTrail(@RequestParam("deviceCode") String deviceCode,
-                         @RequestParam("startTime") String startTime,
-                         @RequestParam("endTime") String endTime){
+                                @RequestParam("startTime") String startTime,
+                                @RequestParam("endTime") String endTime,
+                                @RequestParam("isGaode") Boolean isGaode){
         try {
             RequestParamDto paramDto = new RequestParamDto();
             paramDto.setDeviceCode(deviceCode);
             paramDto.setBeginTime(startTime);
             paramDto.setEndTime(endTime);
             paramDto.setFilterTrails(true);
+            paramDto.setGaode(isGaode);
             JSONResult result = trailService.selectByDeviceCodeAndTime(paramDto);
             if (result != null) {
                 List<GPSDto> dtos = (List<GPSDto>) result.getData();

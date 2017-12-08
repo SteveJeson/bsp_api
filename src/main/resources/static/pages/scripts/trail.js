@@ -237,6 +237,7 @@ $(function(){
     var map;
     Trail.init(map);
     $("#trailSearch").click(function () {
+        var isGaode = true;
         var deviceCode = $("#deviceCode").val();
         var startTime = $("#startTime").val() + ":00";
         var endTime = $("#endTime").val() + ":59";
@@ -254,6 +255,6 @@ $(function(){
                 console.log("endTime: " + endTime)
             }
         }
-        Trail.getTrail("getTrail",{deviceCode: deviceCode,startTime: startTime,endTime: endTime},map);
+        Trail.getTrail("getTrail",{deviceCode: deviceCode,startTime: startTime,endTime: endTime,isGaode: isGaode},map);
     })
 })

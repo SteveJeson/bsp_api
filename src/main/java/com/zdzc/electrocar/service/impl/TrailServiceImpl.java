@@ -69,7 +69,7 @@ public class TrailServiceImpl implements TrailService {
                             Page<TrailEntity> pageInfo = trailMapper.selectByDeviceCodeAndTime(param);
                             List<TrailEntity> trails = pageInfo.getResult();
                             if (!CollectionUtils.isEmpty(trails)){
-                                List<GPSDto> dtos = copyTrailToGPSDto(trails,paramDto.getFilterTrails());
+                                List<GPSDto> dtos = copyTrailToGPSDto(trails, paramDto.getFilterTrails(), paramDto.getGaode());
                                 jsonResult.setData(dtos);
                                 return JSONResult.getResult(jsonResult, true, StatusCode.OK, Const.Public.SUCCESS);
                             }
@@ -84,7 +84,7 @@ public class TrailServiceImpl implements TrailService {
     }
 
     @Override
-    public List<GPSDto> copyTrailToGPSDto(List<TrailEntity> trails, Boolean filterTrails) {
+    public List<GPSDto> copyTrailToGPSDto(List<TrailEntity> trails, Boolean filterTrails, Boolean isGaode) {
         if (!CollectionUtils.isEmpty(trails)){
             List<GPSDto> dtos = new ArrayList<>();
             for (TrailEntity trail : trails){
@@ -97,8 +97,12 @@ public class TrailServiceImpl implements TrailService {
                         dto.setLat(lat);
                         dto.setLng(lon);
                         //转化成高德经纬度
-//                    double[] gps = CommonBusiness.getGaodeGPS(lon,lat);
-                        double[] gps = GPSConvertion.gps84_to_gcj02(lon, lat);
+                        double[] gps;
+                        if (isGaode){
+                            gps = GPSConvertion.gps84_to_gcj02(lon, lat);
+                        }else {
+                            gps = CommonBusiness.getBaiduGPS(lon, lat);
+                        }
                         dto.setOlng(lon != 0 ? gps[0] : lon);
                         dto.setOlat(lat != 0 ? gps[1] : lat);
                         dto.setTime(new Date(trail.getTime() * 1000));

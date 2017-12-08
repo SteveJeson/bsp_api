@@ -36,6 +36,7 @@
 <!--<script th:src="@{/js/welcome.js}"></script>-->
 <!--<script th:src="@{/boot/jquery-3.2.1.min.js}"></script>-->
 <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.1&amp;key=04eeb6c5dc64dc1b3f59456a326cd23b"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=D2b4558ebed15e52558c6a766c35ee73"></script>
 <script src="//webapi.amap.com/ui/1.0/main.js?v=1.0.11"></script>
 <!--<body>-->
 <!--<div id="top">aaa<button id="trails" name="显示轨迹" onclick="getTrails()"></button> </div>-->
@@ -63,7 +64,10 @@
                                 <a href="#!position" class="nav-link">实时位置</a>
                             </li>
                             <li>
-                                <a href="#!trail">历史轨迹</a>
+                            <a href="#!trail">历史轨迹</a>
+                        </li>
+                            <li>
+                                <a href="#!baiduTrail">历史轨迹-百度</a>
                             </li>
                         </ul>
                     </li>
