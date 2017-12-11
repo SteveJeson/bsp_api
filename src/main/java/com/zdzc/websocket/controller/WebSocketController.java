@@ -1,6 +1,7 @@
 package com.zdzc.websocket.controller;
 
 
+import com.zdzc.dataClear.entity.DataConst;
 import com.zdzc.dataClear.entity.SeqNoAttr;
 import com.zdzc.dataClear.service.DataClearService;
 import com.zdzc.dataClear.util.DataHandle;
@@ -32,11 +33,6 @@ import java.util.Date;
 public class WebSocketController {
 
     private static final Logger log = Logger.getLogger(WebSocketController.class);
-
-    private final int PUSH_INTERVAL = 1000*60*60*12;   //推送时间间隔，单位毫秒
-//    private final int PUSH_INTERVAL = 3000;   //推送时间间隔，单位毫秒
-    private final String TRAINCOLNAME = "trail_seq_no"; //轨迹序列号列名
-    private final String ALARMCOLNAME = "alarm_seq_no"; //报警序列号列名
 
     @Autowired
     private WebSocketService ws;
@@ -97,8 +93,8 @@ public class WebSocketController {
 
                 try {
                     sb = sb.delete(0, sb.length());     //清空字符串
-                    seqNoAttr_trail = dataClearService.pushAlarm(TRAINCOLNAME);
-                    seqNoAttr_alarm = dataClearService.pushAlarm(ALARMCOLNAME);
+                    seqNoAttr_trail = dataClearService.pushAlarm(DataConst.TRAINCOLNAME);
+                    seqNoAttr_alarm = dataClearService.pushAlarm(DataConst.ALARMCOLNAME);
                     sb.append(sdf.format(new Date()) + "\t" + principal.getName() + "推送:");
                     if (DataHandle.isNotEmpty(seqNoAttr_trail.getMsg())){
                         sb.append("<font color='red'>[位置]" + seqNoAttr_trail.getMsg()).append("</font>\t");
@@ -128,7 +124,7 @@ public class WebSocketController {
                     if (i > 1){
                         break;
                     }else{
-                        Thread.sleep(PUSH_INTERVAL);
+                        Thread.sleep(DataConst.PUSH_INTERVAL);
 
                     }
                 } catch (InterruptedException e) {

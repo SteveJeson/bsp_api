@@ -21,7 +21,6 @@ public class DataHandle {
 
     private static final Logger log = Logger.getLogger(DataHandle.class);
 
-    private static final String TRAINCOLNAME = "trail_seq_no"; //轨迹序列号列名
     /**
      * 往前推3个月，减去指定天数（3,1）
      当前时间：2018年5月30
@@ -66,7 +65,7 @@ public class DataHandle {
         String tabPrefix = null;
         MonthDay monthDay = divideTime(divMon, divDay);
         if(DataConst.MONTH_MUL_TAB_MAP.containsKey(monthDay.getMon())){
-            if (type.equals(TRAINCOLNAME)){
+            if (type.equals(DataConst.TRAINCOLNAME)){
                 //报警表每天一张表，诸如：t_gps_a3_10
                 tabPrefix = tablePrefix + DataConst.MONTH_MUL_TAB_MAP.get(monthDay.getMon()) + String.valueOf(monthDay.getDay()) + "\\_";
             }else{

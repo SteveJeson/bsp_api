@@ -1,7 +1,5 @@
 package com.zdzc.dataClear.entity;
 
-import java.io.File;
-
 /**
  *  * @Description: 数据库还原相关属性
  *  * @author chengwengao
