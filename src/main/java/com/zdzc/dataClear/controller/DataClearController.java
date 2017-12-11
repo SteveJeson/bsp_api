@@ -2,6 +2,7 @@ package com.zdzc.dataClear.controller;
 
 import com.zdzc.dataClear.entity.DBRevertAttr;
 import com.zdzc.dataClear.util.DataHandle;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +21,22 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 @RequestMapping("/dataClear")
 public class DataClearController {
+
+    //数据库备份相关参数
+    @Value("${dbBackUp.hostName}")
+    private String hostName;
+
+    @Value("${dbBackUp.userName}")
+    private String userName;
+
+    @Value("${dbBackUp.passwd}")
+    private String passwd;
+
+    @Value("${dbBackUp.sourceDbName}")
+    private String sourceDbName;
+
+    @Value("${dbBackUp.destinationPath}")
+    private String destinationPath;
 
     /**
      * @Description:跳转到数据库还原页面
@@ -44,10 +61,14 @@ public class DataClearController {
         return DataHandle.dbRevert(dr.getHostName(), dr.getUsername(), dr.getPasswd(), dr.getDatabaseName(), multipartFile);
     }
 
+    /**
+     * @Description:执行数据库备份
+     * @Author chengwengao
+     * @Date 2017/12/11 0011 17:10
+     */
     @RequestMapping("/dbBackUp")
     @ResponseBody
     public String dbBackUp(){
-        //todo:参数配置化
-        return DataHandle.dbBackup("127.0.0.1", "root", "123456", "gps_main", "F:\\项目备份");
+        return DataHandle.dbBackup(hostName, userName, passwd, sourceDbName, destinationPath);
     }
 }

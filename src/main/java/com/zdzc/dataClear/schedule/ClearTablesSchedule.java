@@ -5,6 +5,7 @@ import com.zdzc.dataClear.service.DataClearService;
 import com.zdzc.dataClear.util.DataHandle;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -26,6 +27,22 @@ import java.util.concurrent.locks.ReentrantLock;
 public class ClearTablesSchedule {
 
     private static final Logger log = Logger.getLogger(ClearTablesSchedule.class);
+
+    //数据库备份相关参数
+    @Value("${dbBackUp.hostName}")
+    private String hostName;
+
+    @Value("${dbBackUp.userName}")
+    private String userName;
+
+    @Value("${dbBackUp.passwd}")
+    private String passwd;
+
+    @Value("${dbBackUp.sourceDbName}")
+    private String sourceDbName;
+
+    @Value("${dbBackUp.destinationPath}")
+    private String destinationPath;
 
     @Autowired
     private DataClearService dataClearService;
@@ -125,7 +142,7 @@ public class ClearTablesSchedule {
         }
     }
 
-    /**todo:参数配置化
+    /**
      * @Description:每天凌晨2点执行main库备份
      * @Author chengwengao
      * @Date 2017/12/7 0007 15:32
@@ -133,6 +150,6 @@ public class ClearTablesSchedule {
 //    @Scheduled(initialDelay=2000, fixedRate=6000*60*60)
     @Scheduled(cron="0 0 2 * * ?")
     public void dbBackup(){
-        DataHandle.dbBackup("127.0.0.1", "root", "123456", "gps_main", "F:\\项目备份");
+        DataHandle.dbBackup(hostName, userName, passwd, sourceDbName, destinationPath);
     }
 }

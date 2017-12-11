@@ -161,6 +161,9 @@ public class DataHandle {
             // 要用来做导入用的sql目标文件：
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String time = sdf.format(new Date());
+            if (!new File(destinatonPath).exists()){
+                new File(destinatonPath).mkdirs();
+            }
             FileOutputStream fout = new FileOutputStream(destinatonPath + "\\" + sourceDbName + time);
             OutputStreamWriter writer = new OutputStreamWriter(fout, "utf-8");
             writer.write(outStr);
