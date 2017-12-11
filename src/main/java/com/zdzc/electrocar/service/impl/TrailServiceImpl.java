@@ -92,8 +92,8 @@ public class TrailServiceImpl implements TrailService {
             for (TrailEntity trail : trails){
                 if (trail != null) {
                     if (!(filterTrails && (trail.getLat().equals(0.0) && trail.getLon().equals(0.0)))) {
-                        double lon = trail.getLon();
-                        double lat = trail.getLat();
+                        double lon = trail.getLon() / 1000000;
+                        double lat = trail.getLat() / 1000000;
                         GPSDto dto = new GPSDto();
                         dto.setDeviceId(trail.getDeviceCode());
                         dto.setLat(lat);
@@ -108,7 +108,7 @@ public class TrailServiceImpl implements TrailService {
                         dto.setOlng(lon != 0 ? gps[0] : lon);
                         dto.setOlat(lat != 0 ? gps[1] : lat);
                         dto.setTime(DateUtil.transDateTimeStrToDate(String.valueOf(trail.getTime())));
-                        dto.setSpeed(trail.getSpeed());
+                        dto.setSpeed(trail.getSpeed() / 10);
                         dto.setVehicleStatus(trail.getVehicleStatus());
                         dto.setAccStatus(CommonBusiness.getAccStatus(trail.getAlarmStatus()));
                         dtos.add(dto);
