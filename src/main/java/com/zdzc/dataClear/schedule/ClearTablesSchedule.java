@@ -60,9 +60,8 @@ public class ClearTablesSchedule {
     @Scheduled(cron="0 0 0 * * ?")
     public void dataClear(){
         System.out.println("当前时间：" + new Date());
-        //todo:控制线程执行顺序
         //轨迹表清理
-        new Thread(new Runnable() {
+        Thread trailThread = new Thread(new Runnable() {
             @Override
             public void run() {
 
@@ -73,10 +72,10 @@ public class ClearTablesSchedule {
                     log.error(e.getMessage(), e.getCause());
                 }
             }
-        }).start();
+        });
 
         //报警表清理
-        new Thread(new Runnable() {
+        Thread alarmThread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -86,7 +85,18 @@ public class ClearTablesSchedule {
                     log.error(e.getMessage(), e.getCause());
                 }
             }
-        }).start();
+        });
+
+        try {
+            //使用join控制线程执行顺序
+            trailThread.start();
+            trailThread.join();
+            alarmThread.start();
+            alarmThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            log.error(e.getMessage(), e.getCause());
+        }
 
     }
 
@@ -95,7 +105,7 @@ public class ClearTablesSchedule {
      * @Author chengwengao
      * @Date 2017/12/5 0005 9:33
      */
-    public void clearTables(String type, String tabPrefix, int divMon, int divDay, String colName, int countPerDB, String dbPrefix, String createOper, String dropOper){
+    public void clearTables(String type, String tabPrefix, int divMon, int divDay, String colName, int countPerDB, String dbPrefix, String createOper, String dropOper) throws Exception{
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Map<String, String> param = new HashMap<String, String>();  //查询参数
         String tablePrefix = DataHandle.getDelTabPrefix(type, tabPrefix, divMon, divDay);    //表前缀
