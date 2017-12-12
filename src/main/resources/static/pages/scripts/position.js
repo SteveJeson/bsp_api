@@ -2,7 +2,8 @@ var Position = (function () {
     return {
         init:function (map) {
             if($(window).height()>$(".all-wrapper").outerHeight(true)){
-                var height=$(window).height()-$(".all-wrapper").outerHeight(true)+$('#map-content').outerHeight();
+                // var height=$(window).height()-$(".all-wrapper").outerHeight(true)+$('#map-content').outerHeight(true);
+                var height = $(window).height() - $(".headtop").height() - $(".copyright").height() - $(".new-bread").height() - $(".list-search").height() - 24
                 $('#map-content').css("min-height",height);
             }
             map = new AMap.Map('map-content',{
@@ -27,7 +28,7 @@ var Position = (function () {
                     position: 'rt'
                 }));
             });
-
+            console.log("all-wrapper: " + $(".all-wrapper").outerHeight(true))
         },
         getPosition:function (url,data,map) {
             $.ajax({

@@ -2,7 +2,7 @@ var Baidu = (function () {
     return {
         init:function (map) {
             if($(window).height()>$(".all-wrapper").outerHeight(true)){
-                var height=$(window).height()-$(".all-wrapper").outerHeight(true)+$('#map-content').outerHeight();
+                var height = $(window).height() - $(".headtop").height() - $(".copyright").height() - $(".new-bread").height() - $(".list-search").height() - 24
                 $('#map-content').css("min-height",height);
             }
             //初始化地图,选取第一个点为起始点
