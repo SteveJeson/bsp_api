@@ -6,31 +6,31 @@ var Position = (function () {
                 var height = $(window).height() - $(".headtop").height() - $(".copyright").height() - $(".new-bread").height() - $(".list-search").height() - 24
                 $('#map-content').css("min-height",height);
             }
-            map = new AMap.Map('map-content',{
-                center: [120.111691,30.219249],
-                zoom:6
-            })
-            AMapUI.loadUI(['control/BasicControl'], function(BasicControl) {
-
-                //添加一个缩放控件
-                map.addControl(new BasicControl.Zoom({
-                    position: 'lt'
-                }));
-
-                //缩放控件，显示Zoom值
-                map.addControl(new BasicControl.Zoom({
-                    position: 'lb',
-                    showZoomNum: true
-                }));
-
-                //图层切换控件
-                map.addControl(new BasicControl.LayerSwitcher({
-                    position: 'rt'
-                }));
-            });
-            console.log("all-wrapper: " + $(".all-wrapper").outerHeight(true))
+            // map = new AMap.Map('map-content',{
+            //     center: [120.111691,30.219249],
+            //     zoom:6
+            // })
+            // AMapUI.loadUI(['control/BasicControl'], function(BasicControl) {
+            //
+            //     //添加一个缩放控件
+            //     map.addControl(new BasicControl.Zoom({
+            //         position: 'lt'
+            //     }));
+            //
+            //     //缩放控件，显示Zoom值
+            //     map.addControl(new BasicControl.Zoom({
+            //         position: 'lb',
+            //         showZoomNum: true
+            //     }));
+            //
+            //     //图层切换控件
+            //     map.addControl(new BasicControl.LayerSwitcher({
+            //         position: 'rt'
+            //     }));
+            // });
         },
         getPosition:function (url,data,map) {
+
             $.ajax({
                 url : url,
                 data : data,
@@ -145,7 +145,10 @@ var Position = (function () {
 })();
 
 $(function(){
-    var map;
+    // var mapContent = document.getElementsById('map-content');
+    // console.log($("#map-content"))
+    $("#map-content").empty();
+    var map = null;
     Position.init(map);
     $("#positionSearch").click(function () {
         var deviceCode = $("#deviceCode").val();

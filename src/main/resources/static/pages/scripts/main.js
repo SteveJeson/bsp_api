@@ -1,6 +1,8 @@
 var Main = (function() {
 	var orgName;
 	return {
+		map : null,
+		baiduMap : null,
 		//平台框架中  各种 dataTable插件实例 都放这里，以便于清除浮动
 		dataTableExamples:{},
 		//破坏掉 dataTable 表格 对象
@@ -138,7 +140,28 @@ var Main = (function() {
 				$.get(url, param,function(data) {
 					// Main.destroyDataTable();
 					$('#main-content').html($.parseHTML( data, true ));
-
+                    // map = new AMap.Map('map-content',{
+                    //     center: [120.111691,30.219249],
+                    //     zoom:6
+                    // })
+                    // AMapUI.loadUI(['control/BasicControl'], function(BasicControl) {
+                    //
+                    //     //添加一个缩放控件
+                    //     map.addControl(new BasicControl.Zoom({
+                    //         position: 'lt'
+                    //     }));
+                    //
+                    //     //缩放控件，显示Zoom值
+                    //     map.addControl(new BasicControl.Zoom({
+                    //         position: 'lb',
+                    //         showZoomNum: true
+                    //     }));
+                    //
+                    //     //图层切换控件
+                    //     map.addControl(new BasicControl.LayerSwitcher({
+                    //         position: 'rt'
+                    //     }));
+                    // });
 					// Main.setMainContentMinHeight();
 				});
 			}
@@ -207,11 +230,70 @@ var Main = (function() {
 				toggleFullScreen();
 			});
 		},
+
 				
 		init: function() {
 			this.handleFullScreenMode();
-            var url = $(".locatemenu").find('li').first().find('a').attr('href').replace("#!","");
-			Main.getMainContent(url);
+            // var url = $(".locatemenu").find('li').first().find('a').attr('href').replace("#!","");
+			// Main.getMainContent(url);
+            if($(window).height()>$(".all-wrapper").outerHeight(true)){
+                // var height=$(window).height()-$(".all-wrapper").outerHeight(true)+$('#map-content').outerHeight(true);
+                var height = $(window).height() - $(".headtop").height() - $(".copyright").height() - $(".new-bread").height() - $(".list-search").height() - 24
+                $('#map-content').css("min-height",height);
+            }
+            Main.map = new AMap.Map('map-content',{
+                center: [120.111691,30.219249],
+                zoom:6
+            })
+            $(".form_datetime").datetimepicker({
+                minView: "hour",
+                language:  'zh-CN',
+                autoclose: true,
+                isRTL: App.isRTL(),
+                format: "yyyy-mm-dd hh:ii",
+                pickerPosition: (App.isRTL() ? "bottom-right" : "bottom-left")
+            }).on('changeDate', function(e){
+
+                var stime = $("#startTime").val();
+                var startTime=new Date(Date.parse(stime.replace(/-/g,"/"))).getTime();
+
+                var etime = $("#endTime").val();
+                var endTime=new Date(Date.parse(etime.replace(/-/g,"/"))).getTime();
+                if(!isNaN(startTime) && !isNaN(endTime)){
+                    if(startTime>endTime){
+                        toastr.info("开始时间不能大于结束时间!");
+                        return false;
+                    }
+                }
+            });
+            $(".form_datetime").datetimepicker({
+                minView: "hour",
+                startView: "day",
+                language:  'zh-CN',
+                autoclose: true,
+                isRTL: App.isRTL(),
+                format: "yyyy-mm-dd hh:ii",
+                pickerPosition: (App.isRTL() ? "bottom-right" : "bottom-left")
+            });
+            AMapUI.loadUI(['control/BasicControl'], function(BasicControl) {
+
+                //添加一个缩放控件
+                Main.map.addControl(new BasicControl.Zoom({
+                    position: 'lt'
+                }));
+
+                //缩放控件，显示Zoom值
+                Main.map.addControl(new BasicControl.Zoom({
+                    position: 'lb',
+                    showZoomNum: true
+                }));
+
+                //图层切换控件
+                Main.map.addControl(new BasicControl.LayerSwitcher({
+                    position: 'rt'
+                }));
+            });
+            Welcome.hideAndShow(true, false, false);
 			window.location.hash = $(".locatemenu").find('li').first().find('a').attr('href');
 			// 左侧菜单
 			$('.ham').click(function () {
@@ -219,7 +301,6 @@ var Main = (function() {
 				$('.left-bar_menu').toggleClass('thin-bar_menu');
 				$('.normal-content').toggleClass('wide-content');
 				$('.form-operator').toggleClass('left46');
-
 				$('.left-bar_submenu').hide()
             })
 
@@ -398,17 +479,16 @@ function calendarTime(){
 		 return i;
 	 }
 }
+
+
 $(document).ready(function() {
     if ("onhashchange" in window) {
         window.onhashchange=function(){
             Main.getMainContent(window.location.hash.replace("#!",""));
         }
     }
-    // var marker = new AMap.Marker({
-    //     position : [120.111691,30.219249],
-    //     map : map
-    // })
     Main.init();
+
 });
 
 

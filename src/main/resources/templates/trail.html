@@ -4,7 +4,7 @@
     <div class="col-md-12 col-sm-12">
         <div>
             <div class="new-bread">
-                <p><a href="javascript:;">车辆定位</a><i class="deliver"></i><a href="init">历史轨迹</a></p>
+                <p><a href="javascript:;">车辆定位</a><i class="deliver"></i><a id="tabName" href="init">历史轨迹</a></p>
             </div>
             <div class="list-search">
                 <div class="list-search_item" style="width: 25%;">
@@ -13,7 +13,7 @@
                         <input type="text" class="form-control list-search_input" id="deviceCode" name="deviceCode"/>
                     </div>
                 </div>
-                <div class="list-search_item" style="width: 25%;">
+                <div id="beginTime" class="list-search_item" style="width: 25%;">
                     <div class="input-group">
                         <span class="input-group-addon list-search_label">开始时间</span>
                         <div class="input-icon right">
@@ -22,7 +22,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="list-search_item" style="width: 25%;">
+                <div id="finishTime" class="list-search_item" style="width: 25%;">
                     <div class="input-group">
                         <span class="input-group-addon list-search_label">结束时间</span>
                         <div class="input-icon right">

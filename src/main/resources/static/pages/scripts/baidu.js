@@ -3,10 +3,10 @@ var Baidu = (function () {
         init:function (map) {
             if($(window).height()>$(".all-wrapper").outerHeight(true)){
                 var height = $(window).height() - $(".headtop").height() - $(".copyright").height() - $(".new-bread").height() - $(".list-search").height() - 24
-                $('#map-content').css("min-height",height);
+                $('#map-content-baidu').css("min-height",height);
             }
             //初始化地图,选取第一个点为起始点
-            map = new BMap.Map("map-content");
+            map = new BMap.Map("map-content-baidu");
             map.centerAndZoom(new BMap.Point(120.111691,30.219249), 15);
             map.enableScrollWheelZoom();
             map.addControl(new BMap.NavigationControl());
@@ -143,7 +143,7 @@ var Baidu = (function () {
 })();
 
 $(function(){
-    var map;
+    var map = null;
     Baidu.init(map);
     $("#trailSearch").click(function () {
         var isGaode = false;

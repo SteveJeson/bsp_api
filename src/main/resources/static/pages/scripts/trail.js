@@ -6,28 +6,28 @@ var Trail = (function () {
                 var height = $(window).height() - $(".headtop").height() - $(".copyright").height() - $(".new-bread").height() - $(".list-search").height() - 24
                 $('#map-content').css("min-height",height);
             }
-            map = new AMap.Map('map-content',{
-                center: [120.111691,30.219249],
-                zoom:6
-            })
-            AMapUI.loadUI(['control/BasicControl'], function(BasicControl) {
-
-                //添加一个缩放控件
-                map.addControl(new BasicControl.Zoom({
-                    position: 'lt'
-                }));
-
-                //缩放控件，显示Zoom值
-                map.addControl(new BasicControl.Zoom({
-                    position: 'lb',
-                    showZoomNum: true
-                }));
-
-                //图层切换控件
-                map.addControl(new BasicControl.LayerSwitcher({
-                    position: 'rt'
-                }));
-            });
+            // map = new AMap.Map('map-content',{
+            //     center: [120.111691,30.219249],
+            //     zoom:6
+            // })
+            // AMapUI.loadUI(['control/BasicControl'], function(BasicControl) {
+            //
+            //     //添加一个缩放控件
+            //     map.addControl(new BasicControl.Zoom({
+            //         position: 'lt'
+            //     }));
+            //
+            //     //缩放控件，显示Zoom值
+            //     map.addControl(new BasicControl.Zoom({
+            //         position: 'lb',
+            //         showZoomNum: true
+            //     }));
+            //
+            //     //图层切换控件
+            //     map.addControl(new BasicControl.LayerSwitcher({
+            //         position: 'rt'
+            //     }));
+            // });
 
             $(".form_datetime").datetimepicker({
                 minView: "hour",
@@ -104,6 +104,7 @@ var Trail = (function () {
             })
         },
         getTrail:function (url,data,map) {
+
             $.ajax({
                 url : url,
                 data : data,
@@ -235,7 +236,8 @@ var Trail = (function () {
 })();
 
 $(function(){
-    var map;
+    $("#map-content").empty();
+    var map = null;
     Trail.init(map);
     $("#trailSearch").click(function () {
         var isGaode = true;
