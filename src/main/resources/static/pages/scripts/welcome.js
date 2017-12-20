@@ -9,7 +9,6 @@ var Welcome = (function () {
             Welcome.hideAndShow(true, false, false);
             map.setZoomAndCenter(6,[120.111691,30.219249]);
             map.clearMap( );
-            Welcome.addMapController()
             //清楚巡航器并隐藏轨迹
             if (Welcome.pathSimplifier != null){
                 Welcome.pathSimplifier.clearPathNavigators();
@@ -20,7 +19,6 @@ var Welcome = (function () {
             Welcome.hideAndShow(false, true, false);
             map.clearMap();
             map.setZoomAndCenter(6,[120.111691,30.219249]);
-            Welcome.addMapController()
         },
         baiduMapClick : function () {
             Welcome.hideAndShow(false, false, true);
@@ -373,26 +371,6 @@ var Welcome = (function () {
             Welcome.searchTime = [];
             Welcome.searchTime.push(startTimeInt)
             Welcome.searchTime.push(endTimeInt)
-        },
-        addMapController : function () {
-            AMapUI.loadUI(['control/BasicControl'], function(BasicControl) {
-
-                //添加一个缩放控件
-                Main.map.addControl(new BasicControl.Zoom({
-                    position: 'lt'
-                }));
-
-                //缩放控件，显示Zoom值
-                Main.map.addControl(new BasicControl.Zoom({
-                    position: 'lb',
-                    showZoomNum: true
-                }));
-
-                //图层切换控件
-                Main.map.addControl(new BasicControl.LayerSwitcher({
-                    position: 'rt'
-                }));
-            });
         }
     }
 })();
