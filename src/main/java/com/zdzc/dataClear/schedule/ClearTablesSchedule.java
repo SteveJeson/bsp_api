@@ -75,28 +75,28 @@ public class ClearTablesSchedule {
         });
 
         //报警表清理
-        Thread alarmThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    clearTables(DataConst.ALARMCOLNAME, DataConst.ALARMTABPREFIX, DataConst.DIVMON, DataConst.DIVDAY, DataConst.ALARMCOLNAME, DataConst.ALARMCOUNTPERDB, DataConst.ALARMDBPREFIX, DataConst.ALARMCREATEOPER, DataConst.ALARMDROPOPER);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    log.error(e.getMessage(), e.getCause());
-                }
-            }
-        });
+//        Thread alarmThread = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                try {
+//                    clearTables(DataConst.ALARMCOLNAME, DataConst.ALARMTABPREFIX, DataConst.DIVMON, DataConst.DIVDAY, DataConst.ALARMCOLNAME, DataConst.ALARMCOUNTPERDB, DataConst.ALARMDBPREFIX, DataConst.ALARMCREATEOPER, DataConst.ALARMDROPOPER);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                    log.error(e.getMessage(), e.getCause());
+//                }
+//            }
+//        });
 
-        try {
+//        try {
             //使用join控制线程执行顺序
             trailThread.start();
-            trailThread.join();
-            alarmThread.start();
-            alarmThread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            log.error(e.getMessage(), e.getCause());
-        }
+//            trailThread.join();
+//            alarmThread.start();
+//            alarmThread.join();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//            log.error(e.getMessage(), e.getCause());
+//        }
 
     }
 

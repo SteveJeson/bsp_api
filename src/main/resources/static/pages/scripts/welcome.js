@@ -37,8 +37,6 @@ var Welcome = (function () {
         },
         hideAndShow : function (isPosition, isTrail, isBaiduTrail) {
             $("#deviceCode").val("");
-            $("#startTime").val("");
-            $("#endTime").val("");
             if (isPosition){
                 $("#tabName").text("实时位置");
                 $("#beginTime").hide();
@@ -60,6 +58,9 @@ var Welcome = (function () {
                 $("#beginTime").show();
                 $("#finishTime").show();
                 $("#positionSearch").hide();
+                var time = new Date();
+                $("#startTime").val(time.getFullYear() + "-" + (time.getMonth()+1) + "-" + time.getDate() + " 00:00")
+                $("#endTime").val(time.getFullYear() + "-" + (time.getMonth()+1) + "-" + time.getDate() + " " + time.getHours() + ":" + time.getMinutes())
             }
             if (isPosition || isTrail){
                 $("#map-content-baidu").hide();
