@@ -278,26 +278,8 @@ var Main = (function() {
             var time = new Date();
             $("#startTime").val(time.getFullYear() + "-" + (time.getMonth()+1) + "-" + time.getDate() + " 00:00")
             $("#endTime").val(time.getFullYear() + "-" + (time.getMonth()+1) + "-" + time.getDate() + " " + time.getHours() + ":" + time.getMinutes())
-            AMapUI.loadUI(['control/BasicControl'], function(BasicControl) {
-
-                //添加一个缩放控件
-                Main.map.addControl(new BasicControl.Zoom({
-                    position: 'lt'
-                }));
-
-                //缩放控件，显示Zoom值
-                Main.map.addControl(new BasicControl.Zoom({
-                    position: 'lb',
-                    showZoomNum: true
-                }));
-
-                //图层切换控件
-                Main.map.addControl(new BasicControl.LayerSwitcher({
-                    position: 'rt'
-                }));
-            });
             Welcome.hideAndShow(true, false, false);
-			window.location.hash = $(".locatemenu").find('li').first().find('a').attr('href');
+            Welcome.addMapController();
 			// 左侧菜单
 			$('.ham').click(function () {
 				$('.left-side-bar').toggleClass('thin-bar');
