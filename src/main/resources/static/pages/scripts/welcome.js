@@ -93,6 +93,7 @@ var Welcome = (function () {
                 },
                 success : function(response){
                     if (response.success){
+                        map.clearMap( );
                         map.setZoomAndCenter(13,[response.data.lng,response.data.lat]);
                         AMapUI.loadUI(['control/BasicControl'], function(BasicControl) {
                             //添加一个缩放控件
@@ -245,6 +246,12 @@ var Welcome = (function () {
                         //     center: [120.198487,30.785582],
                         //     zoom:13
                         // })
+                        map.clearMap( );
+                        //清楚巡航器并隐藏轨迹
+                        if (Welcome.pathSimplifier != null){
+                            Welcome.pathSimplifier.clearPathNavigators();
+                            Welcome.pathSimplifier.hide();
+                        }
                         map.setZoomAndCenter(6,[120.111691,30.219249]);
 
                         AMapUI.load(['ui/misc/PathSimplifier', 'lib/$'], function(PathSimplifier, $) {
