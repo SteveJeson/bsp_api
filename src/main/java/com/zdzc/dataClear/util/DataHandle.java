@@ -122,8 +122,10 @@ public class DataHandle {
         return !isEmpty(arr);
     }
 
-    /**备份数据库：
-     mysqldump -h 127.0.0.1 -uroot -p123456 gps_main > .\gps_main.sql
+    /**备份数据库
+     * 注意：该备份命令参数[--set-gtid-purged=OFF]默认服务器使用的mysql5.6+版本，因为gtid是mysql5.6+版本才引入的新特性，
+     * mysql5.5版本暂未引入该特性，加上会报错，mysql5.6+版本不引入该参数还原数据库备份脚本执行不成功。
+     mysqldump -h 127.0.0.1 -uroot -p123456 gps_main > .\gps_main.sql --set-gtid-purged=OFF
      * @Description:数据库备份
      * @Author chengwengao
      * @Date 2017/12/7 0007 14:33
@@ -135,11 +137,18 @@ public class DataHandle {
      */
     public static String dbBackup(String hostName, String username, String passwd, String sourceDbName, String destinatonPath) {
         try {
+            //获取数据库版本号
+            //mysql  Ver 14.14 Distrib 5.5.28, for Win64 (x86)
+            //mysql  Ver 14.14 Distrib 5.6.38, for Win64 (x86_64)
+            String backShell = "mysqldump -h " + hostName + " -u" + username + " -p"+ passwd +" " + sourceDbName;    //备份脚本命令
+            String dbVersion = exeCmd("mysql -V");
+            if(dbVersion.indexOf("5.6") > -1){
+                backShell += " --set-gtid-purged=OFF ";
+            }
             Runtime rt = Runtime.getRuntime();
 
             // 调用 调用mysql的安装目录的命令
-            Process child = rt
-                    .exec("mysqldump -h " + hostName + " -u" + username + " -p"+ passwd +" " + sourceDbName);
+            Process child = rt.exec(backShell);
             // 设置导出编码为utf-8。这里必须是utf-8
             // 把进程执行中的控制台输出信息写入.sql文件，即生成了备份文件。注：如果不对控制台信息进行读出，则会导致进程堵塞无法运行
             InputStream in = child.getInputStream();// 控制台的输出信息作为输入流
@@ -174,7 +183,7 @@ public class DataHandle {
             fout.close();
 
             sb.delete(0, sb.length());
-            sb.append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + "数据库备份成功，文件名：" + destinatonPath + "\\" + sourceDbName + time);
+            sb.append(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) + "\n数据库版本：" + dbVersion + "\n备份命令：" + backShell + "\n数据库备份成功，文件名：" + destinatonPath + "\\" + sourceDbName + time);
             log.info(sb.toString());
             return sb.toString();
         } catch (Exception e) {
@@ -228,5 +237,22 @@ public class DataHandle {
             log.error(e.getMessage(), e.getCause());
             return "数据库还原失败，失败原因：\n" + e.getMessage();
         }
+    }
+
+    /**
+     * @Description:执行cmd命令，获取执行结果
+     * @Author chengwengao
+     * @Date 2017/12/22 0022 12:33
+     */
+    public static String exeCmd(String commandStr) throws Exception{
+        BufferedReader br = null;
+        Process p = Runtime.getRuntime().exec(commandStr);
+        br = new BufferedReader(new InputStreamReader(p.getInputStream()));
+        String line = null;
+        StringBuilder sb = new StringBuilder();
+        while ((line = br.readLine()) != null) {
+            sb.append(line + "\n");
+        }
+        return sb.toString();
     }
 }
