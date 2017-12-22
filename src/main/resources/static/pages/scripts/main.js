@@ -275,9 +275,7 @@ var Main = (function() {
                 format: "yyyy-mm-dd hh:ii",
                 pickerPosition: (App.isRTL() ? "bottom-right" : "bottom-left")
             });
-            var time = new Date();
-            $("#startTime").val(time.getFullYear() + "-" + (time.getMonth()+1) + "-" + time.getDate() + " 00:00")
-            $("#endTime").val(time.getFullYear() + "-" + (time.getMonth()+1) + "-" + time.getDate() + " " + time.getHours() + ":" + time.getMinutes())
+
             Welcome.hideAndShow(true, false, false);
             AMapUI.loadUI(['control/BasicControl'], function(BasicControl) {
 

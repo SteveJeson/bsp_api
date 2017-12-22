@@ -58,8 +58,24 @@ var Welcome = (function () {
                 $("#finishTime").show();
                 $("#positionSearch").hide();
                 var time = new Date();
-                $("#startTime").val(time.getFullYear() + "-" + (time.getMonth()+1) + "-" + time.getDate() + " 00:00")
-                $("#endTime").val(time.getFullYear() + "-" + (time.getMonth()+1) + "-" + time.getDate() + " " + time.getHours() + ":" + time.getMinutes())
+                var month = time.getMonth() + 1;
+                var day = time.getDate();
+                var hour = time.getHours();
+                var minute = time.getMinutes();
+                if (month > 0 && month < 10){
+                    month = "0" + month;
+                }
+                if (day > 0 && day < 10){
+                    day = "0" + day;
+                }
+                if (hour >= 0 && hour <= 9){
+                    hour = "0" + hour;
+                }
+                if (minute >= 0 && minute <= 9){
+                    minute = "0" + minute;
+                }
+                $("#startTime").val(time.getFullYear() + "-" + month + "-" + day + " 00:00")
+                $("#endTime").val(time.getFullYear() + "-" + month + "-" + day + " " + hour + ":" + minute)
             }
             if (isPosition || isTrail){
                 $("#map-content-baidu").hide();
@@ -356,10 +372,10 @@ var Welcome = (function () {
             var endMonth = endTime.split(" ")[0].split("-")[1];
             var startDay = startTime.split(" ")[0].split("-")[2];
             var endDay = endTime.split(" ")[0].split("-")[2];
-            var endTimeInt = endYear + endMonth + endDay + endTime.split(" ")[1].split(":")[0] + endTime.split(" ")[1].split(":")[1]+"00";
+            var endHour = endTime.split(" ")[1].split(":")[0];
+            var endMinute = endTime.split(" ")[1].split(":")[1];
+            var endTimeInt = endYear + endMonth + endDay + endHour + endMinute + "00";
             if (startYear == endYear && startMonth == endMonth && (endDay - startDay == 1)){//确保一天的查询时间范围从 00:00:00 到 23:59:59
-                var endHour = endTime.split(" ")[1].split(":")[0];
-                var endMinute = endTime.split(" ")[1].split(":")[1];
                 if (endHour == 0 && endMinute == 0){
                     // endTime = endYear + "-" + endMonth + "-" + startDay + " " + "23:59:59";
                     endTimeInt = endYear + endMonth + endDay + "235959";
