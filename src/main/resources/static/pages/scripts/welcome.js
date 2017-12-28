@@ -94,7 +94,7 @@ var Welcome = (function () {
                 success : function(response){
                     if (response.success){
                         map.clearMap( );
-                        map.setZoomAndCenter(13,[response.data.lng,response.data.lat]);
+                        map.setZoomAndCenter(13,[response.data.olng,response.data.olat]);
                         AMapUI.loadUI(['control/BasicControl'], function(BasicControl) {
                             //添加一个缩放控件
                             map.addControl(new BasicControl.Zoom({
@@ -113,7 +113,7 @@ var Welcome = (function () {
                             }));
                         });
                         Welcome.marker = new AMap.Marker({
-                            position : [response.data.lng,response.data.lat],
+                            position : [response.data.olng,response.data.olat],
                             map : map
                         })
                         //构建自定义信息窗体
@@ -162,15 +162,15 @@ var Welcome = (function () {
                         //组装信息窗体内容
                         var title = '设备号：' + response.data.deviceId;
                         content = [];
-                        content.push("经度：" + response.data.lng);
-                        content.push("纬度：" + response.data.lat);
+                        content.push("经度：" + response.data.olng);
+                        content.push("纬度：" + response.data.olat);
                         content.push("时间：" + response.data.time);
                         //根据经纬度逆推地理位置并监听标记点的点击事件
                         AMap.service('AMap.Geocoder',function () {
                             geocoder = new AMap.Geocoder({
                                 city: "010"//城市，默认：“全国”
                             });
-                            var lnglat = [response.data.lng,response.data.lat];
+                            var lnglat = [response.data.olng,response.data.olat];
                             geocoder.getAddress(lnglat,function (status,result) {
                                 if (status === 'complete' && result.info === 'OK') {
                                     content.push("地址：" + result.regeocode.formattedAddress);
